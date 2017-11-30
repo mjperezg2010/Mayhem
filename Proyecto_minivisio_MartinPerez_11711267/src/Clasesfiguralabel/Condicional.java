@@ -12,8 +12,26 @@ import javax.swing.JLabel;
  * @author mjper
  */
 public class Condicional extends JLabel {
+    private String tipo;
 
     public Condicional() {
+        tipo="Condicional";
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    
+    
+    
+    @Override
+    public String toString() {
+        return "Condicional";
     }
     
     

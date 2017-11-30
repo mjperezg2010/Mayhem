@@ -12,5 +12,14 @@ import javax.swing.JLabel;
  * @author mjper
  */
 public class Imprimir extends JLabel{
+
+    @Override
+    public String toString() {
+        return "Imprimir";
+    }
+    
+    
+    
+    
     
 }

@@ -23,6 +23,11 @@ public class Entrada_Salida extends JLabel{
     public void setListva(ArrayList<Variable> listva) {
         this.listva = listva;
     }
+
+    @Override
+    public String toString() {
+        return "Entrada_Salida";
+    }
     
     
     

@@ -26,6 +26,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import Clasesfiguralabel.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
 
 /**
  *
@@ -64,11 +66,16 @@ public class Principal extends javax.swing.JFrame {
         bt_codigo = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        jp_codigo = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtp_codigo = new javax.swing.JTextPane();
         jButton3 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jl_variables1 = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
         jpp_paralelogramo = new javax.swing.JPopupMenu();
         jpp_texto_paralelogramo = new javax.swing.JMenuItem();
         jpp_color_paralelogramo = new javax.swing.JMenuItem();
@@ -77,6 +84,7 @@ public class Principal extends javax.swing.JFrame {
         jpp_rombo = new javax.swing.JPopupMenu();
         jpp_texto_rombo = new javax.swing.JMenuItem();
         jpp_color_rombo = new javax.swing.JMenuItem();
+        jpp_tipo = new javax.swing.JMenuItem();
         jpp_rectangulo = new javax.swing.JPopupMenu();
         jpp_texto_rectangulo = new javax.swing.JMenuItem();
         jpp_color_rectangulo = new javax.swing.JMenuItem();
@@ -85,7 +93,7 @@ public class Principal extends javax.swing.JFrame {
         jpp_text0_resultado = new javax.swing.JMenuItem();
         jd_opcion = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jb_diagramaflujonuevo = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         variables = new javax.swing.JDialog();
         jButton4 = new javax.swing.JButton();
@@ -101,6 +109,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         imagen2 = new javax.swing.JLabel();
+        Condicional_mientras = new javax.swing.JDialog();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        cb_condicion = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -207,7 +220,7 @@ public class Principal extends javax.swing.JFrame {
                 bt_codigoMouseClicked(evt);
             }
         });
-        jddiagramaflujo.getContentPane().add(bt_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 860, -1, -1));
+        jddiagramaflujo.getContentPane().add(bt_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, -1));
 
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(500, 500));
 
@@ -215,9 +228,15 @@ public class Principal extends javax.swing.JFrame {
         panel.setLayout(null);
         jTabbedPane1.addTab("Diagrama de flujo", panel);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(null);
-        jTabbedPane1.addTab("Codigo C++", jPanel1);
+        jp_codigo.setBackground(new java.awt.Color(0, 102, 255));
+        jp_codigo.setLayout(null);
+
+        jScrollPane1.setViewportView(jtp_codigo);
+
+        jp_codigo.add(jScrollPane1);
+        jScrollPane1.setBounds(110, 50, 730, 670);
+
+        jTabbedPane1.addTab("Codigo C++", jp_codigo);
 
         jddiagramaflujo.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 1300, 830));
 
@@ -236,6 +255,14 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel2.setText("Variables");
         jddiagramaflujo.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 520, -1, -1));
+
+        jMenu3.setText("File");
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Edit");
+        jMenuBar2.add(jMenu4);
+
+        jddiagramaflujo.setJMenuBar(jMenuBar2);
 
         jpp_texto_paralelogramo.setText("Asignar Variable");
         jpp_texto_paralelogramo.addActionListener(new java.awt.event.ActionListener() {
@@ -277,6 +304,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jpp_rombo.add(jpp_color_rombo);
 
+        jpp_tipo.setText("EleccionTipo");
+        jpp_tipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpp_tipoActionPerformed(evt);
+            }
+        });
+        jpp_rombo.add(jpp_tipo);
+
         jpp_texto_rectangulo.setText("Texto");
         jpp_texto_rectangulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,14 +349,14 @@ public class Principal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jButton1.setText("Diagrama de flujo");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jb_diagramaflujonuevo.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jb_diagramaflujonuevo.setText("Diagrama de flujo");
+        jb_diagramaflujonuevo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                jb_diagramaflujonuevoMouseClicked(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 320));
+        jPanel2.add(jb_diagramaflujonuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 320));
 
         jButton2.setText("jButton2");
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 200, 320));
@@ -382,6 +417,28 @@ public class Principal extends javax.swing.JFrame {
         imagen2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/C-1-400x400.jpg"))); // NOI18N
         imagen2.setText("jLabel8");
         jd_asignarvariable.getContentPane().add(imagen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 400));
+
+        Condicional_mientras.setBackground(new java.awt.Color(51, 153, 255));
+        Condicional_mientras.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("Aceptar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, 30));
+
+        cb_condicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Condicional", "Ciclo" }));
+        jPanel1.add(cb_condicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
+
+        jLabel8.setText("Opciones para figura");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 120, 20));
+
+        Condicional_mientras.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 160));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eleccion de diagramas");
@@ -532,6 +589,7 @@ public class Principal extends javax.swing.JFrame {
             Ovalo.setText("Inicio");
             //Ovalo.setBackground(tempovalo.getBackground());
             contovalo++;
+            listafiguras.add(Ovalo);
 
         } else if (contovalo == 1) {
             Inicio Ovalo = new Inicio();
@@ -580,6 +638,7 @@ public class Principal extends javax.swing.JFrame {
             });
             Ovalo.setText("Fin");
             contovalo++;
+            listafiguras.add(Ovalo);
         } else {
             JOptionPane.showMessageDialog(jddiagramaflujo, "Ya no puede ingresar mas de este tipo");
         }
@@ -626,12 +685,15 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
                     jpp_paralelogramo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
                     templabelparalelogramo = Paralelogramo;
+                    Paralelogramo.setText(templabelparalelogramo.getText());
+                    Paralelogramo.setBackground(templabelparalelogramo.getBackground());
 
                 }
             }
         });
 
-        Paralelogramo.setText(templabelparalelogramo.getText());
+        
+        listafiguras.add(Paralelogramo);
         //Paralelogramo.setBackground(templabelparalelogramo.getBackground());
 
 
@@ -664,13 +726,15 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
             }
         });
+        listafiguras.add(name);
 
 
     }//GEN-LAST:event_jb_verticalMouseClicked
 
     private void jb_romboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_romboMouseClicked
         // TODO add your handling code here:
-
+        
+        
         Condicional rombo = new Condicional();
         // name.setPreferredSize(new Dimension(50, 100));
         panel.add(rombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 600, 600));
@@ -709,11 +773,15 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
                     jpp_rombo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
                     temprombo = rombo;
+                    rombo.setText(temprombo.getText());
+                    rombo.setBackground(temprombo.getBackground());
+                    rombo.setTipo(temprombo.getTipo());
 
                 }
             }
         });
-        rombo.setText(temprombo.getText());
+        
+        listafiguras.add(rombo);
         //rombo.setBackground(temprombo.getBackground());
 
 
@@ -760,12 +828,15 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
                     jpp_rectangulo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
                     temprectangulo = rectangulo;
+                    rectangulo.setText(temprectangulo.getText());
+                    rectangulo.setBackground(temprectangulo.getBackground());
 
                 }
             }
         });
 
-        rectangulo.setText(temprectangulo.getText());
+        
+        listafiguras.add(rectangulo);
         //rectangulo.setBackground(temprectangulo.getBackground());
 
 
@@ -808,12 +879,15 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
                     jpp_resultado.show(evtr.getComponent(), evtr.getX(), evtr.getY());
                     tempresultado = resultado;
+                    resultado.setText(tempresultado.getText());
+                    resultado.setBackground(tempresultado.getBackground());
 
                 }
             }
         });
 
-        resultado.setText(tempresultado.getText());
+        
+         listafiguras.add(resultado);
 
 
     }//GEN-LAST:event_jb_resultadoMouseClicked
@@ -844,17 +918,25 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
             }
         });
+         listafiguras.add(derecha);
 
     }//GEN-LAST:event_jb_derechaMouseClicked
 
     private void bt_codigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_codigoMouseClicked
         // TODO add your handling code here:
-        /*this.codigogenerado.setModal(true);
-        codigogenerado.pack();
-        codigogenerado.setLocationRelativeTo(this);
-        codigogenerado.setVisible(true);*/
-
+        String codigo="";
+        jtp_codigo.setText("");
+        
+        codigo="//"+nombrediagramaflujo+"\n\n"
+                + "#include<stdio.h>\n"
+                + "include<math.h"
+            + "#include <iostream.h>\n\n"
+            + "int main(){\n";
+        
+            
+        
         System.out.println(codigo);
+        
 
 
     }//GEN-LAST:event_bt_codigoMouseClicked
@@ -893,8 +975,7 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
         // TODO add your handling code here:
         String texto = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese un texto");
         temprombo.setText(texto);
-        codigo += "\n"
-                + "if(" + temprombo.getText() + "){";
+        
     }//GEN-LAST:event_jpp_texto_romboActionPerformed
 
     private void jpp_color_romboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_color_romboActionPerformed
@@ -929,6 +1010,7 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
             }
         });
+         listafiguras.add(izquierda);
 
     }//GEN-LAST:event_jb_izquierdaMouseClicked
 
@@ -954,8 +1036,9 @@ temprectangulo.setText(mensaje);
         tempresultado.setBackground(cl);
     }//GEN-LAST:event_jpp_color_resultadoActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void jb_diagramaflujonuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_diagramaflujonuevoMouseClicked
         // TODO add your handling code here:
+        nombrediagramaflujo=JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese nombre del diagrama");
         this.jddiagramaflujo.setModal(true);
         jddiagramaflujo.pack();
         jddiagramaflujo.setLocationRelativeTo(this);
@@ -963,7 +1046,8 @@ temprectangulo.setText(mensaje);
         // jddiagramaflujo.setMaximumSize(1500, 0x5dc);
         jddiagramaflujo.setVisible(true);
         jd_opcion.setVisible(false);
-    }//GEN-LAST:event_jButton1MouseClicked
+        
+    }//GEN-LAST:event_jb_diagramaflujonuevoMouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
@@ -1012,6 +1096,22 @@ temprectangulo.setText(mensaje);
         
     }//GEN-LAST:event_jButton5MouseClicked
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_condicion.getModel();
+        temprombo.setTipo(modelo.getSelectedItem().toString());
+        JOptionPane.showMessageDialog(Condicional_mientras, "Tipo asignado con exito");
+        Condicional_mientras.setVisible(false);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jpp_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_tipoActionPerformed
+        // TODO add your handling code here:
+        this.Condicional_mientras.setModal(true);
+        Condicional_mientras.pack();
+        Condicional_mientras.setLocationRelativeTo(this);
+        Condicional_mientras.setVisible(true);
+    }//GEN-LAST:event_jpp_tipoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1048,7 +1148,9 @@ temprectangulo.setText(mensaje);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog Condicional_mientras;
     private javax.swing.JButton bt_codigo;
+    private javax.swing.JComboBox<String> cb_condicion;
     private javax.swing.JComboBox<String> cb_tiposvariable;
     private javax.swing.JLabel imagen2;
     private javax.swing.JButton jButton1;
@@ -1063,17 +1165,23 @@ temprectangulo.setText(mensaje);
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jb_circulo;
     private javax.swing.JButton jb_derecha;
+    private javax.swing.JButton jb_diagramaflujonuevo;
     private javax.swing.JButton jb_izquierda;
     private javax.swing.JButton jb_ovalo;
     private javax.swing.JButton jb_paralelogramo;
@@ -1087,6 +1195,7 @@ temprectangulo.setText(mensaje);
     private javax.swing.JList<Variable> jl_variables;
     private javax.swing.JList<Variable> jl_variables1;
     private javax.swing.JMenuItem jmi_diagramaflujo;
+    private javax.swing.JPanel jp_codigo;
     private javax.swing.JMenuItem jpp_color_ovalo;
     private javax.swing.JMenuItem jpp_color_paralelogramo;
     private javax.swing.JMenuItem jpp_color_rectangulo;
@@ -1101,16 +1210,17 @@ temprectangulo.setText(mensaje);
     private javax.swing.JMenuItem jpp_texto_paralelogramo;
     private javax.swing.JMenuItem jpp_texto_rectangulo;
     private javax.swing.JMenuItem jpp_texto_rombo;
+    private javax.swing.JMenuItem jpp_tipo;
+    private javax.swing.JTextPane jtp_codigo;
     private javax.swing.JPanel panel;
     private java.awt.Panel panel1;
     private javax.swing.JTextField tf_nombrevariable;
     private javax.swing.JDialog variables;
     // End of variables declaration//GEN-END:variables
 int contovalo = 0;
-    String labelname = "h",
-            codigo = "Programa\n"
-            + "#include <stdio.h>\n\n"
-            + "int main(){\n";
+String nombrediagramaflujo="";
+Icon icon= null;
+    Object o=null;
     Entrada_Salida templabelparalelogramo = new Entrada_Salida();
     Inicio tempovalo = new Inicio();
     Condicional temprombo = new Condicional();

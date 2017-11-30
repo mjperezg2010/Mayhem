@@ -16,9 +16,25 @@ import javax.swing.SwingConstants;
  * @author mjper
  */
 public class Inicio extends JLabel{
+    private String tipo;
 
     public Inicio() {
       
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
+
+    @Override
+    public String toString() {
+        return "Inicio{";
     }
     
     
