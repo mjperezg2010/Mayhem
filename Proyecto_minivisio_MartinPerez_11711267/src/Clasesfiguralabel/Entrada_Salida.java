@@ -15,6 +15,7 @@ import javax.swing.JLabel;
  */
 public class Entrada_Salida extends JLabel{
     ArrayList <Variable> listva = new ArrayList();
+    private boolean agregado;
 
     public ArrayList<Variable> getListva() {
         return listva;
@@ -22,6 +23,14 @@ public class Entrada_Salida extends JLabel{
 
     public void setListva(ArrayList<Variable> listva) {
         this.listva = listva;
+    }
+
+    public boolean isAgregado() {
+        return agregado;
+    }
+
+    public void setAgregado(boolean agregado) {
+        this.agregado = agregado;
     }
 
     @Override

@@ -5,6 +5,7 @@
  */
 package Clasesfiguralabel;
 
+import Clases.Variable;
 import javax.swing.JLabel;
 
 /**
@@ -12,7 +13,7 @@ import javax.swing.JLabel;
  * @author mjper
  */
 public class Imprimir extends JLabel {
-    
+    private Variable variable;
     
     
     private boolean conVariable;
@@ -23,6 +24,14 @@ public class Imprimir extends JLabel {
 
     public void setConVariable(boolean conVariable) {
         this.conVariable = conVariable;
+    }
+
+    public Variable getVariable() {
+        return variable;
+    }
+
+    public void setVariable(Variable variable) {
+        this.variable = variable;
     }
     
     

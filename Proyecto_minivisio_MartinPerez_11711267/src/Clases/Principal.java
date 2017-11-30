@@ -63,12 +63,9 @@ public class Principal extends javax.swing.JFrame {
         jb_resultado = new javax.swing.JButton();
         jb_derecha = new javax.swing.JButton();
         jb_izquierda = new javax.swing.JButton();
+        bt_cerrarciclo = new javax.swing.JButton();
         bt_codigo = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        panel = new javax.swing.JPanel();
-        jp_codigo = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtp_codigo = new javax.swing.JTextPane();
+        panelfiguras = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jl_variables1 = new javax.swing.JList<>();
@@ -115,6 +112,17 @@ public class Principal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         cb_condicion = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        jd_asignarvariableresultado = new javax.swing.JDialog();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jl_variables2 = new javax.swing.JList<>();
+        jLabel10 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        imagen3 = new javax.swing.JLabel();
+        jd_codigogenerado = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tp_codigodiagrama = new javax.swing.JTextArea();
+        jLabel11 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -213,6 +221,21 @@ public class Principal extends javax.swing.JFrame {
         panel1.add(jb_izquierda);
         jb_izquierda.setBounds(200, 250, 30, 31);
 
+        bt_cerrarciclo.setText("Cerrar ciclo o condicion actual");
+        bt_cerrarciclo.setToolTipText("");
+        bt_cerrarciclo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_cerrarcicloMouseClicked(evt);
+            }
+        });
+        bt_cerrarciclo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cerrarcicloActionPerformed(evt);
+            }
+        });
+        panel1.add(bt_cerrarciclo);
+        bt_cerrarciclo.setBounds(40, 320, 220, 25);
+
         jddiagramaflujo.getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 310, 370));
 
         bt_codigo.setText("Generar codigo");
@@ -223,23 +246,9 @@ public class Principal extends javax.swing.JFrame {
         });
         jddiagramaflujo.getContentPane().add(bt_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, -1));
 
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(500, 500));
-
-        panel.setBackground(new java.awt.Color(255, 255, 255));
-        panel.setLayout(null);
-        jTabbedPane1.addTab("Diagrama de flujo", panel);
-
-        jp_codigo.setBackground(new java.awt.Color(0, 102, 255));
-        jp_codigo.setLayout(null);
-
-        jScrollPane1.setViewportView(jtp_codigo);
-
-        jp_codigo.add(jScrollPane1);
-        jScrollPane1.setBounds(110, 50, 730, 670);
-
-        jTabbedPane1.addTab("Codigo C++", jp_codigo);
-
-        jddiagramaflujo.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 1300, 830));
+        panelfiguras.setBackground(new java.awt.Color(255, 255, 255));
+        panelfiguras.setLayout(null);
+        jddiagramaflujo.getContentPane().add(panelfiguras, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 740, 890));
 
         jButton3.setText("Crear Nueva Variable");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -388,7 +397,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel4.setText("Variables");
         variables.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
-        cb_tiposvariable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "int", "char", "bool", "float", "unsigned short int", "short int", "unsigned long int", "long int", "unsigned int" }));
+        cb_tiposvariable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "int", "char", "bool", "float", "long int", "double", " " }));
         variables.getContentPane().add(cb_tiposvariable, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
@@ -449,6 +458,49 @@ public class Principal extends javax.swing.JFrame {
 
         Condicional_mientras.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 160));
 
+        jd_asignarvariableresultado.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jl_variables2.setModel(new DefaultListModel());
+        jScrollPane5.setViewportView(jl_variables2);
+
+        jd_asignarvariableresultado.getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 110, -1));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        jLabel10.setText("Asignar");
+        jd_asignarvariableresultado.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 100, -1));
+
+        jButton6.setText("Asignar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        jd_asignarvariableresultado.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
+
+        imagen3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/C-1-400x400.jpg"))); // NOI18N
+        imagen3.setText("jLabel8");
+        jd_asignarvariableresultado.getContentPane().add(imagen3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 400));
+
+        jd_codigogenerado.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tp_codigodiagrama.setEditable(false);
+        tp_codigodiagrama.setColumns(20);
+        tp_codigodiagrama.setRows(5);
+        jScrollPane1.setViewportView(tp_codigodiagrama);
+
+        jd_codigogenerado.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 500, 460));
+
+        jLabel11.setText("Codigo");
+        jd_codigogenerado.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, -1));
+
+        jButton7.setText("Editar");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+        jd_codigogenerado.getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 560, 80, 60));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eleccion de diagramas");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -501,7 +553,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         JLabel circulo = new JLabel();
         // name.setPreferredSize(new Dimension(50, 100));
-        panel.add(circulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 640, 760));
+        panelfiguras.add(circulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 640, 760));
         circulo.setLocation(10, 200);
         circulo.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/Circulo.jpg"));
         circulo.setOpaque(true);
@@ -554,7 +606,7 @@ public class Principal extends javax.swing.JFrame {
             Inicio Ovalo = new Inicio();
             //JLabel Ovalo = new JLabel();
             // name.setPreferredSize(new Dimension(50, 100));
-            panel.add(Ovalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
+            panelfiguras.add(Ovalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
             Ovalo.setLocation(20, 210);
             Ovalo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Ovalo.png"));
 
@@ -591,6 +643,7 @@ public class Principal extends javax.swing.JFrame {
 
                         jpp_ovalo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
                         tempovalo = Ovalo;
+                        listafiguras.add(Ovalo);
 
                     }
                 }
@@ -598,12 +651,11 @@ public class Principal extends javax.swing.JFrame {
             Ovalo.setText("Inicio");
             //Ovalo.setBackground(tempovalo.getBackground());
             contovalo++;
-            listafiguras.add(Ovalo);
 
         } else if (contovalo == 1) {
             Inicio Ovalo = new Inicio();
             // name.setPreferredSize(new Dimension(50, 100));
-            panel.add(Ovalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
+            panelfiguras.add(Ovalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
             Ovalo.setLocation(20, 210);
             Ovalo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Ovalo.png"));
             Ovalo.setTipo("Fin");
@@ -641,13 +693,13 @@ public class Principal extends javax.swing.JFrame {
 
                         jpp_ovalo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
                         tempovalo = Ovalo;
-
+                        listafiguras.add(Ovalo);
                     }
                 }
             });
             Ovalo.setText("Fin");
             contovalo++;
-            listafiguras.add(Ovalo);
+
         } else {
             JOptionPane.showMessageDialog(jddiagramaflujo, "Ya no puede ingresar mas de este tipo");
         }
@@ -658,7 +710,7 @@ public class Principal extends javax.swing.JFrame {
 
         Entrada_Salida Paralelogramo = new Entrada_Salida();
         // name.setPreferredSize(new Dimension(50, 100));
-        panel.add(Paralelogramo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
+        panelfiguras.add(Paralelogramo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
         Paralelogramo.setLocation(20, 210);
         //Paralelogramo.setBackground(Color.red);
 
@@ -672,8 +724,10 @@ public class Principal extends javax.swing.JFrame {
         //Paralelogramo.setSize(180, 200);
         Paralelogramo.setBackground(Color.ORANGE);
         Paralelogramo.setBounds(440, 320, 100, 67);
-Paralelogramo.setToolTipText("Click derecho para propiedades");
+        Paralelogramo.setToolTipText("Click derecho para propiedades");
+        Paralelogramo.setAgregado(true);
         Paralelogramo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+
             @Override
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 if ((Paralelogramo.getLocation().x + evt.getX() - Paralelogramo.getWidth() / 2) >= 0
@@ -696,15 +750,25 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
                     templabelparalelogramo = Paralelogramo;
                     Paralelogramo.setText(templabelparalelogramo.getText());
                     Paralelogramo.setBackground(templabelparalelogramo.getBackground());
+                    if (Paralelogramo.isAgregado()) {
+                        for (JLabel t : listafiguras) {
+                            if (t.getText().equals(Paralelogramo.getText())) {
+                                t.setText(templabelparalelogramo.getText());
+                                t.setBackground(templabelparalelogramo.getBackground());
+                                ((Entrada_Salida) t).setListva(templabelparalelogramo.getListva());
+                            }
+                        }
+                    } else {
+                        listafiguras.add(Paralelogramo);
+                    }
 
                 }
             }
         });
 
-        
         listafiguras.add(Paralelogramo);
-        //Paralelogramo.setBackground(templabelparalelogramo.getBackground());
 
+        //Paralelogramo.setBackground(templabelparalelogramo.getBackground());
 
     }//GEN-LAST:event_jb_paralelogramoMouseClicked
 
@@ -713,7 +777,7 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
         JLabel name = new JLabel();
         // name.setPreferredSize(new Dimension(50, 100));
-        panel.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 300, 600));
+        panelfiguras.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 300, 600));
         name.setLocation(20, 210);
         name.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/Flecha.jpg"));
         name.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -721,7 +785,7 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
         name.setLocation(new Point(30, 30));
         name.setPreferredSize(new Dimension(40, 40));
         name.setSize(50, 50);
-        
+
         name.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             @Override
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -735,18 +799,17 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
             }
         });
-        listafiguras.add(name);
 
+        listafiguras.add(name);
 
     }//GEN-LAST:event_jb_verticalMouseClicked
 
     private void jb_romboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_romboMouseClicked
         // TODO add your handling code here:
-        
-        
+
         Condicional rombo = new Condicional();
         // name.setPreferredSize(new Dimension(50, 100));
-        panel.add(rombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 600, 600));
+        panelfiguras.add(rombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 600, 600));
         rombo.setLocation(20, 210);
 
         rombo.setBackground(Color.GREEN);
@@ -785,14 +848,12 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
                     rombo.setText(temprombo.getText());
                     rombo.setBackground(temprombo.getBackground());
                     rombo.setTipo(temprombo.getTipo());
-
+                    listafiguras.add(rombo);
                 }
             }
         });
-        
-        listafiguras.add(rombo);
-        //rombo.setBackground(temprombo.getBackground());
 
+        //rombo.setBackground(temprombo.getBackground());
 
     }//GEN-LAST:event_jb_romboMouseClicked
 
@@ -801,7 +862,7 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
         Procesos rectangulo = new Procesos();
         // name.setPreferredSize(new Dimension(50, 100));
-        panel.add(rectangulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 550, 600));
+        panelfiguras.add(rectangulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 550, 600));
         rectangulo.setLocation(20, 210);
         rectangulo.setBackground(Color.red);
         rectangulo.setForeground(Color.BLACK);
@@ -839,15 +900,12 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
                     temprectangulo = rectangulo;
                     rectangulo.setText(temprectangulo.getText());
                     rectangulo.setBackground(temprectangulo.getBackground());
-
+                    listafiguras.add(rectangulo);
                 }
             }
         });
 
-        
-        listafiguras.add(rectangulo);
         //rectangulo.setBackground(temprectangulo.getBackground());
-
 
     }//GEN-LAST:event_jb_rectanguloMouseClicked
 
@@ -856,7 +914,7 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
         Imprimir resultado = new Imprimir();
         // name.setPreferredSize(new Dimension(50, 100));
-        panel.add(resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 330, 600));
+        panelfiguras.add(resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 330, 600));
         resultado.setLocation(20, 210);
         resultado.setIcon(new javax.swing.ImageIcon("./src/Iconitos/resultado_p.png"));
         resultado.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -891,13 +949,12 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
                     resultado.setText(tempresultado.getText());
                     resultado.setBackground(tempresultado.getBackground());
                     resultado.setConVariable(tempresultado.isConVariable());
+                    resultado.setVariable(tempresultado.getVariable());
+                    listafiguras.add(resultado);
 
                 }
             }
         });
-
-        
-         listafiguras.add(resultado);
 
 
     }//GEN-LAST:event_jb_resultadoMouseClicked
@@ -906,7 +963,7 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
         // TODO add your handling code here:
         JLabel derecha = new JLabel();
         // name.setPreferredSize(new Dimension(50, 100));
-        panel.add(derecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 330, 600));
+        panelfiguras.add(derecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 330, 600));
         derecha.setLocation(20, 210);
         derecha.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/flechaderecha.jpg"));
         derecha.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -928,23 +985,55 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
             }
         });
-         listafiguras.add(derecha);
+        listafiguras.add(derecha);
 
     }//GEN-LAST:event_jb_derechaMouseClicked
 
     private void bt_codigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_codigoMouseClicked
         // TODO add your handling code here:
-        String codigo="";
-        jtp_codigo.setText("");
-        
-        codigo="//"+nombrediagramaflujo+"\n\n";
-        
-                
-        
-            
-        
-        System.out.println(codigo);
-        
+
+        System.out.println(listafiguras);
+        String codigogenerado = "";
+        tp_codigodiagrama.setText("");
+        Codigo co = new Codigo();
+
+        codigogenerado = "//" + nombrediagramaflujo + "\n\n";
+
+        for (JLabel t : listafiguras) {
+            if (t instanceof Condicional) {
+                codigogenerado += "\n"
+                        + co.Condicionalc((Condicional) t);
+
+            } else if (t instanceof Entrada_Salida) {
+                codigogenerado += "\n"
+                        + co.Entrada_Salidac((Entrada_Salida) t);
+
+            } else if (t instanceof FinCiclo) {
+                codigogenerado += "\n"
+                        + "}";
+            } else if (t instanceof Inicio) {
+                codigogenerado += "\n"
+                        + co.Inicioc((Inicio) t);
+            } else if (t instanceof Imprimir) {
+                codigogenerado += "\n"
+                        + co.imprimir((Imprimir) t);
+
+            } else if (t instanceof Procesos) {
+                codigogenerado += "\n"
+                        + co.procesosc((Procesos) t);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Figura irreconocible");
+
+            }
+
+        }//Fin for ich
+
+        tp_codigodiagrama.setText(codigogenerado);
+        this.jd_codigogenerado.setModal(true);
+        jd_codigogenerado.pack();
+        jd_codigogenerado.setLocationRelativeTo(this);
+        jd_codigogenerado.setVisible(true);
 
 
     }//GEN-LAST:event_bt_codigoMouseClicked
@@ -955,12 +1044,6 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
         jd_asignarvariable.pack();
         jd_asignarvariable.setLocationRelativeTo(this);
         jd_asignarvariable.setVisible(true);
-        
-        
-        /*String texto = JOptionPane.showInputDialog(this, "Ingrese un texto");
-        templabelparalelogramo.setText(texto);
-        codigo += "\n"
-                + "printf(" + templabelparalelogramo.getText() + ")";*/
 
 
     }//GEN-LAST:event_jpp_texto_paralelogramoActionPerformed
@@ -983,7 +1066,7 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
         // TODO add your handling code here:
         String texto = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese un texto");
         temprombo.setText(texto);
-        
+
     }//GEN-LAST:event_jpp_texto_romboActionPerformed
 
     private void jpp_color_romboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_color_romboActionPerformed
@@ -997,7 +1080,7 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
         // TODO add your handling code here:
         JLabel izquierda = new JLabel();
         // name.setPreferredSize(new Dimension(50, 100));
-        panel.add(izquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 300, 600));
+        panelfiguras.add(izquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 300, 600));
         izquierda.setLocation(20, 210);
         izquierda.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/izquierda.jpg"));
         izquierda.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -1018,16 +1101,16 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
 
             }
         });
-         listafiguras.add(izquierda);
+        listafiguras.add(izquierda);
 
     }//GEN-LAST:event_jb_izquierdaMouseClicked
 
     private void jpp_texto_rectanguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_texto_rectanguloActionPerformed
         // TODO add your handling code here:
-String mensaje = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese la operacion: ");
+        String mensaje = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese la operacion: ");
 
-temprectangulo.setText(mensaje);
-       
+        temprectangulo.setText(mensaje);
+
 
     }//GEN-LAST:event_jpp_texto_rectanguloActionPerformed
 
@@ -1046,7 +1129,7 @@ temprectangulo.setText(mensaje);
 
     private void jb_diagramaflujonuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_diagramaflujonuevoMouseClicked
         // TODO add your handling code here:
-        nombrediagramaflujo=JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese nombre del diagrama");
+        nombrediagramaflujo = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese nombre del diagrama");
         this.jddiagramaflujo.setModal(true);
         jddiagramaflujo.pack();
         jddiagramaflujo.setLocationRelativeTo(this);
@@ -1054,7 +1137,7 @@ temprectangulo.setText(mensaje);
         // jddiagramaflujo.setMaximumSize(1500, 0x5dc);
         jddiagramaflujo.setVisible(true);
         jd_opcion.setVisible(false);
-        
+
     }//GEN-LAST:event_jb_diagramaflujonuevoMouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
@@ -1067,6 +1150,7 @@ temprectangulo.setText(mensaje);
         modelo.addElement(va);
         jl_variables.setModel(modelo);
         jl_variables1.setModel(modelo);
+        jl_variables2.setModel(modelo);
 
         JOptionPane.showMessageDialog(variables, "Variable agregada");
 
@@ -1084,24 +1168,22 @@ temprectangulo.setText(mensaje);
 
     private void jpp_text0_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_text0_resultadoActionPerformed
         // TODO add your handling code here:
-         String texto = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese un texto");
+        String texto = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese un texto");
         tempresultado.setText(texto);
     }//GEN-LAST:event_jpp_text0_resultadoActionPerformed
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
-        
+
         templabelparalelogramo.getListva().add(jl_variables.getSelectedValue());
-        String acum="";
+        String acum = "";
         for (Variable t : templabelparalelogramo.getListva()) {
-            acum+=t.getNombre()+",";
+            acum += t.getNombre() + ",";
         }
-        
-        templabelparalelogramo.setText("Lea "+acum);
-        
-        
-        
-        
+
+        templabelparalelogramo.setText("Lea " + acum);
+
+
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -1122,15 +1204,41 @@ temprectangulo.setText(mensaje);
 
     private void jpp_tipoimpresionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_tipoimpresionActionPerformed
         // TODO add your handling code here:
-        int opcion=JOptionPane.showConfirmDialog(jddiagramaflujo, "¿Desea realizar una impresion con variable?","Elija",JOptionPane.YES_NO_OPTION);
-        if (opcion==0) {
+        int opcion = JOptionPane.showConfirmDialog(jddiagramaflujo, "¿Desea realizar una impresion con variable?", "Elija", JOptionPane.YES_NO_OPTION);
+        if (opcion == 0) {
             tempresultado.setConVariable(true);
-           
-        }else{
+            //jd_asignarvariableresultado
+            jd_asignarvariableresultado.setModal(true);
+            jd_asignarvariableresultado.pack();
+            jd_asignarvariableresultado.setLocationRelativeTo(this);
+            jd_asignarvariableresultado.setVisible(true);
+        } else {
             tempresultado.setConVariable(false);
         }
-        
+
     }//GEN-LAST:event_jpp_tipoimpresionActionPerformed
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        tempresultado.setVariable(jl_variables2.getSelectedValue());
+        JOptionPane.showMessageDialog(jd_asignarvariableresultado, "Variable asignada con exito");
+        jd_asignarvariableresultado.setVisible(false);
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void bt_cerrarcicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cerrarcicloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_cerrarcicloActionPerformed
+
+    private void bt_cerrarcicloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cerrarcicloMouseClicked
+        // TODO add your handling code here:
+        FinCiclo fc = new FinCiclo();
+        listafiguras.add(fc);
+    }//GEN-LAST:event_bt_cerrarcicloMouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        tp_codigodiagrama.setEditable(true);
+    }//GEN-LAST:event_jButton7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1169,16 +1277,22 @@ temprectangulo.setText(mensaje);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Condicional_mientras;
+    private javax.swing.JButton bt_cerrarciclo;
     private javax.swing.JButton bt_codigo;
     private javax.swing.JComboBox<String> cb_condicion;
     private javax.swing.JComboBox<String> cb_tiposvariable;
     private javax.swing.JLabel imagen2;
+    private javax.swing.JLabel imagen3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1198,7 +1312,7 @@ temprectangulo.setText(mensaje);
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JButton jb_circulo;
     private javax.swing.JButton jb_derecha;
     private javax.swing.JButton jb_diagramaflujonuevo;
@@ -1210,12 +1324,14 @@ temprectangulo.setText(mensaje);
     private javax.swing.JButton jb_rombo;
     private javax.swing.JButton jb_vertical;
     private javax.swing.JDialog jd_asignarvariable;
+    private javax.swing.JDialog jd_asignarvariableresultado;
+    private javax.swing.JDialog jd_codigogenerado;
     private javax.swing.JDialog jd_opcion;
     private javax.swing.JDialog jddiagramaflujo;
     private javax.swing.JList<Variable> jl_variables;
     private javax.swing.JList<Variable> jl_variables1;
+    private javax.swing.JList<Variable> jl_variables2;
     private javax.swing.JMenuItem jmi_diagramaflujo;
-    private javax.swing.JPanel jp_codigo;
     private javax.swing.JMenuItem jpp_color_ovalo;
     private javax.swing.JMenuItem jpp_color_paralelogramo;
     private javax.swing.JMenuItem jpp_color_rectangulo;
@@ -1232,22 +1348,22 @@ temprectangulo.setText(mensaje);
     private javax.swing.JMenuItem jpp_texto_rombo;
     private javax.swing.JMenuItem jpp_tipo;
     private javax.swing.JMenuItem jpp_tipoimpresion;
-    private javax.swing.JTextPane jtp_codigo;
-    private javax.swing.JPanel panel;
     private java.awt.Panel panel1;
+    private javax.swing.JPanel panelfiguras;
     private javax.swing.JTextField tf_nombrevariable;
+    private javax.swing.JTextArea tp_codigodiagrama;
     private javax.swing.JDialog variables;
     // End of variables declaration//GEN-END:variables
 int contovalo = 0;
-String nombrediagramaflujo="";
-Icon icon= null;
-    Object o=null;
+    String nombrediagramaflujo = "";
+    Icon icon = null;
+    Object o = null;
     Entrada_Salida templabelparalelogramo = new Entrada_Salida();
     Inicio tempovalo = new Inicio();
     Condicional temprombo = new Condicional();
     Procesos temprectangulo = new Procesos();
     Imprimir tempresultado = new Imprimir();
     ArrayList listavariables = new ArrayList();
-    ArrayList <JLabel> listafiguras= new ArrayList();
+    ArrayList<JLabel> listafiguras = new ArrayList();
 
 }//

@@ -27,7 +27,10 @@ public class Codigo {
                     + "#include <iostream.h>\n\n"
                     + "int main(){\n";
         } else if (i.getTipo().equals("Fin")) {
-            codigo = "\n\n}";
+            codigo = "\n\n"
+                    + "system (\"pause\");\n"
+                    + "return 0;\n"
+                    + "}";
         }
         return codigo;
 
@@ -35,43 +38,76 @@ public class Codigo {
 
     public String Entrada_Salidac(Entrada_Salida es) {
         String ess = "\n";
-        
+
         for (Variable t : es.getListva()) {
-            ess+=t.getTipo()+" "+t.getNombre()+";\n";
+            ess += t.getTipo() + " " + t.getNombre() + ";\n";
         }
-        ess="\n";
-        
-        
-        
+        ess = "\n";
+
         return ess;
     }
-    
-    public String Condicionalc(Condicional co){
+
+    public String Condicionalc(Condicional co) {
         //Condicional, Ciclo
-        String codigo="";
-        if(co.getTipo().equals("Condicional")){
-            codigo+="\n\n"
-                    + "if("+co.getText()+"){\n";
-        }else if(co.getTipo().equals("Ciclo")){
-            codigo+="\n\n"
-                    + "while("+co.getText()+"){\n";
+        String codigo = "";
+        if (co.getTipo().equals("Condicional")) {
+            codigo += "\n\n"
+                    + "if(" + co.getText() + "){\n";
+        } else if (co.getTipo().equals("Ciclo")) {
+            codigo += "\n\n"
+                    + "while(" + co.getText() + "){\n";
         }
-        
-        
-        
-        
+
         return codigo;
     }
-    
-    public String imprimir(Imprimir im){
-        String codigo="";
+
+    public String imprimir(Imprimir im) {
+        /*
+        int
+     char
+        bool
+        float
+          long int
+
+         */
+        String codigo = "";
         if (im.isConVariable()) {
-            String[] tokens= im.getText().split(",");
-            
+            //String[] tokens = im.getText().split(",");
+            if (im.getVariable().getTipo().equals("int") || im.getVariable().getTipo().equals("long int")) {
+                codigo+= "\n"
+                        + "printf(\""+im.getText()+" %i\\n\""+","+im.getVariable().getNombre()+";";
+                
+            }else if(im.getVariable().getTipo().equals("char")){
+                codigo+="\n"
+                        + "printf(\""+im.getText()+" %c\\n\""+","+im.getVariable().getNombre()+";";
+                
+            }else if(im.getVariable().getTipo().equals("float")){
+                codigo+="\n"
+                        + "printf(\""+im.getText()+" %f\\n\""+","+im.getVariable().getNombre()+";";
+            }else if(im.getVariable().getTipo().equals("double")){
+                codigo+="\n"
+                        + "printf(\""+im.getText()+" %lf\\n\""+","+im.getVariable().getNombre()+";";
+            }else{
+                codigo+="\n"
+                        + "printf(\""+im.getText()+" \\n\""+";";
+            }
+        }//Fin if is con variables
+        else{
+            codigo+="\n"
+                        + "printf(\""+im.getText()+" \\n\""+";";
         }
+
+        return codigo;
+
+    }//Fin merodo imprimir
+    
+    public String procesosc(Procesos pr){
+        String codigo="";
+        
+        codigo+="\n"
+                + pr.getText()+";";
         
         return codigo;
-        
     }
 
 }//Fn del clase
