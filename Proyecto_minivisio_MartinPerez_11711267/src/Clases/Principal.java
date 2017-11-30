@@ -91,6 +91,7 @@ public class Principal extends javax.swing.JFrame {
         jpp_resultado = new javax.swing.JPopupMenu();
         jpp_color_resultado = new javax.swing.JMenuItem();
         jpp_text0_resultado = new javax.swing.JMenuItem();
+        jpp_tipoimpresion = new javax.swing.JMenuItem();
         jd_opcion = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         jb_diagramaflujonuevo = new javax.swing.JButton();
@@ -344,6 +345,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jpp_resultado.add(jpp_text0_resultado);
 
+        jpp_tipoimpresion.setText("Tipo de impresion");
+        jpp_tipoimpresion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpp_tipoimpresionActionPerformed(evt);
+            }
+        });
+        jpp_resultado.add(jpp_tipoimpresion);
+
         jd_opcion.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -551,7 +560,7 @@ public class Principal extends javax.swing.JFrame {
 
             //Ovalo.setBackground(Color.red);
             Ovalo.setHorizontalTextPosition(SwingConstants.CENTER);
-
+            Ovalo.setTipo("Inicio");
             Ovalo.setOpaque(true);
 
             Ovalo.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -597,7 +606,7 @@ public class Principal extends javax.swing.JFrame {
             panel.add(Ovalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
             Ovalo.setLocation(20, 210);
             Ovalo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Ovalo.png"));
-
+            Ovalo.setTipo("Fin");
             //Ovalo.setBackground(Color.red);
             Ovalo.setHorizontalTextPosition(SwingConstants.CENTER);
 
@@ -881,6 +890,7 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
                     tempresultado = resultado;
                     resultado.setText(tempresultado.getText());
                     resultado.setBackground(tempresultado.getBackground());
+                    resultado.setConVariable(tempresultado.isConVariable());
 
                 }
             }
@@ -927,11 +937,9 @@ Paralelogramo.setToolTipText("Click derecho para propiedades");
         String codigo="";
         jtp_codigo.setText("");
         
-        codigo="//"+nombrediagramaflujo+"\n\n"
-                + "#include<stdio.h>\n"
-                + "include<math.h"
-            + "#include <iostream.h>\n\n"
-            + "int main(){\n";
+        codigo="//"+nombrediagramaflujo+"\n\n";
+        
+                
         
             
         
@@ -1112,6 +1120,18 @@ temprectangulo.setText(mensaje);
         Condicional_mientras.setVisible(true);
     }//GEN-LAST:event_jpp_tipoActionPerformed
 
+    private void jpp_tipoimpresionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_tipoimpresionActionPerformed
+        // TODO add your handling code here:
+        int opcion=JOptionPane.showConfirmDialog(jddiagramaflujo, "¿Desea realizar una impresion con variable?","Elija",JOptionPane.YES_NO_OPTION);
+        if (opcion==0) {
+            tempresultado.setConVariable(true);
+           
+        }else{
+            tempresultado.setConVariable(false);
+        }
+        
+    }//GEN-LAST:event_jpp_tipoimpresionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1211,6 +1231,7 @@ temprectangulo.setText(mensaje);
     private javax.swing.JMenuItem jpp_texto_rectangulo;
     private javax.swing.JMenuItem jpp_texto_rombo;
     private javax.swing.JMenuItem jpp_tipo;
+    private javax.swing.JMenuItem jpp_tipoimpresion;
     private javax.swing.JTextPane jtp_codigo;
     private javax.swing.JPanel panel;
     private java.awt.Panel panel1;
