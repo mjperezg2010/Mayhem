@@ -38,7 +38,7 @@ public class Variable {
 
     @Override
     public String toString() {
-        return  nombre+"-----"+tipo;
+        return  nombre+" ----- "+tipo;
     }
 
    
