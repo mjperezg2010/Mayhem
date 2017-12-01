@@ -22,13 +22,13 @@ public class Codigo {
     public String Inicioc(Inicio i) {
         String codigo = "";
         if (i.getTipo().equals("Inicio")) {
-            codigo = "#include<stdio.h>\n"
-                    + "#include<math.h\n"
-                    + "#include <iostream.h>\n\n"
+            codigo = "#include<iostream>\n"
+                    + "#include<math.h>\n"
+                    + "using namespace std;\n\n"
                     + "int main(){\n";
         } else if (i.getTipo().equals("Fin")) {
             codigo = "\n\n"
-                    + "system (\"pause\");\n"
+                    + "\n"
                     + "return 0;\n"
                     + "}";
         }
@@ -74,7 +74,7 @@ public class Codigo {
         String codigo = "";
         if (im.isConVariable()) {
             //String[] tokens = im.getText().split(",");
-            if (im.getVariable().getTipo().equals("int") || im.getVariable().getTipo().equals("long int")) {
+         /*  if (im.getVariable().getTipo().equals("int") || im.getVariable().getTipo().equals("long int")) {
                 codigo+= "\n"
                         + "printf(\""+im.getText()+" %i\\n\")"+","+im.getVariable().getNombre()+";";
                 
@@ -92,11 +92,20 @@ public class Codigo {
                 codigo+="\n"
                         + "printf(\""+im.getText()+" \\n\")"+";";
             }
+           
+            
+            
+        */
+        codigo+="\n"
+                + "cout<< \""+im.getText()+"\""+"<<"+im.getVariable().getNombre()+";";
+        
         }//Fin if is con variables
+        
         else{
             codigo+="\n"
-                        + "printf(\""+im.getText()+" \\n\")"+";";
+                        + "cout<< \""+im.getText()+"\""+";";
         }
+        
 
         return codigo;
 

@@ -28,6 +28,7 @@ import javax.swing.SwingConstants;
 import Clasesfiguralabel.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
+import javax.swing.JTree;
 
 /**
  *
@@ -70,6 +71,9 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jl_variables1 = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -93,6 +97,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jb_diagramaflujonuevo = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         variables = new javax.swing.JDialog();
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -123,15 +130,26 @@ public class Principal extends javax.swing.JFrame {
         tp_codigodiagrama = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
+        Diagrama_UML = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        jButton8 = new javax.swing.JButton();
+        paneluml = new javax.swing.JPanel();
+        scroluml = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
+        jMenuBar3 = new javax.swing.JMenuBar();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jmi_diagramaflujo = new javax.swing.JMenuItem();
+        jmi_nuevo = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jddiagramaflujo.setTitle("Diagrama de flujo");
+        jddiagramaflujo.setBackground(new java.awt.Color(0, 0, 0));
         jddiagramaflujo.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panel1.setBackground(new java.awt.Color(0, 153, 255));
         panel1.setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
@@ -235,7 +253,7 @@ public class Principal extends javax.swing.JFrame {
         panel1.add(bt_cerrarciclo);
         bt_cerrarciclo.setBounds(40, 320, 220, 25);
 
-        jddiagramaflujo.getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 310, 370));
+        jddiagramaflujo.getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 310, 370));
 
         bt_codigo.setText("Generar codigo");
         bt_codigo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -255,15 +273,18 @@ public class Principal extends javax.swing.JFrame {
                 jButton3MouseClicked(evt);
             }
         });
-        jddiagramaflujo.getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, -1, -1));
+        jddiagramaflujo.getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, -1, -1));
 
         jl_variables1.setModel(new DefaultListModel());
         jScrollPane4.setViewportView(jl_variables1);
 
-        jddiagramaflujo.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 550, 110, -1));
+        jddiagramaflujo.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 500, 110, -1));
 
         jLabel2.setText("Variables");
-        jddiagramaflujo.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 520, -1, -1));
+        jddiagramaflujo.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, -1, -1));
+        jddiagramaflujo.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jddiagramaflujo.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, -1));
+        jddiagramaflujo.getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jMenu3.setText("File");
         jMenuBar2.add(jMenu3);
@@ -363,22 +384,45 @@ public class Principal extends javax.swing.JFrame {
 
         jd_opcion.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jb_diagramaflujonuevo.setBackground(new java.awt.Color(255, 255, 255));
         jb_diagramaflujonuevo.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jb_diagramaflujonuevo.setText("Diagrama de flujo");
+        jb_diagramaflujonuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FigurasDiagramaFlujo/iconobo.png"))); // NOI18N
         jb_diagramaflujonuevo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jb_diagramaflujonuevoMouseClicked(evt);
             }
         });
-        jPanel2.add(jb_diagramaflujonuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 320));
+        jPanel2.add(jb_diagramaflujonuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 210, 210));
 
-        jButton2.setText("jButton2");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 200, 320));
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FigurasDiagramaFlujo/clasesd.png"))); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 210, 210));
 
-        jd_opcion.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 320));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Diagrama de flujo");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("UML de clases");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Nuevo Diagrama");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
+
+        jd_opcion.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 450));
 
         variables.setBackground(new java.awt.Color(102, 255, 255));
         variables.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -396,7 +440,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel4.setText("Variables");
         variables.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
-        cb_tiposvariable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "int", "char", "bool", "float", "long int", "double", " " }));
+        cb_tiposvariable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "int", "char", "bool", "float", "long int", "double", "string", " " }));
         variables.getContentPane().add(cb_tiposvariable, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
@@ -500,6 +544,41 @@ public class Principal extends javax.swing.JFrame {
         });
         jd_codigogenerado.getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 560, 80, 60));
 
+        Diagrama_UML.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton8.setBackground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("Nueva Clase");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+        jPanel6.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+
+        Diagrama_UML.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 220, 440));
+
+        paneluml.setBackground(new java.awt.Color(153, 153, 153));
+        paneluml.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        scroluml.setViewportView(jTree1);
+
+        paneluml.add(scroluml, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 250, 230));
+
+        Diagrama_UML.getContentPane().add(paneluml, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 950, 720));
+
+        jMenu5.setText("File");
+        jMenuBar3.add(jMenu5);
+
+        jMenu6.setText("Edit");
+        jMenuBar3.add(jMenu6);
+
+        Diagrama_UML.setJMenuBar(jMenuBar3);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eleccion de diagramas");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -510,18 +589,18 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setText("Archivo");
 
-        jmi_diagramaflujo.setText("Nuevo");
-        jmi_diagramaflujo.addMouseListener(new java.awt.event.MouseAdapter() {
+        jmi_nuevo.setText("Nuevo");
+        jmi_nuevo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jmi_diagramaflujoMouseClicked(evt);
+                jmi_nuevoMouseClicked(evt);
             }
         });
-        jmi_diagramaflujo.addActionListener(new java.awt.event.ActionListener() {
+        jmi_nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_diagramaflujoActionPerformed(evt);
+                jmi_nuevoActionPerformed(evt);
             }
         });
-        jMenu1.add(jmi_diagramaflujo);
+        jMenu1.add(jmi_nuevo);
 
         jMenuBar1.add(jMenu1);
 
@@ -533,20 +612,20 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmi_diagramaflujoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmi_diagramaflujoMouseClicked
+    private void jmi_nuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmi_nuevoMouseClicked
         // TODO add your handling code here:
 
 
-    }//GEN-LAST:event_jmi_diagramaflujoMouseClicked
+    }//GEN-LAST:event_jmi_nuevoMouseClicked
 
-    private void jmi_diagramaflujoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_diagramaflujoActionPerformed
+    private void jmi_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_nuevoActionPerformed
         // TODO add your handling code here:
         this.jd_opcion.setModal(true);
         jd_opcion.pack();
         jd_opcion.setLocationRelativeTo(this);
         jd_opcion.setVisible(true);
 
-    }//GEN-LAST:event_jmi_diagramaflujoActionPerformed
+    }//GEN-LAST:event_jmi_nuevoActionPerformed
 
     private void jb_circuloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_circuloMouseClicked
         // TODO add your handling code here:
@@ -1314,6 +1393,24 @@ listafiguras.add(resultado);
         tp_codigodiagrama.setEditable(true);
     }//GEN-LAST:event_jButton7MouseClicked
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        this.Diagrama_UML.setModal(true);
+        Diagrama_UML.pack();
+        Diagrama_UML.setLocationRelativeTo(this);
+        Diagrama_UML.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // TODO add your handling code here:
+        JTree clase = new JTree();
+       // clase.set
+        //paneluml.add(clase);
+        
+        
+        
+    }//GEN-LAST:event_jButton8MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1351,6 +1448,7 @@ listafiguras.add(resultado);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Condicional_mientras;
+    private javax.swing.JDialog Diagrama_UML;
     private javax.swing.JButton bt_cerrarciclo;
     private javax.swing.JButton bt_codigo;
     private javax.swing.JComboBox<String> cb_condicion;
@@ -1364,9 +1462,13 @@ listafiguras.add(resultado);
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1379,14 +1481,22 @@ listafiguras.add(resultado);
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTree jTree1;
     private javax.swing.JButton jb_circulo;
     private javax.swing.JButton jb_derecha;
     private javax.swing.JButton jb_diagramaflujonuevo;
@@ -1405,7 +1515,7 @@ listafiguras.add(resultado);
     private javax.swing.JList<Variable> jl_variables;
     private javax.swing.JList<Variable> jl_variables1;
     private javax.swing.JList<Variable> jl_variables2;
-    private javax.swing.JMenuItem jmi_diagramaflujo;
+    private javax.swing.JMenuItem jmi_nuevo;
     private javax.swing.JMenuItem jpp_color_ovalo;
     private javax.swing.JMenuItem jpp_color_paralelogramo;
     private javax.swing.JMenuItem jpp_color_rectangulo;
@@ -1424,6 +1534,8 @@ listafiguras.add(resultado);
     private javax.swing.JMenuItem jpp_tipoimpresion;
     private java.awt.Panel panel1;
     private javax.swing.JPanel panelfiguras;
+    private javax.swing.JPanel paneluml;
+    private javax.swing.JScrollPane scroluml;
     private javax.swing.JTextField tf_nombrevariable;
     private javax.swing.JTextArea tp_codigodiagrama;
     private javax.swing.JDialog variables;
