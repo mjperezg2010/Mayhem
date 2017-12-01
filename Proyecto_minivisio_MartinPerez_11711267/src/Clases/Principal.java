@@ -130,7 +130,6 @@ public class Principal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         jddiagramaflujo.setTitle("Diagrama de flujo");
-        jddiagramaflujo.setPreferredSize(new java.awt.Dimension(1670, 865));
         jddiagramaflujo.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel1.setLayout(null);
@@ -609,11 +608,12 @@ public class Principal extends javax.swing.JFrame {
             panelfiguras.add(Ovalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
             Ovalo.setLocation(20, 210);
             Ovalo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Ovalo.png"));
-
+            Ovalo.setName("Mayhem"+cof);
             //Ovalo.setBackground(Color.red);
             Ovalo.setHorizontalTextPosition(SwingConstants.CENTER);
             Ovalo.setTipo("Inicio");
             Ovalo.setOpaque(true);
+            cof++;
 
             Ovalo.setMaximumSize(new java.awt.Dimension(30, 30));
             Ovalo.setMinimumSize(new Dimension(60, 20));
@@ -643,11 +643,12 @@ public class Principal extends javax.swing.JFrame {
 
                         jpp_ovalo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
                         tempovalo = Ovalo;
-                        listafiguras.add(Ovalo);
+                        
 
                     }
                 }
             });
+            listafiguras.add(Ovalo);
             Ovalo.setText("Inicio");
             //Ovalo.setBackground(tempovalo.getBackground());
             contovalo++;
@@ -661,9 +662,9 @@ public class Principal extends javax.swing.JFrame {
             Ovalo.setTipo("Fin");
             //Ovalo.setBackground(Color.red);
             Ovalo.setHorizontalTextPosition(SwingConstants.CENTER);
-
+            Ovalo.setName("Mayhem"+cof);
             Ovalo.setOpaque(true);
-
+             cof++;
             Ovalo.setMaximumSize(new java.awt.Dimension(30, 30));
             Ovalo.setMinimumSize(new Dimension(60, 20));
             Ovalo.setLocation(new Point(30, 30));
@@ -693,10 +694,11 @@ public class Principal extends javax.swing.JFrame {
 
                         jpp_ovalo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
                         tempovalo = Ovalo;
-                        listafiguras.add(Ovalo);
+                        
                     }
                 }
             });
+            listafiguras.add(Ovalo);
             Ovalo.setText("Fin");
             contovalo++;
 
@@ -721,7 +723,8 @@ public class Principal extends javax.swing.JFrame {
         Paralelogramo.setMinimumSize(new Dimension(60, 20));
         Paralelogramo.setLocation(new Point(30, 30));
         Paralelogramo.setPreferredSize(new Dimension(40, 40));
-        //Paralelogramo.setSize(180, 200);
+        Paralelogramo.setName("Mayhem"+cof);
+        cof++;
         Paralelogramo.setBackground(Color.ORANGE);
         Paralelogramo.setBounds(440, 320, 100, 67);
         Paralelogramo.setToolTipText("Click derecho para propiedades");
@@ -747,25 +750,33 @@ public class Principal extends javax.swing.JFrame {
                     //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
 
                     jpp_paralelogramo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
-                    templabelparalelogramo = Paralelogramo;
-                    Paralelogramo.setText(templabelparalelogramo.getText());
-                    Paralelogramo.setBackground(templabelparalelogramo.getBackground());
+                    
+                    
+                    //Paralelogramo.setText(templabelparalelogramo.getText());
+                   // Paralelogramo.setBackground(templabelparalelogramo.getBackground());
+                    //Paralelogramo.setListva(templabelparalelogramo.getListva());
                     if (Paralelogramo.isAgregado()) {
+                       
                         for (JLabel t : listafiguras) {
-                            if (t.getText().equals(Paralelogramo.getText())) {
+                            if (t.getName().equals(Paralelogramo.getName())) {
+                                 
                                 t.setText(templabelparalelogramo.getText());
                                 t.setBackground(templabelparalelogramo.getBackground());
                                 ((Entrada_Salida) t).setListva(templabelparalelogramo.getListva());
+                            }else{
+                                //JOptionPane.showMessageDialog( "No");
+                                
                             }
                         }
                     } else {
                         listafiguras.add(Paralelogramo);
                     }
 
-                }
+                }//Fin click dereco
             }
-        });
-
+        });//Fin agreagar omouse listener
+        templabelparalelogramo = Paralelogramo;
+        
         listafiguras.add(Paralelogramo);
 
         //Paralelogramo.setBackground(templabelparalelogramo.getBackground());
@@ -785,7 +796,8 @@ public class Principal extends javax.swing.JFrame {
         name.setLocation(new Point(30, 30));
         name.setPreferredSize(new Dimension(40, 40));
         name.setSize(50, 50);
-
+        name.setName("Mayhem"+cof);
+       cof++;
         name.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             @Override
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -814,7 +826,7 @@ public class Principal extends javax.swing.JFrame {
 
         rombo.setBackground(Color.GREEN);
         rombo.setHorizontalTextPosition(SwingConstants.CENTER);
-
+        rombo.setName("MAyhem"+cof);
         rombo.setOpaque(true);
         rombo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/rombo_p.png"));
         rombo.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -822,6 +834,7 @@ public class Principal extends javax.swing.JFrame {
         rombo.setLocation(new Point(30, 30));
         rombo.setPreferredSize(new Dimension(40, 40));
         rombo.setSize(50, 50);
+        rombo.setAgregado(true);
         rombo.setBounds(440, 320, 100, 67);
         rombo.setToolTipText("Click derecho para propiedades");
         rombo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -848,11 +861,29 @@ public class Principal extends javax.swing.JFrame {
                     rombo.setText(temprombo.getText());
                     rombo.setBackground(temprombo.getBackground());
                     rombo.setTipo(temprombo.getTipo());
-                    listafiguras.add(rombo);
+                    
+                    //Recorrer
+                    if (rombo.isAgregado()) {
+                       
+                        for (JLabel t : listafiguras) {
+                            if (t.getName().equals(rombo.getName())) {
+                                 
+                                t.setText(temprombo.getText());
+                                ((Condicional)t).setTipo(temprombo.getTipo());
+                                t.setBackground(temprombo.getBackground());
+                                //((Entrada_Salida) t).setListva(temprombo.getListva());
+                            }else{
+                                //JOptionPane.showMessageDialog( "No");
+                                
+                            }
+                        }
+                    } else {
+                        listafiguras.add(rombo);
+                    }
                 }
             }
         });
-
+listafiguras.add(rombo);
         //rombo.setBackground(temprombo.getBackground());
 
     }//GEN-LAST:event_jb_romboMouseClicked
@@ -866,11 +897,12 @@ public class Principal extends javax.swing.JFrame {
         rectangulo.setLocation(20, 210);
         rectangulo.setBackground(Color.red);
         rectangulo.setForeground(Color.BLACK);
-
+        rectangulo.setName("Mayhem"+cof);
+        cof++;
         rectangulo.setOpaque(true);
         rectangulo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Rectangulo_p.png"));
         rectangulo.setHorizontalTextPosition(SwingConstants.CENTER);
-
+        rectangulo.setAgregado(true);
         rectangulo.setMaximumSize(new java.awt.Dimension(30, 30));
         rectangulo.setMinimumSize(new Dimension(60, 20));
         rectangulo.setLocation(new Point(30, 30));
@@ -900,11 +932,29 @@ public class Principal extends javax.swing.JFrame {
                     temprectangulo = rectangulo;
                     rectangulo.setText(temprectangulo.getText());
                     rectangulo.setBackground(temprectangulo.getBackground());
-                    listafiguras.add(rectangulo);
+                     //Recorrer
+                    if (rectangulo.isAgregado()) {
+                       
+                        for (JLabel t : listafiguras) {
+                            if (t.getName().equals(rectangulo.getName())) {
+                                 
+                                t.setText(temprectangulo.getText());
+                                //((Condicional)t).setTipo(temprectangulo.getTipo());
+                                t.setBackground(temprectangulo.getBackground());
+                                //((Entrada_Salida) t).setListva(temprombo.getListva());
+                            }else{
+                                //JOptionPane.showMessageDialog( "No");
+                               
+                            }
+                        }
+                    } else {
+                        listafiguras.add(rectangulo);
+                    }
+                   
                 }
             }
         });
-
+ listafiguras.add(rectangulo);
         //rectangulo.setBackground(temprectangulo.getBackground());
 
     }//GEN-LAST:event_jb_rectanguloMouseClicked
@@ -922,6 +972,9 @@ public class Principal extends javax.swing.JFrame {
         resultado.setLocation(new Point(30, 30));
         resultado.setHorizontalTextPosition(SwingConstants.CENTER);
         resultado.setOpaque(true);
+        resultado.setName("Mayhem"+cof);
+        cof++;
+        resultado.setAgregado(true);
         resultado.setPreferredSize(new Dimension(40, 40));
         resultado.setBackground(Color.PINK);
         resultado.setBounds(420, 300, 100, 67);
@@ -950,12 +1003,31 @@ public class Principal extends javax.swing.JFrame {
                     resultado.setBackground(tempresultado.getBackground());
                     resultado.setConVariable(tempresultado.isConVariable());
                     resultado.setVariable(tempresultado.getVariable());
-                    listafiguras.add(resultado);
+                    
+                     //Recorrer
+                    if (resultado.isAgregado()) {
+                       
+                        for (JLabel t : listafiguras) {
+                            if (t.getName().equals(resultado.getName())) {
+                                 
+                                t.setText(tempresultado.getText());
+                                ((Imprimir)t).setConVariable(tempresultado.isConVariable());
+                                ((Imprimir)t).setVariable(tempresultado.getVariable());
+                                t.setBackground(tempresultado.getBackground());
+                                //((Entrada_Salida) t).setListva(temprombo.getListva());
+                            }else{
+                                //JOptionPane.showMessageDialog( "No");
+                               
+                            }
+                        }
+                    } else {
+                        listafiguras.add(resultado);
+                    }
 
                 }
             }
         });
-
+listafiguras.add(resultado);
 
     }//GEN-LAST:event_jb_resultadoMouseClicked
 
@@ -992,7 +1064,8 @@ public class Principal extends javax.swing.JFrame {
     private void bt_codigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_codigoMouseClicked
         // TODO add your handling code here:
 
-        System.out.println(listafiguras);
+       
+        
         String codigogenerado = "";
         tp_codigodiagrama.setText("");
         Codigo co = new Codigo();
@@ -1005,6 +1078,7 @@ public class Principal extends javax.swing.JFrame {
                         + co.Condicionalc((Condicional) t);
 
             } else if (t instanceof Entrada_Salida) {
+                
                 codigogenerado += "\n"
                         + co.Entrada_Salidac((Entrada_Salida) t);
 
@@ -1023,7 +1097,7 @@ public class Principal extends javax.swing.JFrame {
                         + co.procesosc((Procesos) t);
 
             } else {
-                JOptionPane.showMessageDialog(this, "Figura irreconocible");
+                
 
             }
 
@@ -1356,6 +1430,7 @@ public class Principal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 int contovalo = 0;
     String nombrediagramaflujo = "";
+    int cof=0;
     Icon icon = null;
     Object o = null;
     Entrada_Salida templabelparalelogramo = new Entrada_Salida();

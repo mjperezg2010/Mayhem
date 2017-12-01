@@ -11,7 +11,7 @@ import javax.swing.JLabel;
  *
  * @author mjper
  */
-public class Procesos extends JLabel{
+public class Procesos extends Figura{
 
     @Override
     public String toString() {

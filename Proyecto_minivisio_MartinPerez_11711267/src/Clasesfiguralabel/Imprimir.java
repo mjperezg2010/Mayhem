@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  *
  * @author mjper
  */
-public class Imprimir extends JLabel {
+public class Imprimir extends Figura {
     private Variable variable;
     
     

@@ -11,12 +11,21 @@ import javax.swing.JLabel;
  *
  * @author mjper
  */
-public class FinCiclo extends Figura{
+public class Figura extends JLabel {
+    private boolean agregado;
 
-    @Override
-    public String toString() {
-        return "FinCiclo";
+    public Figura() {
+        super();
     }
+
+    public boolean isAgregado() {
+        return agregado;
+    }
+
+    public void setAgregado(boolean agregado) {
+        this.agregado = agregado;
+    }
+    
     
     
     

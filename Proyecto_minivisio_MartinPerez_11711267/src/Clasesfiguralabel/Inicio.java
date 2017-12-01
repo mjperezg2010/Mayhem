@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
  *
  * @author mjper
  */
-public class Inicio extends JLabel{
+public class Inicio extends Figura{
     private String tipo;
 
     public Inicio() {

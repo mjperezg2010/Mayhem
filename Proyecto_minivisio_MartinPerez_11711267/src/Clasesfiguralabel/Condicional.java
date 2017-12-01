@@ -11,7 +11,7 @@ import javax.swing.JLabel;
  *
  * @author mjper
  */
-public class Condicional extends JLabel {
+public class Condicional extends Figura {
     private String tipo;
 
     public Condicional() {
