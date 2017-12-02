@@ -2,6 +2,24 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+
+
+Cambios
+Diagrama flujo
+-- letra blanca
+-- eliminar figura
+
+
+
+
+
+
+
+
+
+
+
+
  */
 package Clases;
 
@@ -26,9 +44,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import Clasesfiguralabel.*;
+import java.awt.event.MouseListener;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -134,11 +156,23 @@ public class Principal extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
         paneluml = new javax.swing.JPanel();
-        scroluml = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
+        pop_Clases = new javax.swing.JPopupMenu();
+        atributoadd = new javax.swing.JMenuItem();
+        metodoadd = new javax.swing.JMenuItem();
+        atributosuml = new javax.swing.JDialog();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        tf_nombreatributo = new javax.swing.JTextField();
+        cb_tipouml = new javax.swing.JComboBox<>();
+        cb_encasulamiento = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        metodosuml = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -149,7 +183,7 @@ public class Principal extends javax.swing.JFrame {
         jddiagramaflujo.setBackground(new java.awt.Color(0, 0, 0));
         jddiagramaflujo.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panel1.setBackground(new java.awt.Color(0, 153, 255));
+        panel1.setBackground(new java.awt.Color(51, 204, 255));
         panel1.setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
@@ -253,7 +287,7 @@ public class Principal extends javax.swing.JFrame {
         panel1.add(bt_cerrarciclo);
         bt_cerrarciclo.setBounds(40, 320, 220, 25);
 
-        jddiagramaflujo.getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 310, 370));
+        jddiagramaflujo.getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 310, 370));
 
         bt_codigo.setText("Generar codigo");
         bt_codigo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -422,7 +456,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel14.setText("Nuevo Diagrama");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
 
-        jd_opcion.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 450));
+        jd_opcion.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 460));
 
         variables.setBackground(new java.awt.Color(102, 255, 255));
         variables.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -561,14 +595,7 @@ public class Principal extends javax.swing.JFrame {
         Diagrama_UML.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 220, 440));
 
         paneluml.setBackground(new java.awt.Color(153, 153, 153));
-        paneluml.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        scroluml.setViewportView(jTree1);
-
-        paneluml.add(scroluml, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 250, 230));
-
+        paneluml.setLayout(null);
         Diagrama_UML.getContentPane().add(paneluml, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 950, 720));
 
         jMenu5.setText("File");
@@ -578,6 +605,64 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar3.add(jMenu6);
 
         Diagrama_UML.setJMenuBar(jMenuBar3);
+
+        atributoadd.setText("Agregar un atributo");
+        atributoadd.setToolTipText("Click para agregar un atributo");
+        atributoadd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                atributoaddMouseClicked(evt);
+            }
+        });
+        atributoadd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atributoaddActionPerformed(evt);
+            }
+        });
+        pop_Clases.add(atributoadd);
+
+        metodoadd.setText("Agregar Metodo");
+        metodoadd.setToolTipText("Click para agregar metodo");
+        metodoadd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                metodoaddActionPerformed(evt);
+            }
+        });
+        pop_Clases.add(metodoadd);
+
+        atributosuml.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel16.setText("Atributos");
+        atributosuml.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
+
+        jLabel17.setText("Nombre");
+        atributosuml.getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+        atributosuml.getContentPane().add(tf_nombreatributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 80, -1));
+
+        cb_tipouml.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "int", "long", "float", "double", "string", "bool", "char" }));
+        atributosuml.getContentPane().add(cb_tipouml, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 70, -1));
+
+        cb_encasulamiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "private", "public", "protected" }));
+        atributosuml.getContentPane().add(cb_encasulamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 70, -1));
+
+        jLabel18.setText("Tipo");
+        atributosuml.getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+
+        jLabel19.setText("Encasuplamiento");
+        atributosuml.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+
+        jButton9.setBackground(new java.awt.Color(0, 51, 255));
+        jButton9.setText("Agregar Atributo");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
+        atributosuml.getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/C-1-400x400.jpg"))); // NOI18N
+        jLabel15.setText("jLabel15");
+        atributosuml.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 410));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eleccion de diagramas");
@@ -1401,15 +1486,253 @@ listafiguras.add(resultado);
         Diagrama_UML.setVisible(true);
     }//GEN-LAST:event_jButton2MouseClicked
 
+    
+    /*
+    
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////          /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    
+     /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    
+     /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    
+     /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    DefaultTreeModel m = (DefaultTreeModel) arbol.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+        DefaultMutableTreeNode atributos = new DefaultMutableTreeNode("<Atributos>");
+        DefaultMutableTreeNode metodos = new DefaultMutableTreeNode("<Metodos>");
+        raiz.add(atributos);
+        raiz.add(metodos);
+        arbol.setName("Arbol" + tree);
+        arbol.setSize(150, 150);
+        arbol.setBackground(new java.awt.Color(192, 255, 243));
+        arbol.setBorder(BorderFactory.createLineBorder(new java.awt.Color(165, 105, 189), 1));
+        tree++;
+        arbol.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        arbol.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent evt) {
+                actualT = arbol;
+                jmPropiedades.setEnabled(true);
+                txSeleccionado1.setText(modelo.getRoot().toString());
+                int row = arbol.getClosestRowForLocation(evt.getX(), evt.getY());
+                arbol.setSelectionRow(row);
+                Object v1 = arbol.getSelectionPath().getLastPathComponent();
+                nodoS = (DefaultMutableTreeNode) v1;
+                if (evt.isMetaDown()) {
+                    ppMenuClases.show(evt.getComponent(), evt.getX(), evt.getY());
+                }
+            }
+
+            public void mouseEntered(MouseEvent arg0) {
+                arbol.setBorder(BorderFactory.createLineBorder(new java.awt.Color(254, 146, 0), 2));
+                arbol.setToolTipText(modelo.getRoot().toString());
+            }
+
+            public void mouseExited(MouseEvent arg0) {
+                arbol.setBorder(BorderFactory.createLineBorder(new java.awt.Color(165, 105, 189), 1));
+            }
+
+            public void mousePressed(MouseEvent arg0) {
+                actualT = arbol;
+                txSeleccionado1.setText(modelo.getRoot().toString());
+            }
+
+            public void mouseReleased(MouseEvent arg0) {
+            }
+        });
+        arbol.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                actualT = arbol;
+                txSeleccionado1.setText(modelo.getRoot().toString());
+                if (((arbol.getLocation().x + evt.getX() - arbol.getWidth() / 2) > 5)) {
+                    if (((arbol.getLocation().x + evt.getX() - arbol.getWidth() / 2) < 800)) {
+                        if ((arbol.getLocation().y + evt.getY() - arbol.getWidth() / 2) > -15) {
+                            if ((arbol.getLocation().y + evt.getY() - arbol.getWidth() / 2) < 520) {
+                                arbol.setLocation(arbol.getLocation().x + evt.getX() - arbol.getWidth() / 2,
+                                        arbol.getLocation().y + evt.getY() - arbol.getHeight() / 2);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        this.jpBase.add(arbol);
+        int x = (int) Math.floor(Math.random() * 801 + 1);
+        int y = (int) Math.floor(Math.random() * 521 + 1);
+        arbol.setLocation(x, y);
+        clases.add(arbol);
+        jpBase.repaint();
+    
+    */
+    
+    
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         // TODO add your handling code here:
-        JTree clase = new JTree();
+       
+        String nombrearbol=JOptionPane.showInputDialog(Diagrama_UML, "Ingrese el nombre de la clase");
+        
+        DefaultMutableTreeNode Root = new DefaultMutableTreeNode(nombrearbol);
+        DefaultTreeModel modelo = new DefaultTreeModel(Root);
+        JTree clase = new JTree(modelo);
+        clase.setName("Burzum" + marduk);
+        DefaultTreeModel m = (DefaultTreeModel) clase.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+        DefaultMutableTreeNode atributos = new DefaultMutableTreeNode("Atributos");
+        DefaultMutableTreeNode metodos = new DefaultMutableTreeNode("Metodos");
+        raiz.add(atributos);
+        raiz.add(metodos);
+        
+        
+        marduk++;
+        clase.setSize(250, 150);
+        clase.setBackground(new java.awt.Color(192, 255, 243));
+        clase.setBorder(BorderFactory.createLineBorder(new java.awt.Color(165, 105, 189), 1));
+        
+        clase.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                mayhemtreeactual=clase;
+                 int row = clase.getClosestRowForLocation(evt.getX(), evt.getY());
+                clase.setSelectionRow(row);
+                Object v1 = clase.getSelectionPath().getLastPathComponent();
+                nodoblackactual = (DefaultMutableTreeNode) v1;
+                for (JTree t : listatrees) {
+                    if(t.getName().equals(clase.getName())){
+                        t=clase;
+                    }
+                    
+                }
+                if (evtr.isMetaDown()) {
+                     pop_Clases.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                   
+                }
+            }
+        });
+        
+        paneluml.add(clase);
+        
+        clase.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                mayhemtreeactual=clase;
+                //txSeleccionado1.setText(modelo.getRoot().toString());
+               
+                if (((clase.getLocation().x + evt.getX() - clase.getWidth() / 2) > 5)) {
+                    if (((clase.getLocation().x + evt.getX() - clase.getWidth() / 2) < 800)) {
+                        if ((clase.getLocation().y + evt.getY() - clase.getWidth() / 2) > -15) {
+                            if ((clase.getLocation().y + evt.getY() - clase.getWidth() / 2) < 520) {
+                                clase.setLocation(clase.getLocation().x + evt.getX() - clase.getWidth() / 2,
+                                        clase.getLocation().y + evt.getY() - clase.getHeight() / 2);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        paneluml.repaint();
+        listatrees.add(clase);
+        
+        /*
+        clase.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent evt) {
+                actualT = arbol;
+                jmPropiedades.setEnabled(true);
+                txSeleccionado1.setText(modelo.getRoot().toString());
+                int row = arbol.getClosestRowForLocation(evt.getX(), evt.getY());
+                arbol.setSelectionRow(row);
+                Object v1 = arbol.getSelectionPath().getLastPathComponent();
+                nodoS = (DefaultMutableTreeNode) v1;
+                if (evt.isMetaDown()) {
+                    ppMenuClases.show(evt.getComponent(), evt.getX(), evt.getY());
+                }
+            }
+
+            public void mouseEntered(MouseEvent arg0) {
+                arbol.setBorder(BorderFactory.createLineBorder(new java.awt.Color(254, 146, 0), 2));
+                arbol.setToolTipText(modelo.getRoot().toString());
+            }
+
+            public void mouseExited(MouseEvent arg0) {
+                arbol.setBorder(BorderFactory.createLineBorder(new java.awt.Color(165, 105, 189), 1));
+            }
+
+            public void mousePressed(MouseEvent arg0) {
+                actualT = arbol;
+                txSeleccionado1.setText(modelo.getRoot().toString());
+            }
+
+            public void mouseReleased(MouseEvent arg0) {
+            }
+        });*/
        // clase.set
         //paneluml.add(clase);
         
         
         
     }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+        
+        DefaultTreeModel modelo= (DefaultTreeModel) mayhemtreeactual.getModel();
+        
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
+        
+        String Contenido="";
+        Contenido = cb_encasulamiento.getSelectedItem().toString() + ": " + cb_tipouml.getSelectedItem().toString() + " " + tf_nombreatributo.getText();
+        for (int i = 0; i < raiz.getChildCount(); i++) {
+            if (raiz.getChildAt(i).toString().equals("Atributos")) {
+                DefaultMutableTreeNode nuevo = new DefaultMutableTreeNode(Contenido);
+                ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(nuevo);
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Atributo Guardado.", "Atributo", 2);
+       // String Contend = "";
+       
+       //atributosuml.setVisible(false);
+        
+        
+        
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void atributoaddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atributoaddMouseClicked
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_atributoaddMouseClicked
+
+    private void atributoaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atributoaddActionPerformed
+        // TODO add your handling code here:
+         atributosuml.setModal(true);
+            atributosuml.pack();
+            atributosuml.setLocationRelativeTo(this);
+            atributosuml.setVisible(true);
+    }//GEN-LAST:event_atributoaddActionPerformed
+
+    private void metodoaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_metodoaddActionPerformed
+        // TODO add your handling code here:
+        metodosuml.setModal(true);
+            metodosuml.pack();
+            metodosuml.setLocationRelativeTo(this);
+            metodosuml.setVisible(true);
+    }//GEN-LAST:event_metodoaddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1449,10 +1772,14 @@ listafiguras.add(resultado);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Condicional_mientras;
     private javax.swing.JDialog Diagrama_UML;
+    private javax.swing.JMenuItem atributoadd;
+    private javax.swing.JDialog atributosuml;
     private javax.swing.JButton bt_cerrarciclo;
     private javax.swing.JButton bt_codigo;
     private javax.swing.JComboBox<String> cb_condicion;
+    private javax.swing.JComboBox<String> cb_encasulamiento;
     private javax.swing.JComboBox<String> cb_tiposvariable;
+    private javax.swing.JComboBox<String> cb_tipouml;
     private javax.swing.JLabel imagen2;
     private javax.swing.JLabel imagen3;
     private javax.swing.JButton jButton1;
@@ -1463,12 +1790,18 @@ listafiguras.add(resultado);
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1496,7 +1829,6 @@ listafiguras.add(resultado);
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTree jTree1;
     private javax.swing.JButton jb_circulo;
     private javax.swing.JButton jb_derecha;
     private javax.swing.JButton jb_diagramaflujonuevo;
@@ -1532,19 +1864,23 @@ listafiguras.add(resultado);
     private javax.swing.JMenuItem jpp_texto_rombo;
     private javax.swing.JMenuItem jpp_tipo;
     private javax.swing.JMenuItem jpp_tipoimpresion;
+    private javax.swing.JMenuItem metodoadd;
+    private javax.swing.JDialog metodosuml;
     private java.awt.Panel panel1;
     private javax.swing.JPanel panelfiguras;
     private javax.swing.JPanel paneluml;
-    private javax.swing.JScrollPane scroluml;
+    private javax.swing.JPopupMenu pop_Clases;
+    private javax.swing.JTextField tf_nombreatributo;
     private javax.swing.JTextField tf_nombrevariable;
     private javax.swing.JTextArea tp_codigodiagrama;
     private javax.swing.JDialog variables;
     // End of variables declaration//GEN-END:variables
 int contovalo = 0;
     String nombrediagramaflujo = "";
-    int cof=0;
+    int cof=0,marduk=0;
     Icon icon = null;
     Object o = null;
+    JTree mayhemtreeactual = new JTree();
     Entrada_Salida templabelparalelogramo = new Entrada_Salida();
     Inicio tempovalo = new Inicio();
     Condicional temprombo = new Condicional();
@@ -1552,5 +1888,7 @@ int contovalo = 0;
     Imprimir tempresultado = new Imprimir();
     ArrayList listavariables = new ArrayList();
     ArrayList<JLabel> listafiguras = new ArrayList();
+    ArrayList<JTree> listatrees = new ArrayList();
+    DefaultMutableTreeNode nodoblackactual;
 
 }//
