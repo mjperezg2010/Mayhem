@@ -23,6 +23,7 @@ Diagrama flujo
  */
 package Clases;
 
+import Clasearboles.CodigoA;
 import Clasesfiguralabel.FinClase;
 import Clasesfiguralabel.Inicio;
 import java.awt.Color;
@@ -155,7 +156,12 @@ public class Principal extends javax.swing.JFrame {
         Diagrama_UML = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
         paneluml = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -173,6 +179,23 @@ public class Principal extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         metodosuml = new javax.swing.JDialog();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jt_nom = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        cb_encasulamiento1 = new javax.swing.JComboBox<>();
+        cb_tipouml1 = new javax.swing.JComboBox<>();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jt_parametro = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        agregarmetodo = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        codigoclases = new javax.swing.JDialog();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tp_codigoclases = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -590,13 +613,38 @@ public class Principal extends javax.swing.JFrame {
                 jButton8MouseClicked(evt);
             }
         });
-        jPanel6.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+        jPanel6.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 160, 70));
 
-        Diagrama_UML.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 220, 440));
+        jButton11.setText("Generar Codigo");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
+        jPanel6.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 150, 80));
+
+        Diagrama_UML.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 220, 440));
 
         paneluml.setBackground(new java.awt.Color(153, 153, 153));
         paneluml.setLayout(null);
-        Diagrama_UML.getContentPane().add(paneluml, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 950, 720));
+        Diagrama_UML.getContentPane().add(paneluml, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 940, 720));
+
+        jPanel7.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("Separadores");
+        jPanel7.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+
+        jButton10.setBackground(new java.awt.Color(204, 204, 204));
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconitos/separador.png"))); // NOI18N
+        jPanel7.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
+
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconitos/separadorV.png"))); // NOI18N
+        jPanel7.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, 40));
+
+        Diagrama_UML.getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 210, 280));
 
         jMenu5.setText("File");
         jMenuBar3.add(jMenu5);
@@ -663,6 +711,70 @@ public class Principal extends javax.swing.JFrame {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/C-1-400x400.jpg"))); // NOI18N
         jLabel15.setText("jLabel15");
         atributosuml.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 410));
+
+        metodosuml.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel21.setText("Metodos");
+        metodosuml.getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 70, -1));
+
+        jLabel22.setText("Nombre");
+        metodosuml.getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+        metodosuml.getContentPane().add(jt_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 80, -1));
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel23.setText("Encapsulamiento");
+        metodosuml.getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        cb_encasulamiento1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "private", "public", "protected" }));
+        metodosuml.getContentPane().add(cb_encasulamiento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 70, -1));
+
+        cb_tipouml1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "int", "long", "float", "double", "string", "bool", "char" }));
+        metodosuml.getContentPane().add(cb_tipouml1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 70, -1));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel24.setText("Tipo");
+        metodosuml.getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 40, -1));
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("Parametro");
+        metodosuml.getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+        metodosuml.getContentPane().add(jt_parametro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 100, -1));
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel26.setText("*Si no desea parametros no llenar gracias");
+        metodosuml.getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
+
+        agregarmetodo.setText("Agregar Metodo");
+        agregarmetodo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarmetodoMouseClicked(evt);
+            }
+        });
+        metodosuml.getContentPane().add(agregarmetodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/C-1-400x400.jpg"))); // NOI18N
+        metodosuml.getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 400, 390));
+
+        codigoclases.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel8.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setText("Codigo C++");
+        jPanel8.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, -1, 40));
+
+        jScrollPane2.setViewportView(tp_codigoclases);
+
+        jPanel8.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 460, 410));
+
+        codigoclases.getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 600));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eleccion de diagramas");
@@ -1484,6 +1596,7 @@ listafiguras.add(resultado);
         Diagrama_UML.pack();
         Diagrama_UML.setLocationRelativeTo(this);
         Diagrama_UML.setVisible(true);
+        jd_opcion.setVisible(false);
     }//GEN-LAST:event_jButton2MouseClicked
 
     
@@ -1603,7 +1716,7 @@ listafiguras.add(resultado);
         
         
         marduk++;
-        clase.setSize(250, 150);
+        clase.setSize(270, 150);
         clase.setBackground(new java.awt.Color(192, 255, 243));
         clase.setBorder(BorderFactory.createLineBorder(new java.awt.Color(165, 105, 189), 1));
         
@@ -1617,7 +1730,7 @@ listafiguras.add(resultado);
                 nodoblackactual = (DefaultMutableTreeNode) v1;
                 for (JTree t : listatrees) {
                     if(t.getName().equals(clase.getName())){
-                        t=clase;
+                        t=mayhemtreeactual;
                     }
                     
                 }
@@ -1697,14 +1810,15 @@ listafiguras.add(resultado);
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
         
         String Contenido="";
-        Contenido = cb_encasulamiento.getSelectedItem().toString() + ": " + cb_tipouml.getSelectedItem().toString() + " " + tf_nombreatributo.getText();
+        Contenido = cb_encasulamiento.getSelectedItem().toString() + ": " + cb_tipouml.getSelectedItem().toString() + " " + tf_nombreatributo.getText()+";";
         for (int i = 0; i < raiz.getChildCount(); i++) {
             if (raiz.getChildAt(i).toString().equals("Atributos")) {
                 DefaultMutableTreeNode nuevo = new DefaultMutableTreeNode(Contenido);
                 ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(nuevo);
             }
         }
-        JOptionPane.showMessageDialog(this, "Atributo Guardado.", "Atributo", 2);
+        JOptionPane.showMessageDialog(this, "Atributo Guardado Exitosamente");
+       tf_nombreatributo.setText("");
        // String Contend = "";
        
        //atributosuml.setVisible(false);
@@ -1733,6 +1847,55 @@ listafiguras.add(resultado);
             metodosuml.setLocationRelativeTo(this);
             metodosuml.setVisible(true);
     }//GEN-LAST:event_metodoaddActionPerformed
+
+    private void agregarmetodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarmetodoMouseClicked
+        // TODO add your handling code here:
+         DefaultTreeModel modelArbol = (DefaultTreeModel) mayhemtreeactual.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelArbol.getRoot();
+        String contenido = cb_encasulamiento1.getSelectedItem().toString() + ": " +cb_tipouml1.getSelectedItem().toString() + " " + jt_nom.getText() + "(" + jt_parametro.getText()+");";
+        for (int i = 0; i < raiz.getChildCount(); i++) {
+            if (raiz.getChildAt(i).toString().equals("Metodos")) {
+                DefaultMutableTreeNode nuevo = new DefaultMutableTreeNode(contenido);
+                ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(nuevo);
+            }
+        }
+       
+        JOptionPane.showMessageDialog(this, "Método Guardado Exitosamente");
+        
+        
+        
+        
+        metodosuml.setVisible(false);
+        
+    }//GEN-LAST:event_agregarmetodoMouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        // TODO add your handling code here:
+        
+        String codigo="";
+       
+        
+        for (JTree t : listatrees) {
+             
+            CodigoA co = new CodigoA(t);
+            codigo+=co.codigo();
+            codigo+="\n"
+                    + "____________________________________________________________\n";
+            
+            
+            
+            
+        }
+        
+        
+        tp_codigoclases.setText(codigo);
+        
+        
+        codigoclases.setModal(true);
+             codigoclases.pack();
+             codigoclases.setLocationRelativeTo(this);
+             codigoclases.setVisible(true);
+    }//GEN-LAST:event_jButton11MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1772,17 +1935,24 @@ listafiguras.add(resultado);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Condicional_mientras;
     private javax.swing.JDialog Diagrama_UML;
+    private javax.swing.JButton agregarmetodo;
     private javax.swing.JMenuItem atributoadd;
     private javax.swing.JDialog atributosuml;
     private javax.swing.JButton bt_cerrarciclo;
     private javax.swing.JButton bt_codigo;
     private javax.swing.JComboBox<String> cb_condicion;
     private javax.swing.JComboBox<String> cb_encasulamiento;
+    private javax.swing.JComboBox<String> cb_encasulamiento1;
     private javax.swing.JComboBox<String> cb_tiposvariable;
     private javax.swing.JComboBox<String> cb_tipouml;
+    private javax.swing.JComboBox<String> cb_tipouml1;
+    private javax.swing.JDialog codigoclases;
     private javax.swing.JLabel imagen2;
     private javax.swing.JLabel imagen3;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1803,6 +1973,15 @@ listafiguras.add(resultado);
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1825,7 +2004,10 @@ listafiguras.add(resultado);
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -1864,6 +2046,8 @@ listafiguras.add(resultado);
     private javax.swing.JMenuItem jpp_texto_rombo;
     private javax.swing.JMenuItem jpp_tipo;
     private javax.swing.JMenuItem jpp_tipoimpresion;
+    private javax.swing.JTextField jt_nom;
+    private javax.swing.JTextField jt_parametro;
     private javax.swing.JMenuItem metodoadd;
     private javax.swing.JDialog metodosuml;
     private java.awt.Panel panel1;
@@ -1872,6 +2056,7 @@ listafiguras.add(resultado);
     private javax.swing.JPopupMenu pop_Clases;
     private javax.swing.JTextField tf_nombreatributo;
     private javax.swing.JTextField tf_nombrevariable;
+    private javax.swing.JTextPane tp_codigoclases;
     private javax.swing.JTextArea tp_codigodiagrama;
     private javax.swing.JDialog variables;
     // End of variables declaration//GEN-END:variables
