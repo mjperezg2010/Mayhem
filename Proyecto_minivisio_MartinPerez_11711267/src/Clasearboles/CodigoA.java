@@ -29,7 +29,8 @@ public class CodigoA {
         DefaultTreeModel modelo = (DefaultTreeModel)arbolito.getModel();
         DefaultMutableTreeNode raiz =(DefaultMutableTreeNode)modelo.getRoot();
         
-        codigo+="#include <iostream> \n"
+        codigo+=
+                "#include <iostream> \n"
                     + "using namespace std;\n\n" + "class " + modelo.getRoot().toString() + " \n"
                     + "{ \n";
         

@@ -158,6 +158,7 @@ public class Principal extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         paneluml = new javax.swing.JPanel();
+        uuuuuuuuuuuuuuuuu = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
@@ -168,6 +169,8 @@ public class Principal extends javax.swing.JFrame {
         pop_Clases = new javax.swing.JPopupMenu();
         atributoadd = new javax.swing.JMenuItem();
         metodoadd = new javax.swing.JMenuItem();
+        coloruml = new javax.swing.JMenuItem();
+        claseuml = new javax.swing.JMenuItem();
         atributosuml = new javax.swing.JDialog();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -196,6 +199,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tp_codigoclases = new javax.swing.JTextPane();
+        pp_sep = new javax.swing.JPopupMenu();
+        Colorsep = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -625,8 +630,14 @@ public class Principal extends javax.swing.JFrame {
 
         Diagrama_UML.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 220, 440));
 
-        paneluml.setBackground(new java.awt.Color(153, 153, 153));
+        paneluml.setBackground(new java.awt.Color(255, 255, 255));
         paneluml.setLayout(null);
+
+        uuuuuuuuuuuuuuuuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconitos/separador.png"))); // NOI18N
+        uuuuuuuuuuuuuuuuu.setText("jLabel29");
+        paneluml.add(uuuuuuuuuuuuuuuuu);
+        uuuuuuuuuuuuuuuuu.setBounds(460, 250, 10, 110);
+
         Diagrama_UML.getContentPane().add(paneluml, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 940, 720));
 
         jPanel7.setBackground(new java.awt.Color(102, 102, 102));
@@ -639,6 +650,11 @@ public class Principal extends javax.swing.JFrame {
 
         jButton10.setBackground(new java.awt.Color(204, 204, 204));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconitos/separador.png"))); // NOI18N
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
         jPanel7.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
 
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconitos/separadorV.png"))); // NOI18N
@@ -676,6 +692,23 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         pop_Clases.add(metodoadd);
+
+        coloruml.setText("Color");
+        coloruml.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                colorumlActionPerformed(evt);
+            }
+        });
+        pop_Clases.add(coloruml);
+
+        claseuml.setText("Nombre de la clase");
+        claseuml.setToolTipText("");
+        claseuml.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                claseumlActionPerformed(evt);
+            }
+        });
+        pop_Clases.add(claseuml);
 
         atributosuml.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -775,6 +808,14 @@ public class Principal extends javax.swing.JFrame {
         jPanel8.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 460, 410));
 
         codigoclases.getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 600));
+
+        Colorsep.setText("jMenuItem1");
+        Colorsep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ColorsepActionPerformed(evt);
+            }
+        });
+        pp_sep.add(Colorsep);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eleccion de diagramas");
@@ -1400,14 +1441,14 @@ listafiguras.add(resultado);
 
     private void jpp_color_paralelogramoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_color_paralelogramoActionPerformed
         // TODO add your handling code here:
-        Color cl = JColorChooser.showDialog(jddiagramaflujo, "Seleccione Color ", Color.yellow);
+        Color cl = JColorChooser.showDialog(jddiagramaflujo, "Seleccione Color",Color.yellow);
 
         templabelparalelogramo.setBackground(cl);
     }//GEN-LAST:event_jpp_color_paralelogramoActionPerformed
 
     private void jpp_color_ovaloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_color_ovaloActionPerformed
         // TODO add your handling code here:
-        Color cl = JColorChooser.showDialog(jddiagramaflujo, "Seleccione Color ", Color.yellow);
+        Color cl = JColorChooser.showDialog(jddiagramaflujo, "Seleccione Color",Color.yellow);
 
         tempovalo.setBackground(cl);
     }//GEN-LAST:event_jpp_color_ovaloActionPerformed
@@ -1421,7 +1462,7 @@ listafiguras.add(resultado);
 
     private void jpp_color_romboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_color_romboActionPerformed
         // TODO add your handling code here:
-        Color cl = JColorChooser.showDialog(jddiagramaflujo, "Seleccione Color ", Color.yellow);
+        Color cl = JColorChooser.showDialog(jddiagramaflujo, "Seleccione Color",Color.yellow);
 
         temprombo.setBackground(cl);
     }//GEN-LAST:event_jpp_color_romboActionPerformed
@@ -1466,14 +1507,14 @@ listafiguras.add(resultado);
 
     private void jpp_color_rectanguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_color_rectanguloActionPerformed
         // TODO add your handling code here:
-        Color cl = JColorChooser.showDialog(jddiagramaflujo, "Seleccione Color ", Color.yellow);
+        Color cl = JColorChooser.showDialog(jddiagramaflujo, "Seleccione Color",Color.yellow);
 
         temprectangulo.setBackground(cl);
     }//GEN-LAST:event_jpp_color_rectanguloActionPerformed
 
     private void jpp_color_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_color_resultadoActionPerformed
         // TODO add your handling code here:
-        Color cl = JColorChooser.showDialog(jddiagramaflujo, "Seleccione Color ", Color.yellow);
+        Color cl = JColorChooser.showDialog(jddiagramaflujo, "Seleccione Color",Color.yellow);
         tempresultado.setBackground(cl);
     }//GEN-LAST:event_jpp_color_resultadoActionPerformed
 
@@ -1879,8 +1920,10 @@ listafiguras.add(resultado);
              
             CodigoA co = new CodigoA(t);
             codigo+=co.codigo();
+            
             codigo+="\n"
                     + "____________________________________________________________\n";
+            
             
             
             
@@ -1896,6 +1939,100 @@ listafiguras.add(resultado);
              codigoclases.setLocationRelativeTo(this);
              codigoclases.setVisible(true);
     }//GEN-LAST:event_jButton11MouseClicked
+
+    private void colorumlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorumlActionPerformed
+        // TODO add your handling code here:
+        Color cl = JColorChooser.showDialog(jddiagramaflujo, "Seleccione Color" ,Color.yellow);
+
+        mayhemtreeactual.setBackground(cl);
+        
+        
+    }//GEN-LAST:event_colorumlActionPerformed
+
+    private void claseumlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_claseumlActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultTreeModel model = (DefaultTreeModel) mayhemtreeactual.getModel();
+        
+        listatrees.remove(mayhemtreeactual);
+        paneluml.remove(mayhemtreeactual);
+        
+        
+        paneluml.repaint();
+    }//GEN-LAST:event_claseumlActionPerformed
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+        JLabel sep = new JLabel();
+           //Condicional rombo = new Condicional();
+        // name.setPreferredSize(new Dimension(50, 100));
+        paneluml.add(sep);
+        sep.setLocation(20, 210);
+
+        sep.setBackground(Color.red);
+        sep.setHorizontalTextPosition(SwingConstants.CENTER);
+        sep.setName("MAyhem"+cof);
+        sep.setOpaque(true);
+        sep.setIcon(new javax.swing.ImageIcon("./src/Iconitos/separador.png"));
+        sep.setMaximumSize(new java.awt.Dimension(30, 30));
+        sep.setMinimumSize(new Dimension(60, 20));
+        sep.setLocation(new Point(30, 30));
+        sep.setPreferredSize(new Dimension(40, 40));
+        sep.setSize(50, 50);
+       
+        sep.setBounds(460, 250, 10, 110);
+        
+        sep.setToolTipText("Click derecho para propiedades");
+        sep.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                if ((sep.getLocation().x + evt.getX() - sep.getWidth() / 2) >= 0
+                        && (sep.getLocation().x + evt.getX() - sep.getWidth() / 2) <= 1200) {
+
+                    sep.setLocation(sep.getLocation().x + evt.getX() - sep.getWidth() / 2,
+                            sep.getLocation().y + evt.getY() - sep.getHeight() / 2);
+
+                }// para que no se salga del rango
+
+            }
+        });
+
+        sep.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                if (evtr.isMetaDown()) {
+                    //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+
+                   /* jpp_rombo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                    temprombo = rombo;
+                    rombo.setText(temprombo.getText());
+                    rombo.setBackground(temprombo.getBackground());
+                    rombo.setTipo(temprombo.getTipo());
+                    
+                   
+                    
+                    */
+                    sepactual=sep;
+                    pp_sep.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                }
+            }
+        });
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void ColorsepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColorsepActionPerformed
+        // TODO add your handling code here:
+        Color cl = JColorChooser.showDialog(Diagrama_UML, "Color para separador", Color.yellow);
+        
+        
+        
+        Colorsep.add(this);
+        
+        sepactual.setBackground(cl);
+    }//GEN-LAST:event_ColorsepActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1933,6 +2070,7 @@ listafiguras.add(resultado);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Colorsep;
     private javax.swing.JDialog Condicional_mientras;
     private javax.swing.JDialog Diagrama_UML;
     private javax.swing.JButton agregarmetodo;
@@ -1946,7 +2084,9 @@ listafiguras.add(resultado);
     private javax.swing.JComboBox<String> cb_tiposvariable;
     private javax.swing.JComboBox<String> cb_tipouml;
     private javax.swing.JComboBox<String> cb_tipouml1;
+    private javax.swing.JMenuItem claseuml;
     private javax.swing.JDialog codigoclases;
+    private javax.swing.JMenuItem coloruml;
     private javax.swing.JLabel imagen2;
     private javax.swing.JLabel imagen3;
     private javax.swing.JButton jButton1;
@@ -2054,10 +2194,12 @@ listafiguras.add(resultado);
     private javax.swing.JPanel panelfiguras;
     private javax.swing.JPanel paneluml;
     private javax.swing.JPopupMenu pop_Clases;
+    private javax.swing.JPopupMenu pp_sep;
     private javax.swing.JTextField tf_nombreatributo;
     private javax.swing.JTextField tf_nombrevariable;
     private javax.swing.JTextPane tp_codigoclases;
     private javax.swing.JTextArea tp_codigodiagrama;
+    private javax.swing.JLabel uuuuuuuuuuuuuuuuu;
     private javax.swing.JDialog variables;
     // End of variables declaration//GEN-END:variables
 int contovalo = 0;
@@ -2075,5 +2217,6 @@ int contovalo = 0;
     ArrayList<JLabel> listafiguras = new ArrayList();
     ArrayList<JTree> listatrees = new ArrayList();
     DefaultMutableTreeNode nodoblackactual;
+    JLabel sepactual;
 
 }//
