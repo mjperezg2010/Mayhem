@@ -10,6 +10,14 @@ Diagrama flujo
 -- eliminar figura
 
 
+Diagrama de clases
+
+
+los dos
+- moverlos una vez cargados
+-guardarpdf
+
+
 
 
 
@@ -179,7 +187,7 @@ public class Principal extends javax.swing.JFrame {
         Abrir = new javax.swing.JMenuItem();
         guradacomo = new javax.swing.JMenuItem();
         gu = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        gft = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         pop_Clases = new javax.swing.JPopupMenu();
         atributoadd = new javax.swing.JMenuItem();
@@ -689,6 +697,7 @@ public class Principal extends javax.swing.JFrame {
 
         jButton8.setBackground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Nueva Clase");
+        jButton8.setEnabled(false);
         jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton8MouseClicked(evt);
@@ -697,6 +706,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel6.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 160, 70));
 
         jButton11.setText("Generar Codigo");
+        jButton11.setEnabled(false);
         jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton11MouseClicked(evt);
@@ -705,6 +715,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel6.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 150, 80));
 
         jButton13.setText("Herencia");
+        jButton13.setEnabled(false);
         jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton13MouseClicked(evt);
@@ -724,6 +735,7 @@ public class Principal extends javax.swing.JFrame {
 
         jButton10.setBackground(new java.awt.Color(204, 204, 204));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconitos/separador.png"))); // NOI18N
+        jButton10.setEnabled(false);
         jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton10MouseClicked(evt);
@@ -732,6 +744,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel7.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
 
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconitos/separadorV.png"))); // NOI18N
+        jButton12.setEnabled(false);
         jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton12MouseClicked(evt);
@@ -763,6 +776,7 @@ public class Principal extends javax.swing.JFrame {
 
         guradacomo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         guradacomo.setText("Guardar Como");
+        guradacomo.setEnabled(false);
         guradacomo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guradacomoActionPerformed(evt);
@@ -772,16 +786,18 @@ public class Principal extends javax.swing.JFrame {
 
         gu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         gu.setText("Guardar");
+        gu.setEnabled(false);
         jMenu5.add(gu);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setText("Guardar Formato");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        gft.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        gft.setText("Guardar Formato");
+        gft.setEnabled(false);
+        gft.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                gftActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem2);
+        jMenu5.add(gft);
 
         jMenuBar3.add(jMenu5);
 
@@ -2261,20 +2277,6 @@ public class Principal extends javax.swing.JFrame {
 
     private void AbrirdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirdActionPerformed
         // TODO add your handling code here:
-        jb_ovalo.setEnabled(true);
-        jb_paralelogramo.setEnabled(true);
-        jb_resultado.setEnabled(true);
-        jb_rombo.setEnabled(true);
-        jb_rectangulo.setEnabled(true);
-        jb_vertical.setEnabled(true);
-        jb_derecha.setEnabled(true);
-        jb_izquierda.setEnabled(true);
-        bt_cerrarciclo.setEnabled(true);
-        jButton3.setEnabled(true);
-        bt_codigo.setEnabled(true);
-        jMenuItem1.setEnabled(true);
-        Guardarcomod.setEnabled(true);
-        guardarf.setEnabled(true);
 
         JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Diagrama Mayhem", "myhm");
@@ -2283,6 +2285,20 @@ public class Principal extends javax.swing.JFrame {
         int seleccion = jfc.showOpenDialog(this);
 
         if (seleccion == JFileChooser.APPROVE_OPTION) {
+            jb_ovalo.setEnabled(true);
+            jb_paralelogramo.setEnabled(true);
+            jb_resultado.setEnabled(true);
+            jb_rombo.setEnabled(true);
+            jb_rectangulo.setEnabled(true);
+            jb_vertical.setEnabled(true);
+            jb_derecha.setEnabled(true);
+            jb_izquierda.setEnabled(true);
+            bt_cerrarciclo.setEnabled(true);
+            jButton3.setEnabled(true);
+            bt_codigo.setEnabled(true);
+            jMenuItem1.setEnabled(true);
+            Guardarcomod.setEnabled(true);
+            guardarf.setEnabled(true);
             try {
 
                 if (jfc.getFileFilter().getDescription().equals("Diagrama Mayhem")) {
@@ -2323,11 +2339,11 @@ public class Principal extends javax.swing.JFrame {
     private void NeuvodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NeuvodActionPerformed
         // TODO add your handling code here:
         nombrediagramaflujo = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese nombre del diagrama");
-        
+
         panelfiguras.removeAll();
         listafiguras = new ArrayList();
         panelfiguras.repaint();
-guardarf.setEnabled(true);
+        guardarf.setEnabled(true);
         jb_ovalo.setEnabled(true);
         jb_paralelogramo.setEnabled(true);
         jb_resultado.setEnabled(true);
@@ -2363,21 +2379,30 @@ guardarf.setEnabled(true);
 
     private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
         // TODO add your handling code here:
-        
-        ruta="";
-        
+
+        ruta = "";
+
         paneluml.removeAll();
         listatrees = new ArrayList();
         paneluml.repaint();
+
+        guradacomo.setEnabled(true);
+        gu.setEnabled(true);
+        gft.setEnabled(true);
+        jButton8.setEnabled(true);
+        jButton11.setEnabled(true);
+        jButton13.setEnabled(true);
+        jButton10.setEnabled(true);
+        jButton12.setEnabled(true);
     }//GEN-LAST:event_NuevoActionPerformed
 
     private void guradacomoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guradacomoActionPerformed
         // TODO add your handling code here:
-        
-         JFileChooser jfc = new JFileChooser();
+
+        JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Diagrama Marduk", "mrk");
         jfc.addChoosableFileFilter(filtro);
-        
+
         //jfc.setSelectedFile(new File(universo.getNombre()+".txt"));
         int seleccion = jfc.showSaveDialog(this);
 
@@ -2396,34 +2421,34 @@ guardarf.setEnabled(true);
                     //archivo = jfc.getSelectedFile();
                 }
 
-               
                 JOptionPane.showMessageDialog(this, "Diagrama guardado exitosamente");
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_guradacomoActionPerformed
 
     private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
         // TODO add your handling code here:
-         JFileChooser jfc = new JFileChooser();
+        JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Diagrama Marduk", "mrk");
         jfc.addChoosableFileFilter(filtro);
         //jfc.setSelectedFile(new File(universo.getNombre()+".txt"));
         int seleccion = jfc.showOpenDialog(this);
 
         if (seleccion == JFileChooser.APPROVE_OPTION) {
+
+            guradacomo.setEnabled(true);
+            gu.setEnabled(true);
+            gft.setEnabled(true);
+            jButton8.setEnabled(true);
+            jButton11.setEnabled(true);
+            jButton13.setEnabled(true);
+            jButton10.setEnabled(true);
+            jButton12.setEnabled(true);
             try {
 
                 if (jfc.getFileFilter().getDescription().equals("Diagrama Marduk")) {
@@ -2457,20 +2482,16 @@ guardarf.setEnabled(true);
                 e.printStackTrace();
             }
         }
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_AbrirActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void gftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gftActionPerformed
         // TODO add your handling code here:
         Guardarpic gp = new Guardarpic(paneluml);
         gp.Creacion();
         gp.Escribirla();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_gftActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2531,6 +2552,7 @@ guardarf.setEnabled(true);
     private javax.swing.JMenuItem claseuml;
     private javax.swing.JDialog codigoclases;
     private javax.swing.JMenuItem coloruml;
+    private javax.swing.JMenuItem gft;
     private javax.swing.JMenuItem gu;
     private javax.swing.JMenuItem guardarf;
     private javax.swing.JMenuItem guradacomo;
@@ -2591,7 +2613,6 @@ guardarf.setEnabled(true);
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
