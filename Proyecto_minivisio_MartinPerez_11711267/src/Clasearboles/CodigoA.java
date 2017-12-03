@@ -28,10 +28,15 @@ public class CodigoA {
         
         DefaultTreeModel modelo = (DefaultTreeModel)arbolito.getModel();
         DefaultMutableTreeNode raiz =(DefaultMutableTreeNode)modelo.getRoot();
+        String[] tokens=arbolito.getName().split(",");
+        String hijos= "";
+        for (int i = 1; i < tokens.length; i++) {
+            hijos+=tokens[i];
+        }
         
         codigo+=
                 "#include <iostream> \n"
-                    + "using namespace std;\n\n" + "class " + modelo.getRoot().toString() + " \n"
+                    + "using namespace std;\n\n" + "class " +tokens[0] +": "+hijos+ " \n"
                     + "{ \n";
         
         //Atributos

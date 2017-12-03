@@ -5,14 +5,17 @@
  */
 package Clasesfiguralabel;
 
+import java.io.Serializable;
 import javax.swing.JLabel;
 
 /**
  *
  * @author mjper
  */
-public class Figura extends JLabel {
+public class Figura extends JLabel implements Serializable {
     private boolean agregado;
+    
+    private static final long SerialVersionUID = 777L;
 
     public Figura() {
         super();
@@ -26,6 +29,7 @@ public class Figura extends JLabel {
         this.agregado = agregado;
     }
     
+     
     
     
     
