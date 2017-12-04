@@ -5,10 +5,19 @@
  */
 package Administracon;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -23,11 +32,14 @@ public class Guardarpic {
     
      private JPanel panelprincipal = new JPanel();
     private File archivo = null;
-    BufferedImage Imagen;
-    int elegir;
+    private BufferedImage Imagen;
+    private int elegir;
+    private String nombrediagrama="";
+    private JFileChooser jfc = new JFileChooser();
 
-    public Guardarpic(JPanel p) {
+    public Guardarpic(JPanel p,String n) {
         panelprincipal=p;
+        nombrediagrama=n;
     }
 
     
@@ -45,7 +57,7 @@ public class Guardarpic {
     public boolean Escribirla() {
         try{
         archivo = null;
-        JFileChooser jfc = new JFileChooser();
+        
         //Extensiones
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagen PNG", "PNG");
         jfc.addChoosableFileFilter(filtro);
@@ -66,7 +78,7 @@ public class Guardarpic {
         }else if (jfc.getFileFilter().getDescription().equals("Imagen GIF")) {
             imagen = "GIF";
         }else if (jfc.getFileFilter().getDescription().equals("Archivo PDF")) {
-            JOptionPane.showMessageDialog(null, "Todavía en Desarrollo", "En Desarrollo", 0);
+            PDF();
             return false;
         }else{
             imagen = "PNG";
@@ -82,6 +94,46 @@ public class Guardarpic {
         }catch(Exception e){  
         }
         return true;
+    }
+
+    public BufferedImage getImagen() {
+        return Imagen;
+    }
+    
+    
+    
+    
+    
+    public void PDF() {
+        //String ruta = jfc.getSelectedFile().getPath();
+        try {
+           /* try {
+                ImageIO.write(Imagen, "png", new File(Path + "1" + ".png"));
+            } catch (IOException ex) {
+                Logger.getLogger(panelprincipal.getName()).log(Level.SEVERE, null, ex);
+            }*/
+            Image imagen = Image.getInstance(jfc.getSelectedFile().getPath() + "#" + ".png");
+            imagen.scaleAbsolute(500, 400);
+            imagen.setAlignment(Element.ALIGN_CENTER);
+            FileOutputStream archivo = new FileOutputStream(jfc.getSelectedFile().getPath() + ".PDF");
+            Document d = new Document();
+            PdfWriter.getInstance(d, archivo);
+            PDF creacion = new PDF();
+            d.open();
+            d.setPageSize(PageSize.LETTER);
+            d.add(creacion.setTitulo(nombrediagrama));
+            //doc.add(new Paragraph("                                                  Carlos Wilfredo Romero Maradiaga \n"));
+            d.add(imagen);
+           // doc.add(pdf.getCuerpo("\nCódigo Generado:\n"));
+           /* if (codigo.length()<2) {
+                doc.add(pdf.getCuerpo("Para poder visualizar el código, primero debe generarlo desde el Sistema y vuelva a guardar el archivo."));
+            } else {
+                doc.add(pdf.getCuerpo(codigo));
+            */
+            d.close();
+            JOptionPane.showMessageDialog(null, "El PDF se genero excelente", "Excelente", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+        }
     }
     
 }

@@ -15,7 +15,6 @@ Diagrama de clases
 
 los dos
 - moverlos una vez cargados
--guardarpdf
 
 
 
@@ -34,6 +33,7 @@ package Clases;
 import Administracon.AdminClases;
 import Administracon.AdminFlujo;
 import Administracon.Guardarpic;
+import Administracon.Imprimirpanel;
 import Clasearboles.CodigoA;
 import Clasesfiguralabel.FinClase;
 import Clasesfiguralabel.Inicio;
@@ -57,6 +57,8 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import Clasesfiguralabel.*;
 import java.awt.event.MouseListener;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
@@ -117,6 +119,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         Guardarcomod = new javax.swing.JMenuItem();
         guardarf = new javax.swing.JMenuItem();
+        Imprimirdf = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jpp_paralelogramo = new javax.swing.JPopupMenu();
         jpp_texto_paralelogramo = new javax.swing.JMenuItem();
@@ -188,7 +191,7 @@ public class Principal extends javax.swing.JFrame {
         guradacomo = new javax.swing.JMenuItem();
         gu = new javax.swing.JMenuItem();
         gft = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        imprimirdc = new javax.swing.JMenuItem();
         pop_Clases = new javax.swing.JPopupMenu();
         atributoadd = new javax.swing.JMenuItem();
         metodoadd = new javax.swing.JMenuItem();
@@ -358,6 +361,11 @@ public class Principal extends javax.swing.JFrame {
                 bt_codigoMouseClicked(evt);
             }
         });
+        bt_codigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_codigoActionPerformed(evt);
+            }
+        });
         jddiagramaflujo.getContentPane().add(bt_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, -1));
 
         panelfiguras.setBackground(new java.awt.Color(255, 255, 255));
@@ -427,7 +435,22 @@ public class Principal extends javax.swing.JFrame {
         guardarf.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
         guardarf.setText("Guardar Formato");
         guardarf.setEnabled(false);
+        guardarf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarfActionPerformed(evt);
+            }
+        });
         jMenu3.add(guardarf);
+
+        Imprimirdf.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        Imprimirdf.setText("Imprimir");
+        Imprimirdf.setEnabled(false);
+        Imprimirdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImprimirdfActionPerformed(evt);
+            }
+        });
+        jMenu3.add(Imprimirdf);
 
         jMenuBar2.add(jMenu3);
 
@@ -799,10 +822,17 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu5.add(gft);
 
-        jMenuBar3.add(jMenu5);
+        imprimirdc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        imprimirdc.setText("Imprimir");
+        imprimirdc.setEnabled(false);
+        imprimirdc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirdcActionPerformed(evt);
+            }
+        });
+        jMenu5.add(imprimirdc);
 
-        jMenu6.setText("Edit");
-        jMenuBar3.add(jMenu6);
+        jMenuBar3.add(jMenu5);
 
         Diagrama_UML.setJMenuBar(jMenuBar3);
 
@@ -1550,6 +1580,7 @@ public class Principal extends javax.swing.JFrame {
 
         }//Fin for ich
 
+        //codigoc++=codigogenerado;
         tp_codigodiagrama.setText(codigogenerado);
         this.jd_codigogenerado.setModal(true);
         jd_codigogenerado.pack();
@@ -1893,7 +1924,7 @@ public class Principal extends javax.swing.JFrame {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evtr) {
                 mayhemtreeactual = clase;
-                int row = clase.getClosestRowForLocation(evt.getX(), evt.getY());
+                int row = clase.getClosestRowForLocation(evtr.getX(), evtr.getY());
                 clase.setSelectionRow(row);
                 Object v1 = clase.getSelectionPath().getLastPathComponent();
                 nodoblackactual = (DefaultMutableTreeNode) v1;
@@ -2286,6 +2317,7 @@ public class Principal extends javax.swing.JFrame {
 
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             jb_ovalo.setEnabled(true);
+            Imprimirdf.setEnabled(true);
             jb_paralelogramo.setEnabled(true);
             jb_resultado.setEnabled(true);
             jb_rombo.setEnabled(true);
@@ -2307,9 +2339,13 @@ public class Principal extends javax.swing.JFrame {
                     ruta = jfc.getSelectedFile().getPath();
 
                     af.cargararchivo();
-                    listafiguras = af.getListaf();
-                    for (Figura t : listafiguras) {
-                        panelfiguras.add(t);
+                    listafiguras = new ArrayList();
+                    for (Figura t : af.getListaf()) {
+                        // panelfiguras.add(t);
+                        System.out.println(t.getName());
+                        t = mover(t);
+                        System.out.println("------\n");
+                        System.out.println(t.getName());
                         panelfiguras.repaint();
 
                     }
@@ -2339,12 +2375,13 @@ public class Principal extends javax.swing.JFrame {
     private void NeuvodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NeuvodActionPerformed
         // TODO add your handling code here:
         nombrediagramaflujo = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese nombre del diagrama");
-
+        nombretotal = nombrediagramaflujo;
         panelfiguras.removeAll();
         listafiguras = new ArrayList();
         panelfiguras.repaint();
         guardarf.setEnabled(true);
         jb_ovalo.setEnabled(true);
+        Imprimirdf.setEnabled(true);
         jb_paralelogramo.setEnabled(true);
         jb_resultado.setEnabled(true);
         jb_rombo.setEnabled(true);
@@ -2386,8 +2423,11 @@ public class Principal extends javax.swing.JFrame {
         listatrees = new ArrayList();
         paneluml.repaint();
 
+        nombretotal = JOptionPane.showInputDialog(Diagrama_UML, "Ingrese nombre del diagrama");
+
         guradacomo.setEnabled(true);
         gu.setEnabled(true);
+        imprimirdc.setEnabled(true);
         gft.setEnabled(true);
         jButton8.setEnabled(true);
         jButton11.setEnabled(true);
@@ -2448,6 +2488,7 @@ public class Principal extends javax.swing.JFrame {
             jButton11.setEnabled(true);
             jButton13.setEnabled(true);
             jButton10.setEnabled(true);
+            imprimirdc.setEnabled(true);
             jButton12.setEnabled(true);
             try {
 
@@ -2457,10 +2498,11 @@ public class Principal extends javax.swing.JFrame {
                     ruta = jfc.getSelectedFile().getPath();
 
                     af.cargararchivo();
-                    listatrees = af.getListaf();
-                    for (JTree t : listatrees) {
-                        paneluml.add(t);
-                        paneluml.repaint();
+                    listatrees = new ArrayList();
+                    for (JTree t : af.getListaf()) {
+                        //paneluml.add(t);
+                        moveruml(t);
+                        //paneluml.repaint();
 
                     }
 
@@ -2488,10 +2530,56 @@ public class Principal extends javax.swing.JFrame {
 
     private void gftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gftActionPerformed
         // TODO add your handling code here:
-        Guardarpic gp = new Guardarpic(paneluml);
+        Guardarpic gp = new Guardarpic(paneluml, nombretotal);
         gp.Creacion();
         gp.Escribirla();
     }//GEN-LAST:event_gftActionPerformed
+
+    private void bt_codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_codigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_codigoActionPerformed
+
+    private void guardarfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarfActionPerformed
+        // TODO add your handling code here:
+        Guardarpic gp = new Guardarpic(panelfiguras, nombretotal);
+        gp.Creacion();
+        gp.Escribirla();
+    }//GEN-LAST:event_guardarfActionPerformed
+
+    private void ImprimirdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImprimirdfActionPerformed
+        // TODO add your handling code here:
+
+        PrinterJob imprimir = PrinterJob.getPrinterJob();
+        Guardarpic eleccion = new Guardarpic(panelfiguras, nombretotal);
+
+        eleccion.Creacion();
+        imprimir.setPrintable(new Imprimirpanel(imprimir, eleccion.getImagen()));
+        if (imprimir.printDialog()) {
+            try {
+                imprimir.print();
+            } catch (PrinterException prt) {
+                prt.printStackTrace();
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Impresión realizada correctamente.", "Impresión", 1);
+    }//GEN-LAST:event_ImprimirdfActionPerformed
+
+    private void imprimirdcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirdcActionPerformed
+        // TODO add your handling code here:
+        PrinterJob imprimir = PrinterJob.getPrinterJob();
+        Guardarpic eleccion = new Guardarpic(paneluml, nombretotal);
+
+        eleccion.Creacion();
+        imprimir.setPrintable(new Imprimirpanel(imprimir, eleccion.getImagen()));
+        if (imprimir.printDialog()) {
+            try {
+                imprimir.print();
+            } catch (PrinterException prt) {
+                prt.printStackTrace();
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Impresión realizada correctamente.", "Impresión", 1);
+    }//GEN-LAST:event_imprimirdcActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2535,6 +2623,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog Condicional_mientras;
     private javax.swing.JDialog Diagrama_UML;
     private javax.swing.JMenuItem Guardarcomod;
+    private javax.swing.JMenuItem Imprimirdf;
     private javax.swing.JMenuItem Neuvod;
     private javax.swing.JMenuItem Nuevo;
     private javax.swing.JButton agregarmetodo;
@@ -2558,6 +2647,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem guradacomo;
     private javax.swing.JLabel imagen2;
     private javax.swing.JLabel imagen3;
+    private javax.swing.JMenuItem imprimirdc;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -2608,7 +2698,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
@@ -2682,7 +2771,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog variables;
     // End of variables declaration//GEN-END:variables
 int contovalo = 0;
-    String nombrediagramaflujo = "";
+    String nombrediagramaflujo = "", nombretotal = "";
     int cof = 0, marduk = 0;
     Icon icon = null;
     Object o = null;
@@ -2698,5 +2787,483 @@ int contovalo = 0;
     DefaultMutableTreeNode nodoblackactual;
     JLabel sepactual;
     String ruta = "";
+
+    //Mover lo cargado de los diagramas
+    public Figura mover(Figura t) {
+        if (t instanceof Entrada_Salida) {
+
+            Entrada_Salida Paralelogramo = new Entrada_Salida();
+            // name.setPreferredSize(new Dimension(50, 100));
+            panelfiguras.add(Paralelogramo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
+            Paralelogramo.setLocation(20, 210);
+            //Paralelogramo.setBackground(Color.red);
+
+            Paralelogramo.setHorizontalTextPosition(SwingConstants.CENTER);
+            Paralelogramo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/paralelogramo_p.png"));
+            Paralelogramo.setOpaque(true);
+            Paralelogramo.setMaximumSize(new java.awt.Dimension(30, 30));
+            Paralelogramo.setMinimumSize(new Dimension(60, 20));
+            Paralelogramo.setLocation(new Point(30, 30));
+            Paralelogramo.setPreferredSize(new Dimension(40, 40));
+            Paralelogramo.setName("Mayhem" + cof);
+            cof++;
+            Paralelogramo.setText(t.getText());
+            Paralelogramo.setBackground(t.getBackground());
+            Paralelogramo.setBounds(t.getBounds());
+            Paralelogramo.setToolTipText("Click derecho para propiedades");
+            Paralelogramo.setAgregado(true);
+            Paralelogramo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+
+                @Override
+                public void mouseDragged(java.awt.event.MouseEvent evt) {
+                    if ((Paralelogramo.getLocation().x + evt.getX() - Paralelogramo.getWidth() / 2) >= 0
+                            && (Paralelogramo.getLocation().x + evt.getX() - Paralelogramo.getWidth() / 2) <= 1200) {
+
+                        Paralelogramo.setLocation(Paralelogramo.getLocation().x + evt.getX() - Paralelogramo.getWidth() / 2,
+                                Paralelogramo.getLocation().y + evt.getY() - Paralelogramo.getHeight() / 2);
+
+                    }// para que no se salga del rango
+
+                }
+            });
+
+            Paralelogramo.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                    if (evtr.isMetaDown()) {
+                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+
+                        jpp_paralelogramo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+
+                        //Paralelogramo.setText(templabelparalelogramo.getText());
+                        // Paralelogramo.setBackground(templabelparalelogramo.getBackground());
+                        //Paralelogramo.setListva(templabelparalelogramo.getListva());
+                        if (Paralelogramo.isAgregado()) {
+
+                            for (JLabel t : listafiguras) {
+                                if (t.getName().equals(Paralelogramo.getName())) {
+
+                                    t.setText(templabelparalelogramo.getText());
+                                    t.setBackground(templabelparalelogramo.getBackground());
+                                    ((Entrada_Salida) t).setListva(templabelparalelogramo.getListva());
+                                } else {
+                                    //JOptionPane.showMessageDialog( "No");
+
+                                }
+                            }
+                        } else {
+                            listafiguras.add(Paralelogramo);
+                        }
+
+                    }//Fin click dereco
+                }
+            });//Fin agreagar omouse listener
+            templabelparalelogramo = Paralelogramo;
+            listafiguras.add(Paralelogramo);
+        }//fin instance of entrada salida
+        else if (t instanceof Condicional) {
+            Condicional rombo = new Condicional();
+            // name.setPreferredSize(new Dimension(50, 100));
+            panelfiguras.add(rombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 600, 600));
+            rombo.setLocation(20, 210);
+
+            rombo.setBackground(t.getBackground());
+            rombo.setHorizontalTextPosition(SwingConstants.CENTER);
+            rombo.setName("MAyhem" + cof);
+            rombo.setOpaque(true);
+            rombo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/rombo_p.png"));
+            rombo.setMaximumSize(new java.awt.Dimension(30, 30));
+            rombo.setMinimumSize(new Dimension(60, 20));
+            rombo.setLocation(new Point(30, 30));
+            rombo.setPreferredSize(new Dimension(40, 40));
+            rombo.setSize(50, 50);
+            rombo.setAgregado(true);
+            rombo.setText(t.getText());
+            rombo.setBounds(t.getBounds());
+            rombo.setToolTipText("Click derecho para propiedades");
+            rombo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                @Override
+                public void mouseDragged(java.awt.event.MouseEvent evt) {
+                    if ((rombo.getLocation().x + evt.getX() - rombo.getWidth() / 2) >= 0
+                            && (rombo.getLocation().x + evt.getX() - rombo.getWidth() / 2) <= 1200) {
+
+                        rombo.setLocation(rombo.getLocation().x + evt.getX() - rombo.getWidth() / 2,
+                                rombo.getLocation().y + evt.getY() - rombo.getHeight() / 2);
+
+                    }// para que no se salga del rango
+
+                }
+            });
+
+            rombo.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                    if (evtr.isMetaDown()) {
+                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+
+                        jpp_rombo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                        temprombo = rombo;
+                        rombo.setText(temprombo.getText());
+                        rombo.setBackground(temprombo.getBackground());
+                        rombo.setTipo(temprombo.getTipo());
+
+                        //Recorrer
+                        if (rombo.isAgregado()) {
+
+                            for (JLabel t : listafiguras) {
+                                if (t.getName().equals(rombo.getName())) {
+
+                                    t.setText(temprombo.getText());
+                                    ((Condicional) t).setTipo(temprombo.getTipo());
+                                    t.setBackground(temprombo.getBackground());
+                                    //((Entrada_Salida) t).setListva(temprombo.getListva());
+                                } else {
+                                    //JOptionPane.showMessageDialog( "No");
+
+                                }
+                            }
+                        } else {
+                            listafiguras.add(rombo);
+                        }
+                    }
+                }
+            });
+            listafiguras.add(rombo);
+        } else if (t instanceof Flecha) {
+
+            t.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                @Override
+                public void mouseDragged(java.awt.event.MouseEvent evt) {
+                    if ((t.getLocation().x + evt.getX() - t.getWidth() / 2) >= 0
+                            && (t.getLocation().x + evt.getX() - t.getWidth() / 2) <= 1200) {
+
+                        t.setLocation(t.getLocation().x + evt.getX() - t.getWidth() / 2,
+                                t.getLocation().y + evt.getY() - t.getHeight() / 2);
+
+                    }// para que no se salga del rango
+
+                }
+            });
+            
+            listafiguras.add(t);
+
+        } else if (t instanceof Imprimir) {
+
+            Imprimir resultado = new Imprimir();
+            // name.setPreferredSize(new Dimension(50, 100));
+            panelfiguras.add(resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 330, 600));
+            resultado.setLocation(20, 210);
+            resultado.setIcon(new javax.swing.ImageIcon("./src/Iconitos/resultado_p.png"));
+            resultado.setMaximumSize(new java.awt.Dimension(30, 30));
+            resultado.setMinimumSize(new Dimension(60, 20));
+            resultado.setLocation(new Point(30, 30));
+            resultado.setHorizontalTextPosition(SwingConstants.CENTER);
+            resultado.setOpaque(true);
+            resultado.setText(t.getText());
+            resultado.setName("Mayhem" + cof);
+            cof++;
+            resultado.setAgregado(true);
+            resultado.setPreferredSize(new Dimension(40, 40));
+            resultado.setBackground(t.getBackground());
+            resultado.setBounds(t.getBounds());
+            resultado.setToolTipText("Click derecho para propiedades");
+            resultado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                @Override
+                public void mouseDragged(java.awt.event.MouseEvent evt) {
+                    if ((resultado.getLocation().x + evt.getX() - resultado.getWidth() / 2) >= 0
+                            && (resultado.getLocation().x + evt.getX() - resultado.getWidth() / 2) <= 1200) {
+
+                        resultado.setLocation(resultado.getLocation().x + evt.getX() - resultado.getWidth() / 2,
+                                resultado.getLocation().y + evt.getY() - resultado.getHeight() / 2);
+
+                    }// para que no se salga del rango
+
+                }
+            });
+            resultado.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                    if (evtr.isMetaDown()) {
+                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+
+                        jpp_resultado.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                        tempresultado = resultado;
+                        resultado.setText(tempresultado.getText());
+                        resultado.setBackground(tempresultado.getBackground());
+                        resultado.setConVariable(tempresultado.isConVariable());
+                        resultado.setVariable(tempresultado.getVariable());
+
+                        //Recorrer
+                        if (resultado.isAgregado()) {
+
+                            for (JLabel t : listafiguras) {
+                                if (t.getName().equals(resultado.getName())) {
+
+                                    t.setText(tempresultado.getText());
+                                    ((Imprimir) t).setConVariable(tempresultado.isConVariable());
+                                    ((Imprimir) t).setVariable(tempresultado.getVariable());
+                                    t.setBackground(tempresultado.getBackground());
+                                    //((Entrada_Salida) t).setListva(temprombo.getListva());
+                                } else {
+                                    //JOptionPane.showMessageDialog( "No");
+
+                                }
+                            }
+                        } else {
+                            listafiguras.add(resultado);
+                        }
+
+                    }
+                }
+            });
+            listafiguras.add(resultado);
+
+        } else if (t instanceof Inicio) {
+            if (contovalo == 0) {
+                Inicio Ovalo = new Inicio();
+                //JLabel Ovalo = new JLabel();
+                // name.setPreferredSize(new Dimension(50, 100));
+                panelfiguras.add(Ovalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
+                Ovalo.setLocation(20, 210);
+                Ovalo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Ovalo.png"));
+                Ovalo.setName("Mayhem" + cof);
+                //Ovalo.setBackground(Color.red);
+                Ovalo.setHorizontalTextPosition(SwingConstants.CENTER);
+                Ovalo.setTipo("Inicio");
+                Ovalo.setOpaque(true);
+                cof++;
+
+                Ovalo.setMaximumSize(new java.awt.Dimension(30, 30));
+                Ovalo.setMinimumSize(new Dimension(60, 20));
+                Ovalo.setLocation(new Point(30, 30));
+                Ovalo.setPreferredSize(new Dimension(40, 40));
+                Ovalo.setSize(50, 50);
+                Ovalo.setBackground(t.getBackground());
+                Ovalo.setBounds(t.getBounds());
+                Ovalo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                    @Override
+                    public void mouseDragged(java.awt.event.MouseEvent evt) {
+                        if ((Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2) >= 0
+                                && (Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2) <= 1200) {
+
+                            Ovalo.setLocation(Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2,
+                                    Ovalo.getLocation().y + evt.getY() - Ovalo.getHeight() / 2);
+
+                        }// para que no se salga del rango
+
+                    }
+                });
+
+                Ovalo.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                        if (evtr.isMetaDown()) {
+                            //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+
+                            jpp_ovalo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                            tempovalo = Ovalo;
+
+                        }
+                    }
+                });
+                listafiguras.add(Ovalo);
+                Ovalo.setText("Inicio");
+                //Ovalo.setBackground(tempovalo.getBackground());
+                contovalo++;
+
+            } else if (contovalo == 1) {
+                Inicio Ovalo = new Inicio();
+                // name.setPreferredSize(new Dimension(50, 100));
+                panelfiguras.add(Ovalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
+                Ovalo.setLocation(20, 210);
+                Ovalo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Ovalo.png"));
+                Ovalo.setTipo("Fin");
+                //Ovalo.setBackground(Color.red);
+                Ovalo.setHorizontalTextPosition(SwingConstants.CENTER);
+                Ovalo.setName("Mayhem" + cof);
+                Ovalo.setOpaque(true);
+                cof++;
+                Ovalo.setMaximumSize(new java.awt.Dimension(30, 30));
+                Ovalo.setMinimumSize(new Dimension(60, 20));
+                Ovalo.setLocation(new Point(30, 30));
+                Ovalo.setPreferredSize(new Dimension(40, 40));
+                Ovalo.setSize(50, 50);
+                Ovalo.setBackground(t.getBackground());
+                Ovalo.setBounds(t.getBounds());
+                Ovalo.setToolTipText("Click derecho para propiedades");
+                Ovalo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                    @Override
+                    public void mouseDragged(java.awt.event.MouseEvent evt) {
+                        if ((Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2) >= 0
+                                && (Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2) <= 1200) {
+
+                            Ovalo.setLocation(Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2,
+                                    Ovalo.getLocation().y + evt.getY() - Ovalo.getHeight() / 2);
+
+                        }// para que no se salga del rango
+
+                    }
+                });
+
+                Ovalo.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                        if (evtr.isMetaDown()) {
+                            //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+
+                            jpp_ovalo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                            tempovalo = Ovalo;
+
+                        }
+                    }
+                });
+                listafiguras.add(Ovalo);
+                Ovalo.setText("Fin");
+                contovalo++;
+
+            } else {
+                JOptionPane.showMessageDialog(jddiagramaflujo, "Ya no puede ingresar mas de este tipo");
+            }
+
+        } else if (t instanceof Procesos) {
+            Procesos rectangulo = new Procesos();
+            // name.setPreferredSize(new Dimension(50, 100));
+            panelfiguras.add(rectangulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 550, 600));
+            rectangulo.setLocation(20, 210);
+            rectangulo.setBackground(t.getBackground());
+            rectangulo.setForeground(Color.BLACK);
+            rectangulo.setName("Mayhem" + cof);
+            cof++;
+            rectangulo.setOpaque(true);
+            rectangulo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Rectangulo_p.png"));
+            rectangulo.setHorizontalTextPosition(SwingConstants.CENTER);
+            rectangulo.setAgregado(true);
+            rectangulo.setMaximumSize(new java.awt.Dimension(30, 30));
+            rectangulo.setMinimumSize(new Dimension(60, 20));
+            rectangulo.setLocation(new Point(30, 30));
+            rectangulo.setText(t.getText());
+            rectangulo.setPreferredSize(new Dimension(40, 40));
+            //name.setSize(70, 50);
+            rectangulo.setBounds(t.getBounds());
+            rectangulo.setToolTipText("Click derecho para propiedades");
+            rectangulo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                @Override
+                public void mouseDragged(java.awt.event.MouseEvent evt) {
+                    if ((rectangulo.getLocation().x + evt.getX() - rectangulo.getWidth() / 2) >= 0
+                            && (rectangulo.getLocation().x + evt.getX() - rectangulo.getWidth() / 2) <= 1200) {
+
+                        rectangulo.setLocation(rectangulo.getLocation().x + evt.getX() - rectangulo.getWidth() / 2,
+                                rectangulo.getLocation().y + evt.getY() - rectangulo.getHeight() / 2);
+
+                    }// para que no se salga del rango
+
+                }
+            });
+            rectangulo.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                    if (evtr.isMetaDown()) {
+                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+
+                        jpp_rectangulo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                        temprectangulo = rectangulo;
+                        rectangulo.setText(temprectangulo.getText());
+                        rectangulo.setBackground(temprectangulo.getBackground());
+                        //Recorrer
+                        if (rectangulo.isAgregado()) {
+
+                            for (JLabel t : listafiguras) {
+                                if (t.getName().equals(rectangulo.getName())) {
+
+                                    t.setText(temprectangulo.getText());
+                                    //((Condicional)t).setTipo(temprectangulo.getTipo());
+                                    t.setBackground(temprectangulo.getBackground());
+                                    //((Entrada_Salida) t).setListva(temprombo.getListva());
+                                } else {
+                                    //JOptionPane.showMessageDialog( "No");
+
+                                }
+                            }
+                        } else {
+                            listafiguras.add(rectangulo);
+                        }
+
+                    }
+                }
+            });
+
+            listafiguras.add(rectangulo);
+            //rectangulo.setBackground(temprectangulo.getBackground());
+        }
+
+        return t;
+
+    }//Fin metodo mover fugurad
+    
+    
+    
+    public void moveruml(JTree t){
+        
+        //String nombrearbol = JOptionPane.showInputDialog(Diagrama_UML, "Ingrese el nombre de la clase");
+        DefaultTreeModel m1 = (DefaultTreeModel) t.getModel();
+        DefaultMutableTreeNode Root1 = new DefaultMutableTreeNode(m1.getRoot().toString());
+        
+        
+       DefaultMutableTreeNode Root = new DefaultMutableTreeNode(Root1.toString());
+        DefaultTreeModel modelo = new DefaultTreeModel(Root);
+        JTree clase = new JTree(t.getModel());
+        clase.setName(t.getName());
+        // clase.set
+      /* DefaultTreeModel m = (DefaultTreeModel) clase.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m1.getRoot();
+        DefaultMutableTreeNode atributos = (DefaultMutableTreeNode) raiz.getChildAt(0);
+        DefaultMutableTreeNode metodos = (DefaultMutableTreeNode)raiz.getChildAt(1);
+        raiz.add(atributos);
+        raiz.add(metodos);*/
+        
+
+        marduk++;
+        clase.setSize(t.getSize());
+        clase.setBackground(t.getBackground());
+        clase.setBorder(t.getBorder());
+        clase.setBounds(t.getBounds());
+
+        clase.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                mayhemtreeactual = clase;
+                int row = clase.getClosestRowForLocation(evtr.getX(), evtr.getY());
+                clase.setSelectionRow(row);
+                Object v1 = clase.getSelectionPath().getLastPathComponent();
+                nodoblackactual = (DefaultMutableTreeNode) v1;
+                for (JTree te : listatrees) {
+                    if (clase.getName().equals(te.getName())) {
+                        te = mayhemtreeactual;
+                    }
+
+                }
+                if (evtr.isMetaDown()) {
+                    pop_Clases.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+
+                }
+            }
+        });
+
+        paneluml.add(clase);
+
+        clase.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                mayhemtreeactual = clase;
+                //txSeleccionado1.setText(modelo.getRoot().toString());
+
+                if (((clase.getLocation().x + evt.getX() - clase.getWidth() / 2) > 5)) {
+                    if (((clase.getLocation().x + evt.getX() - clase.getWidth() / 2) < 800)) {
+                        if ((clase.getLocation().y + evt.getY() - clase.getWidth() / 2) > -15) {
+                            if ((clase.getLocation().y + evt.getY() - clase.getWidth() / 2) < 520) {
+                                clase.setLocation(clase.getLocation().x + evt.getX() - clase.getWidth() / 2,
+                                        clase.getLocation().y + evt.getY() - clase.getHeight() / 2);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        paneluml.repaint();
+        listatrees.add(clase);
+    }
 
 }//
