@@ -31,10 +31,9 @@ public class Inicio extends Figura{
     }
     
     
-
-    @Override
+@Override
     public String toString() {
-        return "Inicio{";
+        return super.getText();
     }
     
     

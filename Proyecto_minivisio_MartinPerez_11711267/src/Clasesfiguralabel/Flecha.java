@@ -13,6 +13,11 @@ public class Flecha extends Figura{
 
     public Flecha() {
     }
+
+    @Override
+    public String toString() {
+        return super.getName();
+    }
     
     
     

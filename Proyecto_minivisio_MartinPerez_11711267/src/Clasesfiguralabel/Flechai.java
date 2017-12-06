@@ -13,5 +13,8 @@ public class Flechai extends Figura {
 
     public Flechai() {
     }
-    
+   @Override
+    public String toString() {
+        return super.getName();
+    }
 }

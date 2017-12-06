@@ -31,7 +31,7 @@ public class Condicional extends Figura {
     
     @Override
     public String toString() {
-        return "Condicional";
+        return super.getText();
     }
     
     

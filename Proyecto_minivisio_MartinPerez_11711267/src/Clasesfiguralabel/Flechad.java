@@ -14,4 +14,12 @@ public class Flechad extends Figura{
     public Flechad() {
     }
     
+    
+   @Override
+    public String toString() {
+        return super.getName();
+    }
+    
+    
+    
 }

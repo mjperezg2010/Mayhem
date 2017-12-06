@@ -29,7 +29,7 @@ public class Entrada_Salida extends Figura{
 
     @Override
     public String toString() {
-        return "Entrada_Salida";
+        return super.getText();
     }
     
     

@@ -40,11 +40,10 @@ public class Imprimir extends Figura {
     
     
 
-    @Override
+   @Override
     public String toString() {
-        return "Imprimir";
+        return super.getText();
     }
-    
     
     
     

@@ -28,6 +28,11 @@ public class Figura extends JLabel implements Serializable {
     public void setAgregado(boolean agregado) {
         this.agregado = agregado;
     }
+
+    @Override
+    public String toString() {
+        return super.getText();
+    }
     
      
     

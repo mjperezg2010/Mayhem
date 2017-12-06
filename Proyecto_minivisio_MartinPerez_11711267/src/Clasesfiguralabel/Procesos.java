@@ -13,9 +13,9 @@ import javax.swing.JLabel;
  */
 public class Procesos extends Figura{
 
-    @Override
+   @Override
     public String toString() {
-        return "Procesos";
+        return super.getText();
     }
     
     
