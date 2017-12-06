@@ -1314,6 +1314,7 @@ public class Principal extends javax.swing.JFrame {
         rombo.setLocation(new Point(30, 30));
         rombo.setPreferredSize(new Dimension(40, 40));
         rombo.setSize(50, 50);
+        rombo.setTipo("Condicional");
         rombo.setAgregado(true);
         rombo.setBounds(440, 320, 100, 67);
         rombo.setToolTipText("Click derecho para propiedades");
@@ -1513,7 +1514,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jb_derechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_derechaMouseClicked
         // TODO add your handling code here:
-        Flecha derecha = new Flecha();
+        Flechad derecha = new Flechad();
         // name.setPreferredSize(new Dimension(50, 100));
         panelfiguras.add(derecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 330, 600));
         derecha.setLocation(20, 210);
@@ -1630,7 +1631,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jb_izquierdaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_izquierdaMouseClicked
         // TODO add your handling code here:
-        Flecha izquierda = new Flecha();
+        Flechai izquierda = new Flechai();
         // name.setPreferredSize(new Dimension(50, 100));
         panelfiguras.add(izquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 300, 600));
         izquierda.setLocation(20, 210);
@@ -1734,7 +1735,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         templabelparalelogramo.setText("Lea " + acum);
-
+        JOptionPane.showInputDialog(jd_asignarvariable,"Variable "+jl_variables.getSelectedValue().toString()+" asignada con exito");
 
     }//GEN-LAST:event_jButton5MouseClicked
 
@@ -2308,7 +2309,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void AbrirdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirdActionPerformed
         // TODO add your handling code here:
-
+        panelfiguras.removeAll();
+        panelfiguras.setLayout(null);
         JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Diagrama Mayhem", "myhm");
         jfc.addChoosableFileFilter(filtro);
@@ -2323,6 +2325,7 @@ public class Principal extends javax.swing.JFrame {
             jb_rombo.setEnabled(true);
             jb_rectangulo.setEnabled(true);
             jb_vertical.setEnabled(true);
+            contovalo = 0;
             jb_derecha.setEnabled(true);
             jb_izquierda.setEnabled(true);
             bt_cerrarciclo.setEnabled(true);
@@ -2377,6 +2380,7 @@ public class Principal extends javax.swing.JFrame {
         nombrediagramaflujo = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese nombre del diagrama");
         nombretotal = nombrediagramaflujo;
         panelfiguras.removeAll();
+        panelfiguras.setLayout(null);
         listafiguras = new ArrayList();
         panelfiguras.repaint();
         guardarf.setEnabled(true);
@@ -2394,6 +2398,7 @@ public class Principal extends javax.swing.JFrame {
         bt_codigo.setEnabled(true);
         jMenuItem1.setEnabled(true);
         Guardarcomod.setEnabled(true);
+        contovalo = 0;
 
 
     }//GEN-LAST:event_NeuvodActionPerformed
@@ -2807,6 +2812,7 @@ int contovalo = 0;
             Paralelogramo.setPreferredSize(new Dimension(40, 40));
             Paralelogramo.setName("Mayhem" + cof);
             cof++;
+            //Paralelogramo.setListva(((Entrada_Salida) t).getListva());
             Paralelogramo.setText(t.getText());
             Paralelogramo.setBackground(t.getBackground());
             Paralelogramo.setBounds(t.getBounds());
@@ -2879,6 +2885,7 @@ int contovalo = 0;
             rombo.setAgregado(true);
             rombo.setText(t.getText());
             rombo.setBounds(t.getBounds());
+           // rombo.setTipo(((Condicional) t).getTipo());
             rombo.setToolTipText("Click derecho para propiedades");
             rombo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
                 @Override
@@ -2929,21 +2936,34 @@ int contovalo = 0;
             listafiguras.add(rombo);
         } else if (t instanceof Flecha) {
 
-            t.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            Flecha name = new Flecha();
+            // name.setPreferredSize(new Dimension(50, 100));
+            panelfiguras.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 300, 600));
+            name.setLocation(20, 210);
+            name.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/Flecha.jpg"));
+            name.setMaximumSize(new java.awt.Dimension(30, 30));
+            name.setMinimumSize(new Dimension(60, 20));
+            name.setLocation(new Point(30, 30));
+            name.setPreferredSize(new Dimension(40, 40));
+            name.setSize(50, 50);
+            name.setName("Mayhem" + cof);
+            cof++;
+            name.setBounds(t.getBounds());
+            name.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
                 @Override
                 public void mouseDragged(java.awt.event.MouseEvent evt) {
-                    if ((t.getLocation().x + evt.getX() - t.getWidth() / 2) >= 0
-                            && (t.getLocation().x + evt.getX() - t.getWidth() / 2) <= 1200) {
+                    if ((name.getLocation().x + evt.getX() - name.getWidth() / 2) >= 0
+                            && (name.getLocation().x + evt.getX() - name.getWidth() / 2) <= 1200) {
 
-                        t.setLocation(t.getLocation().x + evt.getX() - t.getWidth() / 2,
-                                t.getLocation().y + evt.getY() - t.getHeight() / 2);
+                        name.setLocation(name.getLocation().x + evt.getX() - name.getWidth() / 2,
+                                name.getLocation().y + evt.getY() - name.getHeight() / 2);
 
                     }// para que no se salga del rango
 
                 }
             });
-            
-            listafiguras.add(t);
+
+            listafiguras.add(name);
 
         } else if (t instanceof Imprimir) {
 
@@ -2960,10 +2980,13 @@ int contovalo = 0;
             resultado.setText(t.getText());
             resultado.setName("Mayhem" + cof);
             cof++;
+            
             resultado.setAgregado(true);
             resultado.setPreferredSize(new Dimension(40, 40));
             resultado.setBackground(t.getBackground());
+           // resultado.setConVariable(((Imprimir) t).isConVariable());
             resultado.setBounds(t.getBounds());
+            //resultado.setVariable(((Imprimir) t).getVariable());
             resultado.setToolTipText("Click derecho para propiedades");
             resultado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
                 @Override
@@ -3189,32 +3212,82 @@ int contovalo = 0;
             listafiguras.add(rectangulo);
             //rectangulo.setBackground(temprectangulo.getBackground());
         }
+        else if(t instanceof Flechad){
+             Flechad derecha = new Flechad();
+        // name.setPreferredSize(new Dimension(50, 100));
+        panelfiguras.add(derecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 330, 600));
+        derecha.setLocation(20, 210);
+        derecha.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/flechaderecha.jpg"));
+        derecha.setMaximumSize(new java.awt.Dimension(30, 30));
+        derecha.setMinimumSize(new Dimension(60, 20));
+        derecha.setLocation(new Point(30, 30));
+        derecha.setPreferredSize(new Dimension(40, 40));
+        derecha.setSize(50, 50);
+        derecha.setBounds(t.getBounds());
+        derecha.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                if ((derecha.getLocation().x + evt.getX() - derecha.getWidth() / 2) >= 0
+                        && (derecha.getLocation().x + evt.getX() - derecha.getWidth() / 2) <= 1200) {
+
+                    derecha.setLocation(derecha.getLocation().x + evt.getX() - derecha.getWidth() / 2,
+                            derecha.getLocation().y + evt.getY() - derecha.getHeight() / 2);
+
+                }// para que no se salga del rango
+
+            }
+        });
+        listafiguras.add(derecha);
+        }else if(t instanceof Flechai){
+             Flechai izquierda = new Flechai();
+        // name.setPreferredSize(new Dimension(50, 100));
+        panelfiguras.add(izquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 300, 600));
+        izquierda.setLocation(20, 210);
+        izquierda.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/izquierda.jpg"));
+        izquierda.setMaximumSize(new java.awt.Dimension(30, 30));
+        izquierda.setMinimumSize(new Dimension(60, 20));
+        izquierda.setLocation(new Point(30, 30));
+        izquierda.setPreferredSize(new Dimension(40, 40));
+        izquierda.setSize(50, 50);
+        izquierda.setBounds(t.getBounds());
+        izquierda.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                if ((izquierda.getLocation().x + evt.getX() - izquierda.getWidth() / 2) >= 0
+                        && (izquierda.getLocation().x + evt.getX() - izquierda.getWidth() / 2) <= 1200) {
+
+                    izquierda.setLocation(izquierda.getLocation().x + evt.getX() - izquierda.getWidth() / 2,
+                            izquierda.getLocation().y + evt.getY() - izquierda.getHeight() / 2);
+
+                }// para que no se salga del rango
+
+            }
+        });
+        listafiguras.add(izquierda);
+        }
+            
 
         return t;
 
     }//Fin metodo mover fugurad
-    
-    
-    
-    public void moveruml(JTree t){
-        
+
+    public void moveruml(JTree t) {
+
         //String nombrearbol = JOptionPane.showInputDialog(Diagrama_UML, "Ingrese el nombre de la clase");
         DefaultTreeModel m1 = (DefaultTreeModel) t.getModel();
         DefaultMutableTreeNode Root1 = new DefaultMutableTreeNode(m1.getRoot().toString());
-        
-        
-       DefaultMutableTreeNode Root = new DefaultMutableTreeNode(Root1.toString());
+
+        DefaultMutableTreeNode Root = new DefaultMutableTreeNode(Root1.toString());
         DefaultTreeModel modelo = new DefaultTreeModel(Root);
         JTree clase = new JTree(t.getModel());
         clase.setName(t.getName());
         // clase.set
-      /* DefaultTreeModel m = (DefaultTreeModel) clase.getModel();
+        /* DefaultTreeModel m = (DefaultTreeModel) clase.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m1.getRoot();
         DefaultMutableTreeNode atributos = (DefaultMutableTreeNode) raiz.getChildAt(0);
         DefaultMutableTreeNode metodos = (DefaultMutableTreeNode)raiz.getChildAt(1);
         raiz.add(atributos);
         raiz.add(metodos);*/
-        
 
         marduk++;
         clase.setSize(t.getSize());
