@@ -56,6 +56,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import Clasesfiguralabel.*;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.MouseListener;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
@@ -113,7 +114,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jButton15 = new javax.swing.JButton();
+        Gestor_bt = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         Neuvod = new javax.swing.JMenuItem();
@@ -128,27 +129,32 @@ public class Principal extends javax.swing.JFrame {
         jpp_color_paralelogramo = new javax.swing.JMenuItem();
         Eliminarparalelogramo = new javax.swing.JMenuItem();
         copiard = new javax.swing.JMenuItem();
+        Fuente_paralelogramo = new javax.swing.JMenuItem();
         jpp_ovalo = new javax.swing.JPopupMenu();
         jpp_color_ovalo = new javax.swing.JMenuItem();
         eliminarovalo = new javax.swing.JMenuItem();
         copiard1 = new javax.swing.JMenuItem();
+        Fuente_ovalo = new javax.swing.JMenuItem();
         jpp_rombo = new javax.swing.JPopupMenu();
         jpp_texto_rombo = new javax.swing.JMenuItem();
         jpp_color_rombo = new javax.swing.JMenuItem();
         jpp_tipo = new javax.swing.JMenuItem();
         eliminarrombo = new javax.swing.JMenuItem();
         copiard2 = new javax.swing.JMenuItem();
+        Fuente_rombo = new javax.swing.JMenuItem();
         jpp_rectangulo = new javax.swing.JPopupMenu();
         jpp_texto_rectangulo = new javax.swing.JMenuItem();
         jpp_color_rectangulo = new javax.swing.JMenuItem();
         eliminarrombo1 = new javax.swing.JMenuItem();
         copiard3 = new javax.swing.JMenuItem();
+        Fuente_rectangulo = new javax.swing.JMenuItem();
         jpp_resultado = new javax.swing.JPopupMenu();
         jpp_color_resultado = new javax.swing.JMenuItem();
         jpp_text0_resultado = new javax.swing.JMenuItem();
         jpp_tipoimpresion = new javax.swing.JMenuItem();
         eliminarrombo2 = new javax.swing.JMenuItem();
         copiard4 = new javax.swing.JMenuItem();
+        Fuente_resultado = new javax.swing.JMenuItem();
         jd_opcion = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         jb_diagramaflujonuevo = new javax.swing.JButton();
@@ -211,6 +217,7 @@ public class Principal extends javax.swing.JFrame {
         claseuml = new javax.swing.JMenuItem();
         elomiarc = new javax.swing.JMenuItem();
         copiarclase = new javax.swing.JMenuItem();
+        fuentec = new javax.swing.JMenuItem();
         atributosuml = new javax.swing.JDialog();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -276,11 +283,17 @@ public class Principal extends javax.swing.JFrame {
         pegard = new javax.swing.JMenuItem();
         pegar1 = new javax.swing.JPopupMenu();
         pegard1 = new javax.swing.JMenuItem();
+        jd_fuentes = new javax.swing.JDialog();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel35 = new javax.swing.JLabel();
+        sp_tamaño = new javax.swing.JSpinner();
+        colorboton1 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jButton20 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jmi_nuevo = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         jddiagramaflujo.setTitle("Diagrama de flujo");
         jddiagramaflujo.setBackground(new java.awt.Color(0, 0, 0));
@@ -435,13 +448,14 @@ public class Principal extends javax.swing.JFrame {
         jddiagramaflujo.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, -1));
         jddiagramaflujo.getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jButton15.setText("Gestor Diagrama");
-        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+        Gestor_bt.setText("Gestor Diagrama");
+        Gestor_bt.setEnabled(false);
+        Gestor_bt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton15MouseClicked(evt);
+                Gestor_btMouseClicked(evt);
             }
         });
-        jddiagramaflujo.getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 160, 30));
+        jddiagramaflujo.getContentPane().add(Gestor_bt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 160, 30));
 
         jMenu3.setText("Diagrama");
 
@@ -544,6 +558,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jpp_paralelogramo.add(copiard);
 
+        Fuente_paralelogramo.setText("Fuente");
+        Fuente_paralelogramo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Fuente_paralelogramoActionPerformed(evt);
+            }
+        });
+        jpp_paralelogramo.add(Fuente_paralelogramo);
+
         jpp_color_ovalo.setText("Color");
         jpp_color_ovalo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -569,6 +591,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jpp_ovalo.add(copiard1);
+
+        Fuente_ovalo.setText("Fuente");
+        Fuente_ovalo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Fuente_ovaloActionPerformed(evt);
+            }
+        });
+        jpp_ovalo.add(Fuente_ovalo);
 
         jpp_texto_rombo.setText("Texto");
         jpp_texto_rombo.addActionListener(new java.awt.event.ActionListener() {
@@ -612,6 +642,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jpp_rombo.add(copiard2);
 
+        Fuente_rombo.setText("Fuente");
+        Fuente_rombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Fuente_romboActionPerformed(evt);
+            }
+        });
+        jpp_rombo.add(Fuente_rombo);
+
         jpp_texto_rectangulo.setText("Texto");
         jpp_texto_rectangulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -645,6 +683,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jpp_rectangulo.add(copiard3);
+
+        Fuente_rectangulo.setText("Fuente");
+        Fuente_rectangulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Fuente_rectanguloActionPerformed(evt);
+            }
+        });
+        jpp_rectangulo.add(Fuente_rectangulo);
 
         jpp_color_resultado.setText("Color");
         jpp_color_resultado.addActionListener(new java.awt.event.ActionListener() {
@@ -687,6 +733,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jpp_resultado.add(copiard4);
+
+        Fuente_resultado.setText("Fuente");
+        Fuente_resultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Fuente_resultadoActionPerformed(evt);
+            }
+        });
+        jpp_resultado.add(Fuente_resultado);
 
         jd_opcion.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1030,8 +1084,16 @@ public class Principal extends javax.swing.JFrame {
         });
         pop_Clases.add(elomiarc);
 
-        copiarclase.setText("jMenuItem2");
+        copiarclase.setText("Copiar");
         pop_Clases.add(copiarclase);
+
+        fuentec.setText("Fuente");
+        fuentec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fuentecActionPerformed(evt);
+            }
+        });
+        pop_Clases.add(fuentec);
 
         atributosuml.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1308,54 +1370,80 @@ public class Principal extends javax.swing.JFrame {
         });
         pegar1.add(pegard1);
 
+        jd_fuentes.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel11.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel11.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel35.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel35.setText("Fuentes");
+        jPanel11.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 100, -1));
+        jPanel11.add(sp_tamaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 70, 50));
+
+        colorboton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                colorboton1MouseClicked(evt);
+            }
+        });
+        jPanel11.add(colorboton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 70, 30));
+
+        jButton19.setText("Fuente");
+        jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton19MouseClicked(evt);
+            }
+        });
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, -1));
+
+        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel36.setText("Tamaño");
+        jPanel11.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setText("Color");
+        jPanel11.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
+
+        jd_fuentes.getContentPane().add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 476, 445));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eleccion de diagramas");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton20.setBackground(new java.awt.Color(0, 0, 0));
+        jButton20.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jButton20.setForeground(new java.awt.Color(255, 255, 255));
+        jButton20.setText("Inicio");
+        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton20MouseClicked(evt);
+            }
+        });
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 180, 80));
+
+        jButton18.setBackground(new java.awt.Color(0, 0, 0));
+        jButton18.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jButton18.setForeground(new java.awt.Color(255, 255, 255));
+        jButton18.setText("Informacion");
+        getContentPane().add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 180, 90));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/diagrama-de-flujo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 607));
 
-        jMenu1.setText("Archivo");
-
-        jmi_nuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        jmi_nuevo.setText("Abrir Diagrama");
-        jmi_nuevo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jmi_nuevoMouseClicked(evt);
-            }
-        });
-        jmi_nuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_nuevoActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmi_nuevo);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jmi_nuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmi_nuevoMouseClicked
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_jmi_nuevoMouseClicked
-
-    private void jmi_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_nuevoActionPerformed
-        // TODO add your handling code here:
-        this.jd_opcion.setModal(true);
-        jd_opcion.pack();
-        jd_opcion.setLocationRelativeTo(this);
-        jd_opcion.setVisible(true);
-
-    }//GEN-LAST:event_jmi_nuevoActionPerformed
 
     private void jb_ovaloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ovaloMouseClicked
         // TODO add your handling code here:
@@ -1848,11 +1936,11 @@ public class Principal extends javax.swing.JFrame {
         derecha.addMouseListener(new java.awt.event.MouseAdapter() {
 
             public void mouseClicked(java.awt.event.MouseEvent evtr) {
-                copiar=tempflechad;
+                copiar = tempflechad;
                 tempflechad = derecha;
                 if (evtr.isMetaDown()) {
                     //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
-copiar=tempflechad;
+                    copiar = tempflechad;
                     ppflechad.show(evtr.getComponent(), evtr.getX(), evtr.getY());
                     tempflechad = derecha;
 
@@ -1980,10 +2068,10 @@ copiar=tempflechad;
 
             public void mouseClicked(java.awt.event.MouseEvent evtr) {
                 tempflechai = izquierda;
-                copiar=tempflechai;
+                copiar = tempflechai;
                 if (evtr.isMetaDown()) {
                     //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
-copiar=tempflechai;
+                    copiar = tempflechai;
                     ppflechai.show(evtr.getComponent(), evtr.getX(), evtr.getY());
                     tempflechai = izquierda;
 
@@ -2261,7 +2349,7 @@ copiar=tempflechai;
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evtr) {
                 mayhemtreeactual = clase;
-                copiar1=clase;
+                copiar1 = clase;
                 int row = clase.getClosestRowForLocation(evtr.getX(), evtr.getY());
                 clase.setSelectionRow(row);
                 Object v1 = clase.getSelectionPath().getLastPathComponent();
@@ -2619,17 +2707,13 @@ copiar=tempflechai;
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             try {
 
-                if (jfc.getFileFilter().getDescription().equals("Diagrama Mayhem")) {
-                    AdminFlujo af = new AdminFlujo(jfc.getSelectedFile().getPath() + ".myhm");
-                    ruta = jfc.getSelectedFile().getPath() + ".myhm";
-                    af.setListaf(listafiguras);
-                    af.escribirArchivo();
-                    //archivo = new File(jfc.getSelectedFile().getPath() + ".myhm");
-                    //ruta = jfc.getSelectedFile().getPath();
-                } else {
-                    JOptionPane.showMessageDialog(jddiagramaflujo, "nose guardo");
-                    //archivo = jfc.getSelectedFile();
-                }
+                // if (jfc.getFileFilter().getDescription().equals("Diagrama Mayhem")) {
+                AdminFlujo af = new AdminFlujo(jfc.getSelectedFile().getPath() + ".myhm");
+                ruta = jfc.getSelectedFile().getPath() + ".myhm";
+                af.setListaf(listafiguras);
+                af.escribirArchivo();
+                //archivo = new File(jfc.getSelectedFile().getPath() + ".myhm");
+                //ruta = jfc.getSelectedFile().getPath();
 
                 //  fw = new FileWriter(archivo);
                 //       bw = new BufferedWriter(fw);
@@ -2664,6 +2748,7 @@ copiar=tempflechai;
             jb_rectangulo.setEnabled(true);
             jb_vertical.setEnabled(true);
             contovalo = 0;
+            Gestor_bt.setEnabled(true);
             jb_derecha.setEnabled(true);
             jb_izquierda.setEnabled(true);
             bt_cerrarciclo.setEnabled(true);
@@ -2674,36 +2759,35 @@ copiar=tempflechai;
             guardarf.setEnabled(true);
             try {
 
-                if (jfc.getFileFilter().getDescription().equals("Diagrama Mayhem")) {
-                    System.out.println(jfc.getSelectedFile().getPath());
-                    AdminFlujo af = new AdminFlujo(jfc.getSelectedFile().getPath());
-                    ruta = jfc.getSelectedFile().getPath();
+                //  if (jfc.getFileFilter().getDescription().equals("Diagrama Mayhem")) {
+                System.out.println(jfc.getSelectedFile().getPath());
+                AdminFlujo af = new AdminFlujo(jfc.getSelectedFile().getPath());
+                ruta = jfc.getSelectedFile().getPath();
 
-                    af.cargararchivo();
-                    listafiguras = new ArrayList();
-                    for (Figura t : af.getListaf()) {
-                        // panelfiguras.add(t);
-                        System.out.println(t.getName());
-                        t = mover(t);
-                        System.out.println("------\n");
-                        System.out.println(t.getName());
-                        panelfiguras.repaint();
+                af.cargararchivo();
+                listafiguras = new ArrayList();
+                for (Figura t : af.getListaf()) {
+                    // panelfiguras.add(t);
+                    System.out.println(t.getName());
+                    t = mover(t);
+                    System.out.println("------\n");
+                    System.out.println(t.getName());
+                    panelfiguras.repaint();
 
-                    }
-
-                    //archivo = new File(jfc.getSelectedFile().getPath() + ".myhm");
-                    //ruta = jfc.getSelectedFile().getPath();
-                } else {
-                    JOptionPane.showMessageDialog(jddiagramaflujo, "nose guardo");
-                    //archivo = jfc.getSelectedFile();
                 }
 
+                //archivo = new File(jfc.getSelectedFile().getPath() + ".myhm");
+                //ruta = jfc.getSelectedFile().getPath();
+                // } else {
+                //    JOptionPane.showMessageDialog(jddiagramaflujo, "nose guardo");
+                //archivo = jfc.getSelectedFile();
+                //  }
                 //  fw = new FileWriter(archivo);
                 //       bw = new BufferedWriter(fw);
                 //   bw.flush();
                 //universo.setArchivo(archivo);
                 //universo.escribirArchivo();
-                JOptionPane.showMessageDialog(this, "Diagrama guardado exitosamente");
+                JOptionPane.showMessageDialog(this, "Diagrama abierto exitosamente");
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2727,6 +2811,7 @@ copiar=tempflechai;
         jb_paralelogramo.setEnabled(true);
         jb_resultado.setEnabled(true);
         jb_rombo.setEnabled(true);
+        Gestor_bt.setEnabled(true);
         jb_rectangulo.setEnabled(true);
         jb_vertical.setEnabled(true);
         jb_derecha.setEnabled(true);
@@ -2792,17 +2877,13 @@ copiar=tempflechai;
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             try {
 
-                if (jfc.getFileFilter().getDescription().equals("Diagrama Marduk")) {
-                    AdminClases af = new AdminClases(jfc.getSelectedFile().getPath() + ".mrk");
-                    ruta = jfc.getSelectedFile().getPath() + ".mrk";
-                    af.setListaf(listatrees);
-                    af.escribirArchivo();
-                    //archivo = new File(jfc.getSelectedFile().getPath() + ".myhm");
-                    //ruta = jfc.getSelectedFile().getPath();
-                } else {
-                    JOptionPane.showMessageDialog(Diagrama_UML, "nose guardo");
-                    //archivo = jfc.getSelectedFile();
-                }
+                //  if (jfc.getFileFilter().getDescription().equals("Diagrama Marduk")) {
+                AdminClases af = new AdminClases(jfc.getSelectedFile().getPath() + ".mrk");
+                ruta = jfc.getSelectedFile().getPath() + ".mrk";
+                af.setListaf(listatrees);
+                af.escribirArchivo();
+                //archivo = new File(jfc.getSelectedFile().getPath() + ".myhm");
+                //ruta = jfc.getSelectedFile().getPath();
 
                 JOptionPane.showMessageDialog(this, "Diagrama guardado exitosamente");
 
@@ -2835,33 +2916,23 @@ copiar=tempflechai;
             jButton12.setEnabled(true);
             try {
 
-                if (jfc.getFileFilter().getDescription().equals("Diagrama Marduk")) {
-                    System.out.println(jfc.getSelectedFile().getPath());
-                    AdminClases af = new AdminClases(jfc.getSelectedFile().getPath());
-                    ruta = jfc.getSelectedFile().getPath();
+                // if (jfc.getFileFilter().getDescription().equals("Diagrama Marduk")) {
+                System.out.println(jfc.getSelectedFile().getPath());
+                AdminClases af = new AdminClases(jfc.getSelectedFile().getPath());
+                ruta = jfc.getSelectedFile().getPath();
 
-                    af.cargararchivo();
-                    listatrees = new ArrayList();
-                    for (JTree t : af.getListaf()) {
-                        //paneluml.add(t);
-                        moveruml(t);
-                        //paneluml.repaint();
+                af.cargararchivo();
+                listatrees = new ArrayList();
+                for (JTree t : af.getListaf()) {
+                    //paneluml.add(t);
+                    moveruml(t);
+                    //paneluml.repaint();
 
-                    }
-
-                    //archivo = new File(jfc.getSelectedFile().getPath() + ".myhm");
-                    //ruta = jfc.getSelectedFile().getPath();
-                } else {
-                    JOptionPane.showMessageDialog(jddiagramaflujo, "nose guardo");
-                    //archivo = jfc.getSelectedFile();
                 }
 
-                //  fw = new FileWriter(archivo);
-                //       bw = new BufferedWriter(fw);
-                //   bw.flush();
-                //universo.setArchivo(archivo);
-                //universo.escribirArchivo();
-                JOptionPane.showMessageDialog(this, "Diagrama guardado exitosamente");
+                //archivo = new File(jfc.getSelectedFile().getPath() + ".myhm");
+                //ruta = jfc.getSelectedFile().getPath();
+                JOptionPane.showMessageDialog(this, "Diagrama abierto exitosamente");
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2954,7 +3025,7 @@ copiar=tempflechai;
         JOptionPane.showMessageDialog(jd_gestord, "Cambio realizado con exito");
     }//GEN-LAST:event_jButton17MouseClicked
 
-    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+    private void Gestor_btMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Gestor_btMouseClicked
         // TODO add your handling code here:
         jd_gestord.setModal(true);
         jd_gestord.pack();
@@ -2962,7 +3033,7 @@ copiar=tempflechai;
         jd_gestord.setVisible(true);
 
 
-    }//GEN-LAST:event_jButton15MouseClicked
+    }//GEN-LAST:event_Gestor_btMouseClicked
 
     private void EliminarparalelogramoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarparalelogramoActionPerformed
         // TODO add your handling code here:
@@ -3049,7 +3120,7 @@ copiar=tempflechai;
 
     private void copiard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copiard1ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_copiard1ActionPerformed
 
     private void copiard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copiard2ActionPerformed
@@ -3084,7 +3155,7 @@ copiar=tempflechai;
 
     private void panelumlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelumlMouseClicked
         // TODO add your handling code here:
-         if (evt.isMetaDown()) {
+        if (evt.isMetaDown()) {
             pegar1.show(evt.getComponent(), evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_panelumlMouseClicked
@@ -3095,6 +3166,110 @@ copiar=tempflechai;
         paneluml.repaint();
         listatrees.remove(mayhemtreeactual);
     }//GEN-LAST:event_elomiarcActionPerformed
+
+    private void Fuente_paralelogramoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fuente_paralelogramoActionPerformed
+        // TODO add your handling code here:
+        jd_fuentes.setModal(true);
+        jd_fuentes.pack();
+        jd_fuentes.setLocationRelativeTo(this);
+        jd_fuentes.setVisible(true);
+         sp_tamaño.setValue(0);
+        colorboton1.setBackground(Color.BLACK);
+        flagofhate=1;
+    }//GEN-LAST:event_Fuente_paralelogramoActionPerformed
+
+    private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
+        // TODO add your handling code here:
+        if (flagofhate == 1) {
+            String[] fu = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+            fd = (String) JOptionPane.showInputDialog(this, "Eleccion", "Fuentes", 3, null, fu, fu[0]);
+            copiar.setFont(new java.awt.Font(fd, 1, (Integer) sp_tamaño.getValue()));
+            copiar.setForeground(colorboton1.getBackground());
+            this.repaint();
+        }else if(flagofhate==2){
+            String[] fu = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+            fd = (String) JOptionPane.showInputDialog(this, "Eleccion", "Fuentes", 3, null, fu, fu[0]);
+            copiar1.setFont(new java.awt.Font(fd, 1, (Integer) sp_tamaño.getValue()));
+            copiar1.setForeground(colorboton1.getBackground());
+        }
+    }//GEN-LAST:event_jButton19MouseClicked
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void colorboton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorboton1MouseClicked
+        // TODO add your handling code here:
+        Color cl = JColorChooser.showDialog(jd_fuentes, "Seleccionar", Color.BLACK);
+        colorboton1.setBackground(cl);
+    }//GEN-LAST:event_colorboton1MouseClicked
+
+    private void Fuente_ovaloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fuente_ovaloActionPerformed
+        // TODO add your handling code here:
+        jd_fuentes.setModal(true);
+        jd_fuentes.pack();
+        jd_fuentes.setLocationRelativeTo(this);
+        jd_fuentes.setVisible(true);
+        flagofhate=1;
+         sp_tamaño.setValue(0);
+        colorboton1.setBackground(Color.BLACK);
+    }//GEN-LAST:event_Fuente_ovaloActionPerformed
+
+    private void Fuente_romboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fuente_romboActionPerformed
+        // TODO add your handling code here:
+        jd_fuentes.setModal(true);
+        jd_fuentes.pack();
+        jd_fuentes.setLocationRelativeTo(this);
+        jd_fuentes.setVisible(true);
+        flagofhate=1;
+         sp_tamaño.setValue(0);
+        colorboton1.setBackground(Color.BLACK);
+    }//GEN-LAST:event_Fuente_romboActionPerformed
+
+    private void Fuente_rectanguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fuente_rectanguloActionPerformed
+        // TODO add your handling code here:
+        jd_fuentes.setModal(true);
+        jd_fuentes.pack();
+        jd_fuentes.setLocationRelativeTo(this);
+        jd_fuentes.setVisible(true);
+        flagofhate=1;
+         sp_tamaño.setValue(0);
+        colorboton1.setBackground(Color.BLACK);
+    }//GEN-LAST:event_Fuente_rectanguloActionPerformed
+
+    private void Fuente_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fuente_resultadoActionPerformed
+        // TODO add your handling code here:
+        flagofhate=1;
+        jd_fuentes.setModal(true);
+        jd_fuentes.pack();
+        jd_fuentes.setLocationRelativeTo(this);
+        jd_fuentes.setVisible(true);
+         sp_tamaño.setValue(0);
+        colorboton1.setBackground(Color.BLACK);
+    }//GEN-LAST:event_Fuente_resultadoActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
+        // TODO add your handling code here:
+        this.jd_opcion.setModal(true);
+        jd_opcion.pack();
+        jd_opcion.setLocationRelativeTo(this);
+        jd_opcion.setVisible(true);
+    }//GEN-LAST:event_jButton20MouseClicked
+
+    private void fuentecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuentecActionPerformed
+        // TODO add your handling code here:
+        flagofhate = 2;
+        jd_fuentes.setModal(true);
+        jd_fuentes.pack();
+        jd_fuentes.setLocationRelativeTo(this);
+        jd_fuentes.setVisible(true);
+        sp_tamaño.setValue(0);
+        colorboton1.setBackground(Color.BLACK);
+    }//GEN-LAST:event_fuentecActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3138,6 +3313,12 @@ copiar=tempflechai;
     private javax.swing.JDialog Condicional_mientras;
     private javax.swing.JDialog Diagrama_UML;
     private javax.swing.JMenuItem Eliminarparalelogramo;
+    private javax.swing.JMenuItem Fuente_ovalo;
+    private javax.swing.JMenuItem Fuente_paralelogramo;
+    private javax.swing.JMenuItem Fuente_rectangulo;
+    private javax.swing.JMenuItem Fuente_resultado;
+    private javax.swing.JMenuItem Fuente_rombo;
+    private javax.swing.JButton Gestor_bt;
     private javax.swing.JMenuItem Guardarcomod;
     private javax.swing.JMenuItem Imprimirdf;
     private javax.swing.JMenuItem Neuvod;
@@ -3156,6 +3337,7 @@ copiar=tempflechai;
     private javax.swing.JComboBox<String> cb_tipouml1;
     private javax.swing.JMenuItem claseuml;
     private javax.swing.JDialog codigoclases;
+    private javax.swing.JButton colorboton1;
     private javax.swing.JMenuItem coloruml;
     private javax.swing.JMenuItem copiarclase;
     private javax.swing.JMenuItem copiard;
@@ -3174,6 +3356,7 @@ copiar=tempflechai;
     private javax.swing.JMenuItem eliminarrombo4;
     private javax.swing.JMenuItem eliminarrombo5;
     private javax.swing.JMenuItem elomiarc;
+    private javax.swing.JMenuItem fuentec;
     private javax.swing.JMenuItem gft;
     private javax.swing.JMenuItem gu;
     private javax.swing.JMenuItem guardarf;
@@ -3187,10 +3370,12 @@ copiar=tempflechai;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -3226,23 +3411,24 @@ copiar=tempflechai;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -3272,6 +3458,7 @@ copiar=tempflechai;
     private javax.swing.JDialog jd_asignarvariable;
     private javax.swing.JDialog jd_asignarvariableresultado;
     private javax.swing.JDialog jd_codigogenerado;
+    private javax.swing.JDialog jd_fuentes;
     private javax.swing.JDialog jd_gestord;
     private javax.swing.JDialog jd_herencia;
     private javax.swing.JDialog jd_opcion;
@@ -3283,7 +3470,6 @@ copiar=tempflechai;
     private javax.swing.JList<Variable> jl_variables;
     private javax.swing.JList<Variable> jl_variables1;
     private javax.swing.JList<Variable> jl_variables2;
-    private javax.swing.JMenuItem jmi_nuevo;
     private javax.swing.JMenuItem jpp_color_ovalo;
     private javax.swing.JMenuItem jpp_color_paralelogramo;
     private javax.swing.JMenuItem jpp_color_rectangulo;
@@ -3316,6 +3502,7 @@ copiar=tempflechai;
     private javax.swing.JPopupMenu ppflecha;
     private javax.swing.JPopupMenu ppflechad;
     private javax.swing.JPopupMenu ppflechai;
+    private javax.swing.JSpinner sp_tamaño;
     private javax.swing.JTextField tf_nombreatributo;
     private javax.swing.JTextField tf_nombrevariable;
     private javax.swing.JTextPane tp_codigoclases;
@@ -3327,7 +3514,9 @@ int contovalo = 0;
     int cof = 0, marduk = 0;
     Icon icon = null;
     Object o = null;
+
     JTree mayhemtreeactual = new JTree();
+
     Entrada_Salida templabelparalelogramo = new Entrada_Salida();
     Inicio tempovalo = new Inicio();
     Condicional temprombo = new Condicional();
@@ -3341,9 +3530,12 @@ int contovalo = 0;
     ArrayList<JTree> listatrees = new ArrayList();
     DefaultMutableTreeNode nodoblackactual;
     JLabel sepactual;
-    JTree copiar1= new JTree();
+    JTree copiar1 = new JTree();
     Figura copiar = new Figura();
     String ruta = "";
+    String fd = "Times New Roman";
+    String fuml = "Times New Roman";
+    int flagofhate;
 
     //Mover lo cargado de los diagramas
     public Figura mover(Figura t) {
