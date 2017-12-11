@@ -61,6 +61,9 @@ import java.awt.event.MouseListener;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
@@ -426,7 +429,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         panelfiguras.setLayout(null);
-        jddiagramaflujo.getContentPane().add(panelfiguras, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 740, 890));
+        jddiagramaflujo.getContentPane().add(panelfiguras, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 700, 890));
 
         jButton3.setText("Crear Nueva Variable");
         jButton3.setEnabled(false);
@@ -891,7 +894,7 @@ public class Principal extends javax.swing.JFrame {
         tp_codigodiagrama.setRows(5);
         jScrollPane1.setViewportView(tp_codigodiagrama);
 
-        jd_codigogenerado.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 500, 460));
+        jd_codigogenerado.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 500, 460));
 
         jLabel11.setText("Codigo");
         jd_codigogenerado.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, -1));
@@ -1010,6 +1013,11 @@ public class Principal extends javax.swing.JFrame {
         gu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         gu.setText("Guardar");
         gu.setEnabled(false);
+        gu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guActionPerformed(evt);
+            }
+        });
         jMenu5.add(gu);
 
         gft.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
@@ -1453,20 +1461,12 @@ public class Principal extends javax.swing.JFrame {
             //JLabel Ovalo = new JLabel();
             // name.setPreferredSize(new Dimension(50, 100));
             panelfiguras.add(Ovalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
-            Ovalo.setLocation(20, 210);
             Ovalo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Ovalo.png"));
             Ovalo.setName("Mayhem" + cof);
-            //Ovalo.setBackground(Color.red);
             Ovalo.setHorizontalTextPosition(SwingConstants.CENTER);
             Ovalo.setTipo("Inicio");
             Ovalo.setOpaque(true);
             cof++;
-
-            Ovalo.setMaximumSize(new java.awt.Dimension(30, 30));
-            Ovalo.setMinimumSize(new Dimension(60, 20));
-            Ovalo.setLocation(new Point(30, 30));
-            Ovalo.setPreferredSize(new Dimension(40, 40));
-            Ovalo.setSize(50, 50);
             Ovalo.setBackground(Color.cyan);
             Ovalo.setBounds(440, 320, 100, 50);
             Ovalo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -2130,6 +2130,7 @@ public class Principal extends javax.swing.JFrame {
         jl_variables2.setModel(modelo);
 
         JOptionPane.showMessageDialog(variables, "Variable agregada");
+        tf_nombrevariable.setText("");
 
 
     }//GEN-LAST:event_jButton4MouseClicked
@@ -2255,73 +2256,7 @@ public class Principal extends javax.swing.JFrame {
     /////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////
-    DefaultTreeModel m = (DefaultTreeModel) arbol.getModel();
-        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
-        DefaultMutableTreeNode atributos = new DefaultMutableTreeNode("<Atributos>");
-        DefaultMutableTreeNode metodos = new DefaultMutableTreeNode("<Metodos>");
-        raiz.add(atributos);
-        raiz.add(metodos);
-        arbol.setName("Arbol" + tree);
-        arbol.setSize(150, 150);
-        arbol.setBackground(new java.awt.Color(192, 255, 243));
-        arbol.setBorder(BorderFactory.createLineBorder(new java.awt.Color(165, 105, 189), 1));
-        tree++;
-        arbol.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        arbol.addMouseListener(new MouseListener() {
-            public void mouseClicked(MouseEvent evt) {
-                actualT = arbol;
-                jmPropiedades.setEnabled(true);
-                txSeleccionado1.setText(modelo.getRoot().toString());
-                int row = arbol.getClosestRowForLocation(evt.getX(), evt.getY());
-                arbol.setSelectionRow(row);
-                Object v1 = arbol.getSelectionPath().getLastPathComponent();
-                nodoS = (DefaultMutableTreeNode) v1;
-                if (evt.isMetaDown()) {
-                    ppMenuClases.show(evt.getComponent(), evt.getX(), evt.getY());
-                }
-            }
-
-            public void mouseEntered(MouseEvent arg0) {
-                arbol.setBorder(BorderFactory.createLineBorder(new java.awt.Color(254, 146, 0), 2));
-                arbol.setToolTipText(modelo.getRoot().toString());
-            }
-
-            public void mouseExited(MouseEvent arg0) {
-                arbol.setBorder(BorderFactory.createLineBorder(new java.awt.Color(165, 105, 189), 1));
-            }
-
-            public void mousePressed(MouseEvent arg0) {
-                actualT = arbol;
-                txSeleccionado1.setText(modelo.getRoot().toString());
-            }
-
-            public void mouseReleased(MouseEvent arg0) {
-            }
-        });
-        arbol.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                actualT = arbol;
-                txSeleccionado1.setText(modelo.getRoot().toString());
-                if (((arbol.getLocation().x + evt.getX() - arbol.getWidth() / 2) > 5)) {
-                    if (((arbol.getLocation().x + evt.getX() - arbol.getWidth() / 2) < 800)) {
-                        if ((arbol.getLocation().y + evt.getY() - arbol.getWidth() / 2) > -15) {
-                            if ((arbol.getLocation().y + evt.getY() - arbol.getWidth() / 2) < 520) {
-                                arbol.setLocation(arbol.getLocation().x + evt.getX() - arbol.getWidth() / 2,
-                                        arbol.getLocation().y + evt.getY() - arbol.getHeight() / 2);
-                            }
-                        }
-                    }
-                }
-            }
-        });
-        this.jpBase.add(arbol);
-        int x = (int) Math.floor(Math.random() * 801 + 1);
-        int y = (int) Math.floor(Math.random() * 521 + 1);
-        arbol.setLocation(x, y);
-        clases.add(arbol);
-        jpBase.repaint();
-    
-     */
+   */
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         // TODO add your handling code here:
@@ -2389,41 +2324,7 @@ public class Principal extends javax.swing.JFrame {
         paneluml.repaint();
         listatrees.add(clase);
 
-        /*
-        clase.addMouseListener(new MouseListener() {
-            public void mouseClicked(MouseEvent evt) {
-                actualT = arbol;
-                jmPropiedades.setEnabled(true);
-                txSeleccionado1.setText(modelo.getRoot().toString());
-                int row = arbol.getClosestRowForLocation(evt.getX(), evt.getY());
-                arbol.setSelectionRow(row);
-                Object v1 = arbol.getSelectionPath().getLastPathComponent();
-                nodoS = (DefaultMutableTreeNode) v1;
-                if (evt.isMetaDown()) {
-                    ppMenuClases.show(evt.getComponent(), evt.getX(), evt.getY());
-                }
-            }
-
-            public void mouseEntered(MouseEvent arg0) {
-                arbol.setBorder(BorderFactory.createLineBorder(new java.awt.Color(254, 146, 0), 2));
-                arbol.setToolTipText(modelo.getRoot().toString());
-            }
-
-            public void mouseExited(MouseEvent arg0) {
-                arbol.setBorder(BorderFactory.createLineBorder(new java.awt.Color(165, 105, 189), 1));
-            }
-
-            public void mousePressed(MouseEvent arg0) {
-                actualT = arbol;
-                txSeleccionado1.setText(modelo.getRoot().toString());
-            }
-
-            public void mouseReleased(MouseEvent arg0) {
-            }
-        });*/
-        // clase.set
-        //paneluml.add(clase);
-
+       
     }//GEN-LAST:event_jButton8MouseClicked
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
@@ -2441,11 +2342,9 @@ public class Principal extends javax.swing.JFrame {
                 ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(nuevo);
             }
         }
-        JOptionPane.showMessageDialog(this, "Atributo Guardado Exitosamente");
+        JOptionPane.showMessageDialog(atributosuml, "Atributo Guardado Exitosamente");
         tf_nombreatributo.setText("");
-        // String Contend = "";
-
-        //atributosuml.setVisible(false);
+       
 
     }//GEN-LAST:event_jButton9MouseClicked
 
@@ -2732,6 +2631,7 @@ public class Principal extends javax.swing.JFrame {
     private void AbrirdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirdActionPerformed
         // TODO add your handling code here:
         panelfiguras.removeAll();
+        panelfiguras.repaint();
         panelfiguras.setLayout(null);
         JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Diagrama Mayhem", "myhm");
@@ -2799,8 +2699,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void NeuvodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NeuvodActionPerformed
         // TODO add your handling code here:
-        nombrediagramaflujo = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese nombre del diagrama");
+      //  nombrediagramaflujo = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese nombre del diagrama");
         nombretotal = nombrediagramaflujo;
+        JOptionPane.showMessageDialog(jddiagramaflujo, "Nuevo");
+        
+        
         panelfiguras.removeAll();
         panelfiguras.setLayout(null);
         listafiguras = new ArrayList();
@@ -2832,6 +2735,7 @@ public class Principal extends javax.swing.JFrame {
         try {
 
             AdminFlujo af = new AdminFlujo(ruta);
+            af.setListaf(listafiguras);
             af.escribirArchivo();
             JOptionPane.showMessageDialog(this, "Diagrama guardado exitosamente");
 
@@ -3181,16 +3085,17 @@ public class Principal extends javax.swing.JFrame {
     private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
         // TODO add your handling code here:
         if (flagofhate == 1) {
-            String[] fu = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-            fd = (String) JOptionPane.showInputDialog(this, "Eleccion", "Fuentes", 3, null, fu, fu[0]);
+            String[] fue = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+            fd = (String) JOptionPane.showInputDialog(jd_fuentes, "Eleccion", "Fuentes", 3, null, fue, fue[0]);
             copiar.setFont(new java.awt.Font(fd, 1, (Integer) sp_tamaño.getValue()));
             copiar.setForeground(colorboton1.getBackground());
             this.repaint();
         }else if(flagofhate==2){
             String[] fu = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-            fd = (String) JOptionPane.showInputDialog(this, "Eleccion", "Fuentes", 3, null, fu, fu[0]);
+            fd = (String) JOptionPane.showInputDialog(jd_fuentes, "Eleccion", "Fuentes", 3, null, fu, fu[0]);
             copiar1.setFont(new java.awt.Font(fd, 1, (Integer) sp_tamaño.getValue()));
             copiar1.setForeground(colorboton1.getBackground());
+            this.repaint();
         }
     }//GEN-LAST:event_jButton19MouseClicked
 
@@ -3270,6 +3175,24 @@ public class Principal extends javax.swing.JFrame {
         sp_tamaño.setValue(0);
         colorboton1.setBackground(Color.BLACK);
     }//GEN-LAST:event_fuentecActionPerformed
+
+    private void guActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guActionPerformed
+        // TODO add your handling code here:
+        
+        
+          AdminClases af = new AdminClases(ruta);
+                
+                af.setListaf(listatrees);
+        try {
+            af.escribirArchivo();
+            //archivo = new File(jfc.getSelectedFile().getPath() + ".myhm");
+            //ruta = jfc.getSelectedFile().getPath();
+        } catch (IOException ex) {
+            
+        }
+
+                JOptionPane.showMessageDialog(this, "Diagrama guardado exitosamente");
+    }//GEN-LAST:event_guActionPerformed
 
     /**
      * @param args the command line arguments

@@ -215,7 +215,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="450" y="40" width="740" height="890"/>
+              <AbsoluteConstraints x="450" y="40" width="700" height="890"/>
             </Constraint>
           </Constraints>
 
@@ -1112,7 +1112,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="70" y="70" width="500" height="460"/>
+              <AbsoluteConstraints x="40" y="70" width="500" height="460"/>
             </Constraint>
           </Constraints>
 
@@ -1358,6 +1358,9 @@
                     <Property name="text" type="java.lang.String" value="Guardar"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="gft">
                   <Properties>
