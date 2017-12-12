@@ -39,10 +39,8 @@ public class Codigo {
     public String Entrada_Salidac(Entrada_Salida es) {
         String ess = "\n";
 
-        for (Variable t : es.getListva()) {
-            
-            ess += t.getTipo() + " " + t.getNombre() + ";\n";
-        }
+       ess+="\n"
+                + es.getText()+";";
         ess += "\n";
 
         return ess;
@@ -72,39 +70,12 @@ public class Codigo {
 
          */
         String codigo = "";
-        if (im.isConVariable()) {
-            //String[] tokens = im.getText().split(",");
-         /*  if (im.getVariable().getTipo().equals("int") || im.getVariable().getTipo().equals("long int")) {
-                codigo+= "\n"
-                        + "printf(\""+im.getText()+" %i\\n\")"+","+im.getVariable().getNombre()+";";
-                
-            }else if(im.getVariable().getTipo().equals("char")){
-                codigo+="\n"
-                        + "printf(\""+im.getText()+" %c\\n\")"+","+im.getVariable().getNombre()+";";
-                
-            }else if(im.getVariable().getTipo().equals("float")){
-                codigo+="\n"
-                        + "printf(\""+im.getText()+" %f\\n\")"+","+im.getVariable().getNombre()+";";
-            }else if(im.getVariable().getTipo().equals("double")){
-                codigo+="\n"
-                        + "printf(\""+im.getText()+" %lf\\n\")"+","+im.getVariable().getNombre()+";";
-            }else{
-                codigo+="\n"
-                        + "printf(\""+im.getText()+" \\n\")"+";";
-            }
-           
-            
-            
-        */
-        codigo+="\n"
-                + "cout<< \""+im.getText()+"\""+"<<"+im.getVariable().getNombre()+";";
         
-        }//Fin if is con variables
+
         
-        else{
             codigo+="\n"
-                        + "cout<< \""+im.getText()+"\""+";";
-        }
+                        + "cout<< \""+im.getText()+";";
+        
         
 
         return codigo;

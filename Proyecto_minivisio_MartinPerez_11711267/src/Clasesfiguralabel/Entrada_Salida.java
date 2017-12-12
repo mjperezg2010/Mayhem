@@ -14,7 +14,7 @@ import javax.swing.JLabel;
  * @author mjper
  */
 public class Entrada_Salida extends Figura{
-    ArrayList <Variable> listva = new ArrayList();
+    private ArrayList <Variable> listva = new ArrayList();
     
 
     public ArrayList<Variable> getListva() {

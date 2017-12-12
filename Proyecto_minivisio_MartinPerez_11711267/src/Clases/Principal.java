@@ -85,6 +85,12 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+      //  try{
+            
+      //  }catch(Exception e){
+            this.setIconImage(new ImageIcon(getClass().getResource("../icon/icono.jpg")).getImage()); 
+       // }
+       
     }
 
     /**
@@ -189,6 +195,8 @@ public class Principal extends javax.swing.JFrame {
         jl_variables2 = new javax.swing.JList<>();
         jLabel10 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jt_textoi = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
         imagen3 = new javax.swing.JLabel();
         jd_codigogenerado = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -295,7 +303,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jButton20 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
+        jLabel39 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         jddiagramaflujo.setTitle("Diagrama de flujo");
@@ -782,7 +790,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Nuevo Diagrama");
+        jLabel14.setText("Diagramas");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
 
         jd_opcion.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 460));
@@ -869,7 +877,7 @@ public class Principal extends javax.swing.JFrame {
         jl_variables2.setModel(new DefaultListModel());
         jScrollPane5.setViewportView(jl_variables2);
 
-        jd_asignarvariableresultado.getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 110, -1));
+        jd_asignarvariableresultado.getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 110, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLabel10.setText("Asignar");
@@ -881,7 +889,12 @@ public class Principal extends javax.swing.JFrame {
                 jButton6MouseClicked(evt);
             }
         });
-        jd_asignarvariableresultado.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
+        jd_asignarvariableresultado.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, -1, -1));
+        jd_asignarvariableresultado.getContentPane().add(jt_textoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 80, -1));
+
+        jLabel38.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel38.setText("Texto");
+        jd_asignarvariableresultado.getContentPane().add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
         imagen3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/C-1-400x400.jpg"))); // NOI18N
         imagen3.setText("jLabel8");
@@ -1438,13 +1451,11 @@ public class Principal extends javax.swing.JFrame {
                 jButton20ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 180, 80));
+        getContentPane().add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 190, 80));
 
-        jButton18.setBackground(new java.awt.Color(0, 0, 0));
-        jButton18.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jButton18.setForeground(new java.awt.Color(255, 255, 255));
-        jButton18.setText("Informacion");
-        getContentPane().add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 180, 90));
+        jLabel39.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        jLabel39.setText("Proyecto Programacion 2 - MiniVisio");
+        getContentPane().add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/diagrama-de-flujo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -1503,21 +1514,17 @@ public class Principal extends javax.swing.JFrame {
 
         } else if (contovalo == 1) {
             Inicio Ovalo = new Inicio();
-            // name.setPreferredSize(new Dimension(50, 100));
+
             panelfiguras.add(Ovalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
-            Ovalo.setLocation(20, 210);
+
             Ovalo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Ovalo.png"));
             Ovalo.setTipo("Fin");
-            //Ovalo.setBackground(Color.red);
+
             Ovalo.setHorizontalTextPosition(SwingConstants.CENTER);
             Ovalo.setName("Mayhem" + cof);
             Ovalo.setOpaque(true);
             cof++;
-            Ovalo.setMaximumSize(new java.awt.Dimension(30, 30));
-            Ovalo.setMinimumSize(new Dimension(60, 20));
-            Ovalo.setLocation(new Point(30, 30));
-            Ovalo.setPreferredSize(new Dimension(40, 40));
-            Ovalo.setSize(50, 50);
+
             Ovalo.setBackground(Color.cyan);
             Ovalo.setBounds(440, 320, 100, 50);
             Ovalo.setToolTipText("Click derecho para propiedades");
@@ -1562,18 +1569,10 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         Entrada_Salida Paralelogramo = new Entrada_Salida();
-        // name.setPreferredSize(new Dimension(50, 100));
         panelfiguras.add(Paralelogramo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
-        Paralelogramo.setLocation(20, 210);
-        //Paralelogramo.setBackground(Color.red);
-
         Paralelogramo.setHorizontalTextPosition(SwingConstants.CENTER);
         Paralelogramo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/paralelogramo_p.png"));
         Paralelogramo.setOpaque(true);
-        Paralelogramo.setMaximumSize(new java.awt.Dimension(30, 30));
-        Paralelogramo.setMinimumSize(new Dimension(60, 20));
-        Paralelogramo.setLocation(new Point(30, 30));
-        Paralelogramo.setPreferredSize(new Dimension(40, 40));
         Paralelogramo.setName("Mayhem" + cof);
         cof++;
         Paralelogramo.setBackground(Color.ORANGE);
@@ -1615,7 +1614,7 @@ public class Principal extends javax.swing.JFrame {
 
                                 t.setText(templabelparalelogramo.getText());
                                 t.setBackground(templabelparalelogramo.getBackground());
-                                ((Entrada_Salida) t).setListva(templabelparalelogramo.getListva());
+                                //((Entrada_Salida) t).setListva(templabelparalelogramo.getListva());
                             } else {
                                 //JOptionPane.showMessageDialog( "No");
 
@@ -1644,8 +1643,7 @@ public class Principal extends javax.swing.JFrame {
         panelfiguras.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 300, 600));
         name.setLocation(20, 210);
         name.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/Flecha.jpg"));
-        name.setMaximumSize(new java.awt.Dimension(30, 30));
-        name.setMinimumSize(new Dimension(60, 20));
+
         name.setLocation(new Point(30, 30));
         name.setPreferredSize(new Dimension(40, 40));
         name.setSize(50, 50);
@@ -1691,18 +1689,13 @@ public class Principal extends javax.swing.JFrame {
         Condicional rombo = new Condicional();
         // name.setPreferredSize(new Dimension(50, 100));
         panelfiguras.add(rombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 600, 600));
-        rombo.setLocation(20, 210);
 
         rombo.setBackground(Color.GREEN);
         rombo.setHorizontalTextPosition(SwingConstants.CENTER);
         rombo.setName("MAyhem" + cof);
         rombo.setOpaque(true);
         rombo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/rombo_p.png"));
-        rombo.setMaximumSize(new java.awt.Dimension(30, 30));
-        rombo.setMinimumSize(new Dimension(60, 20));
-        rombo.setLocation(new Point(30, 30));
-        rombo.setPreferredSize(new Dimension(40, 40));
-        rombo.setSize(50, 50);
+
         rombo.setTipo("Condicional");
         rombo.setAgregado(true);
         rombo.setBounds(440, 320, 100, 67);
@@ -1749,8 +1742,6 @@ public class Principal extends javax.swing.JFrame {
 
                             }
                         }
-                    } else {
-                        listafiguras.add(rombo);
                     }
                 }
             }
@@ -1766,7 +1757,7 @@ public class Principal extends javax.swing.JFrame {
         Procesos rectangulo = new Procesos();
         // name.setPreferredSize(new Dimension(50, 100));
         panelfiguras.add(rectangulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 550, 600));
-        rectangulo.setLocation(20, 210);
+
         rectangulo.setBackground(Color.red);
         rectangulo.setForeground(Color.BLACK);
         rectangulo.setName("Mayhem" + cof);
@@ -1775,11 +1766,7 @@ public class Principal extends javax.swing.JFrame {
         rectangulo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Rectangulo_p.png"));
         rectangulo.setHorizontalTextPosition(SwingConstants.CENTER);
         rectangulo.setAgregado(true);
-        rectangulo.setMaximumSize(new java.awt.Dimension(30, 30));
-        rectangulo.setMinimumSize(new Dimension(60, 20));
-        rectangulo.setLocation(new Point(30, 30));
-        rectangulo.setPreferredSize(new Dimension(40, 40));
-        //name.setSize(70, 50);
+
         rectangulo.setBounds(440, 320, 100, 67);
         rectangulo.setToolTipText("Click derecho para propiedades");
         rectangulo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -1828,7 +1815,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         listafiguras.add(rectangulo);
-        //rectangulo.setBackground(temprectangulo.getBackground());
+      
 
     }//GEN-LAST:event_jb_rectanguloMouseClicked
 
@@ -1838,17 +1825,13 @@ public class Principal extends javax.swing.JFrame {
         Imprimir resultado = new Imprimir();
         // name.setPreferredSize(new Dimension(50, 100));
         panelfiguras.add(resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 330, 600));
-        resultado.setLocation(20, 210);
         resultado.setIcon(new javax.swing.ImageIcon("./src/Iconitos/resultado_p.png"));
-        resultado.setMaximumSize(new java.awt.Dimension(30, 30));
-        resultado.setMinimumSize(new Dimension(60, 20));
-        resultado.setLocation(new Point(30, 30));
         resultado.setHorizontalTextPosition(SwingConstants.CENTER);
         resultado.setOpaque(true);
         resultado.setName("Mayhem" + cof);
         cof++;
-        resultado.setAgregado(true);
-        resultado.setPreferredSize(new Dimension(40, 40));
+        // resultado.setAgregado(true);
+
         resultado.setBackground(Color.PINK);
         resultado.setBounds(420, 300, 100, 67);
         resultado.setToolTipText("Click derecho para propiedades");
@@ -1912,8 +1895,7 @@ public class Principal extends javax.swing.JFrame {
         panelfiguras.add(derecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 330, 600));
         derecha.setLocation(20, 210);
         derecha.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/flechaderecha.jpg"));
-        derecha.setMaximumSize(new java.awt.Dimension(30, 30));
-        derecha.setMinimumSize(new Dimension(60, 20));
+
         derecha.setLocation(new Point(30, 30));
         derecha.setPreferredSize(new Dimension(40, 40));
         derecha.setName("Flecha derecha" + cof);
@@ -2045,8 +2027,7 @@ public class Principal extends javax.swing.JFrame {
         panelfiguras.add(izquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 300, 600));
         izquierda.setLocation(20, 210);
         izquierda.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/izquierda.jpg"));
-        izquierda.setMaximumSize(new java.awt.Dimension(30, 30));
-        izquierda.setMinimumSize(new Dimension(60, 20));
+
         izquierda.setLocation(new Point(30, 30));
         izquierda.setPreferredSize(new Dimension(40, 40));
         izquierda.setSize(50, 50);
@@ -2153,13 +2134,14 @@ public class Principal extends javax.swing.JFrame {
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
 
-        templabelparalelogramo.getListva().add(jl_variables.getSelectedValue());
-        String acum = "";
+        // templabelparalelogramo.getListva().add(jl_variables.getSelectedValue());
+        /* String acum = "";
         for (Variable t : templabelparalelogramo.getListva()) {
             acum += t.getNombre() + ",";
-        }
+        }*/
+        Variable v = jl_variables.getSelectedValue();
 
-        templabelparalelogramo.setText("Lea " + acum);
+        templabelparalelogramo.setText(v.getTipo() + " " + v.getNombre());
         JOptionPane.showMessageDialog(jd_asignarvariable, "Variable " + jl_variables.getSelectedValue().getNombre() + " asignada con exito");
 
     }//GEN-LAST:event_jButton5MouseClicked
@@ -2182,23 +2164,21 @@ public class Principal extends javax.swing.JFrame {
 
     private void jpp_tipoimpresionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpp_tipoimpresionActionPerformed
         // TODO add your handling code here:
-        int opcion = JOptionPane.showConfirmDialog(jddiagramaflujo, "¿Desea realizar una impresion con variable?", "Elija", JOptionPane.YES_NO_OPTION);
-        if (opcion == 0) {
-            tempresultado.setConVariable(true);
-            //jd_asignarvariableresultado
+       
+      
+           
             jd_asignarvariableresultado.setModal(true);
             jd_asignarvariableresultado.pack();
             jd_asignarvariableresultado.setLocationRelativeTo(this);
             jd_asignarvariableresultado.setVisible(true);
-        } else {
-            tempresultado.setConVariable(false);
-        }
+       
 
     }//GEN-LAST:event_jpp_tipoimpresionActionPerformed
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
-        tempresultado.setVariable(jl_variables2.getSelectedValue());
+        // tempresultado.setVariable(jl_variables2.getSelectedValue());
+        tempresultado.setText(jt_textoi.getText()+"\"" + "<<" + jl_variables2.getSelectedValue().getNombre());
         JOptionPane.showMessageDialog(jd_asignarvariableresultado, "Variable asignada con exito");
         jd_asignarvariableresultado.setVisible(false);
     }//GEN-LAST:event_jButton6MouseClicked
@@ -2210,6 +2190,7 @@ public class Principal extends javax.swing.JFrame {
     private void bt_cerrarcicloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cerrarcicloMouseClicked
         // TODO add your handling code here:
         FinCiclo fc = new FinCiclo();
+        fc.setText("Fin Ciclo");
         listafiguras.add(fc);
     }//GEN-LAST:event_bt_cerrarcicloMouseClicked
 
@@ -2227,36 +2208,6 @@ public class Principal extends javax.swing.JFrame {
         jd_opcion.setVisible(false);
     }//GEN-LAST:event_jButton2MouseClicked
 
-    /*
-    
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////          /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    
-     /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    
-     /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    
-     /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-   */
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         // TODO add your handling code here:
@@ -2324,7 +2275,7 @@ public class Principal extends javax.swing.JFrame {
         paneluml.repaint();
         listatrees.add(clase);
 
-       
+
     }//GEN-LAST:event_jButton8MouseClicked
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
@@ -2344,7 +2295,7 @@ public class Principal extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(atributosuml, "Atributo Guardado Exitosamente");
         tf_nombreatributo.setText("");
-       
+
 
     }//GEN-LAST:event_jButton9MouseClicked
 
@@ -2381,7 +2332,7 @@ public class Principal extends javax.swing.JFrame {
             }
         }
 
-        JOptionPane.showMessageDialog(this, "Método Guardado Exitosamente");
+        JOptionPane.showMessageDialog(metodosuml, "Método Guardado Exitosamente");
         jt_nom.setText("");
         jt_parametro.setText("");
         metodosuml.setVisible(false);
@@ -2470,17 +2421,7 @@ public class Principal extends javax.swing.JFrame {
         sep.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evtr) {
                 if (evtr.isMetaDown()) {
-                    //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
-
-                    /* jpp_rombo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
-                    temprombo = rombo;
-                    rombo.setText(temprombo.getText());
-                    rombo.setBackground(temprombo.getBackground());
-                    rombo.setTipo(temprombo.getTipo());
-                    
-                   
-                    
-                     */
+                  
                     sepactual = sep;
                     pp_sep.show(evtr.getComponent(), evtr.getX(), evtr.getY());
                 }
@@ -2537,17 +2478,7 @@ public class Principal extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evtr) {
                 sepactual = sep;
                 if (evtr.isMetaDown()) {
-                    //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
-
-                    /* jpp_rombo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
-                    temprombo = rombo;
-                    rombo.setText(temprombo.getText());
-                    rombo.setBackground(temprombo.getBackground());
-                    rombo.setTipo(temprombo.getTipo());
-                    
                    
-                    
-                     */
                     pp_sep.show(evtr.getComponent(), evtr.getX(), evtr.getY());
                 }
             }
@@ -2611,15 +2542,8 @@ public class Principal extends javax.swing.JFrame {
                 ruta = jfc.getSelectedFile().getPath() + ".myhm";
                 af.setListaf(listafiguras);
                 af.escribirArchivo();
-                //archivo = new File(jfc.getSelectedFile().getPath() + ".myhm");
-                //ruta = jfc.getSelectedFile().getPath();
-
-                //  fw = new FileWriter(archivo);
-                //       bw = new BufferedWriter(fw);
-                //   bw.flush();
-                //universo.setArchivo(archivo);
-                //universo.escribirArchivo();
-                JOptionPane.showMessageDialog(this, "Diagrama guardado exitosamente");
+              
+                JOptionPane.showMessageDialog(jddiagramaflujo, "Diagrama guardado exitosamente");
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2630,6 +2554,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void AbrirdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirdActionPerformed
         // TODO add your handling code here:
+      
         panelfiguras.removeAll();
         panelfiguras.repaint();
         panelfiguras.setLayout(null);
@@ -2659,35 +2584,17 @@ public class Principal extends javax.swing.JFrame {
             guardarf.setEnabled(true);
             try {
 
-                //  if (jfc.getFileFilter().getDescription().equals("Diagrama Mayhem")) {
-                System.out.println(jfc.getSelectedFile().getPath());
                 AdminFlujo af = new AdminFlujo(jfc.getSelectedFile().getPath());
                 ruta = jfc.getSelectedFile().getPath();
 
                 af.cargararchivo();
                 listafiguras = new ArrayList();
                 for (Figura t : af.getListaf()) {
-                    // panelfiguras.add(t);
-                    System.out.println(t.getName());
-                    t = mover(t);
-                    System.out.println("------\n");
-                    System.out.println(t.getName());
+                    abrirmover_diagramas(t);
                     panelfiguras.repaint();
-
                 }
 
-                //archivo = new File(jfc.getSelectedFile().getPath() + ".myhm");
-                //ruta = jfc.getSelectedFile().getPath();
-                // } else {
-                //    JOptionPane.showMessageDialog(jddiagramaflujo, "nose guardo");
-                //archivo = jfc.getSelectedFile();
-                //  }
-                //  fw = new FileWriter(archivo);
-                //       bw = new BufferedWriter(fw);
-                //   bw.flush();
-                //universo.setArchivo(archivo);
-                //universo.escribirArchivo();
-                JOptionPane.showMessageDialog(this, "Diagrama abierto exitosamente");
+                JOptionPane.showMessageDialog(jddiagramaflujo, "Diagrama abierto exitosamente");
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2697,13 +2604,415 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_AbrirdActionPerformed
 
+    public void abrirmover_diagramas(Figura f) {
+
+        if (f instanceof Condicional) {
+
+            Condicional rombo = (Condicional) f;
+            rombo.setName("Condiciona" + cof);
+            cof++;
+            panelfiguras.add(rombo);
+            rombo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                @Override
+                public void mouseDragged(java.awt.event.MouseEvent evt) {
+                    if ((rombo.getLocation().x + evt.getX() - rombo.getWidth() / 2) >= 0
+                            && (rombo.getLocation().x + evt.getX() - rombo.getWidth() / 2) <= 1200) {
+
+                        rombo.setLocation(rombo.getLocation().x + evt.getX() - rombo.getWidth() / 2,
+                                rombo.getLocation().y + evt.getY() - rombo.getHeight() / 2);
+
+                    }// para que no se salga del rango
+
+                }
+            });
+
+            rombo.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                    temprombo = rombo;
+                    copiar = temprombo;
+                    if (evtr.isMetaDown()) {
+                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+
+                        jpp_rombo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                        temprombo = rombo;
+                        rombo.setText(temprombo.getText());
+                        rombo.setBackground(temprombo.getBackground());
+                        rombo.setTipo(temprombo.getTipo());
+
+                        //Recorrer
+                        if (rombo.isAgregado()) {
+
+                            for (JLabel t : listafiguras) {
+                                if (t.getName().equals(rombo.getName())) {
+
+                                    t.setText(temprombo.getText());
+                                    ((Condicional) t).setTipo(temprombo.getTipo());
+                                    t.setBackground(temprombo.getBackground());
+                                    //((Entrada_Salida) t).setListva(temprombo.getListva());
+                                } else {
+                                    //JOptionPane.showMessageDialog( "No");
+
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            listafiguras.add(rombo);
+
+            panelfiguras.repaint();
+
+        } else if (f instanceof FinCiclo) {
+            listafiguras.add(f);
+
+        } else if (f instanceof Flecha) {
+            Flecha name = (Flecha) f;
+            panelfiguras.add(name);
+            name.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                @Override
+                public void mouseDragged(java.awt.event.MouseEvent evt) {
+                    if ((name.getLocation().x + evt.getX() - name.getWidth() / 2) >= 0
+                            && (name.getLocation().x + evt.getX() - name.getWidth() / 2) <= 1200) {
+
+                        name.setLocation(name.getLocation().x + evt.getX() - name.getWidth() / 2,
+                                name.getLocation().y + evt.getY() - name.getHeight() / 2);
+
+                    }// para que no se salga del rango
+
+                }
+            });
+
+            name.addMouseListener(new java.awt.event.MouseAdapter() {
+
+                public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                    tempflecha = name;
+                    copiar = tempflecha;
+                    if (evtr.isMetaDown()) {
+                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+
+                        ppflecha.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                        tempflecha = name;
+
+                    }
+                }
+            });
+            panelfiguras.repaint();
+
+            listafiguras.add(name);
+        }
+        if (f instanceof Entrada_Salida) {
+            System.out.println("nohola");
+            Entrada_Salida Paralelogramo = (Entrada_Salida) f;
+
+            Paralelogramo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+
+                @Override
+                public void mouseDragged(java.awt.event.MouseEvent evt) {
+                    if ((Paralelogramo.getLocation().x + evt.getX() - Paralelogramo.getWidth() / 2) >= 0
+                            && (Paralelogramo.getLocation().x + evt.getX() - Paralelogramo.getWidth() / 2) <= 1200) {
+
+                        Paralelogramo.setLocation(Paralelogramo.getLocation().x + evt.getX() - Paralelogramo.getWidth() / 2,
+                                Paralelogramo.getLocation().y + evt.getY() - Paralelogramo.getHeight() / 2);
+
+                    }// para que no se salga del rango
+
+                }
+            });
+
+            Paralelogramo.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                    templabelparalelogramo = Paralelogramo;
+                    copiar = templabelparalelogramo;
+                    // panelfiguras.re
+                    if (evtr.isMetaDown()) {
+                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+                        copiar = Paralelogramo;
+                        jpp_paralelogramo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+
+                        //Paralelogramo.setText(templabelparalelogramo.getText());
+                        // Paralelogramo.setBackground(templabelparalelogramo.getBackground());
+                        //Paralelogramo.setListva(templabelparalelogramo.getListva());
+                        if (Paralelogramo.isAgregado()) {
+
+                            for (JLabel t : listafiguras) {
+                                if (t.getName().equals(Paralelogramo.getName())) {
+
+                                    t.setText(templabelparalelogramo.getText());
+                                    t.setBackground(templabelparalelogramo.getBackground());
+                                    ((Entrada_Salida) t).setListva(templabelparalelogramo.getListva());
+                                } else {
+                                    //JOptionPane.showMessageDialog( "No");
+
+                                }
+                            }
+                        } else {
+                            listafiguras.add(Paralelogramo);
+                        }
+
+                    }//Fin click dereco
+                }
+            });//Fin agreagar omouse listener
+            panelfiguras.add(Paralelogramo);
+            panelfiguras.repaint();
+            listafiguras.add(Paralelogramo);
+        } else if (f instanceof Flechad) {
+            Flechad derecha = (Flechad) f;
+            panelfiguras.add(derecha);
+            derecha.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                @Override
+                public void mouseDragged(java.awt.event.MouseEvent evt) {
+                    if ((derecha.getLocation().x + evt.getX() - derecha.getWidth() / 2) >= 0
+                            && (derecha.getLocation().x + evt.getX() - derecha.getWidth() / 2) <= 1200) {
+
+                        derecha.setLocation(derecha.getLocation().x + evt.getX() - derecha.getWidth() / 2,
+                                derecha.getLocation().y + evt.getY() - derecha.getHeight() / 2);
+
+                    }// para que no se salga del rango
+
+                }
+            });
+            derecha.addMouseListener(new java.awt.event.MouseAdapter() {
+
+                public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                    copiar = tempflechad;
+                    tempflechad = derecha;
+                    if (evtr.isMetaDown()) {
+                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+                        copiar = tempflechad;
+                        ppflechad.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                        tempflechad = derecha;
+
+                    }
+                }
+            });
+            panelfiguras.repaint();
+            listafiguras.add(derecha);
+        }//Fin if de flecha d
+        else if (f instanceof Flechai) {
+            Flechai izquierda = (Flechai) f;
+            panelfiguras.add(izquierda);
+            izquierda.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                @Override
+                public void mouseDragged(java.awt.event.MouseEvent evt) {
+                    if ((izquierda.getLocation().x + evt.getX() - izquierda.getWidth() / 2) >= 0
+                            && (izquierda.getLocation().x + evt.getX() - izquierda.getWidth() / 2) <= 1200) {
+
+                        izquierda.setLocation(izquierda.getLocation().x + evt.getX() - izquierda.getWidth() / 2,
+                                izquierda.getLocation().y + evt.getY() - izquierda.getHeight() / 2);
+
+                    }// para que no se salga del rango
+
+                }
+            });
+            izquierda.addMouseListener(new java.awt.event.MouseAdapter() {
+
+                public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                    tempflechai = izquierda;
+                    copiar = tempflechai;
+                    if (evtr.isMetaDown()) {
+                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+                        copiar = tempflechai;
+                        ppflechai.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                        tempflechai = izquierda;
+
+                    }
+                }
+            });
+            listafiguras.add(izquierda);
+            panelfiguras.repaint();
+        }//Fn if izquierda
+        else if (f instanceof Imprimir) {
+            Imprimir resultado = (Imprimir) f;
+            panelfiguras.add(resultado);
+            resultado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                @Override
+                public void mouseDragged(java.awt.event.MouseEvent evt) {
+                    if ((resultado.getLocation().x + evt.getX() - resultado.getWidth() / 2) >= 0
+                            && (resultado.getLocation().x + evt.getX() - resultado.getWidth() / 2) <= 1200) {
+
+                        resultado.setLocation(resultado.getLocation().x + evt.getX() - resultado.getWidth() / 2,
+                                resultado.getLocation().y + evt.getY() - resultado.getHeight() / 2);
+
+                    }// para que no se salga del rango
+
+                }
+            });
+            resultado.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                    copiar = tempresultado;
+                    if (evtr.isMetaDown()) {
+                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+                        copiar = tempresultado;
+                        jpp_resultado.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                        tempresultado = resultado;
+                        resultado.setText(tempresultado.getText());
+                        resultado.setBackground(tempresultado.getBackground());
+
+                        //Recorrer
+                        if (resultado.isAgregado()) {
+
+                            for (JLabel t : listafiguras) {
+                                if (t.getName().equals(resultado.getName())) {
+
+                                    t.setText(tempresultado.getText());
+
+                                    t.setBackground(tempresultado.getBackground());
+                                    //((Entrada_Salida) t).setListva(temprombo.getListva());
+                                } else {
+                                    //JOptionPane.showMessageDialog( "No");
+
+                                }
+                            }
+                        } else {
+                            listafiguras.add(resultado);
+                        }
+
+                    }
+                }
+            });
+            panelfiguras.repaint();
+            listafiguras.add(resultado);
+
+        }//Fin imprimir
+        else if (f instanceof Inicio) {
+            if (contovalo == 0) {
+                Inicio Ovalo = (Inicio) f;
+                panelfiguras.add(Ovalo);
+                Ovalo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                    @Override
+                    public void mouseDragged(java.awt.event.MouseEvent evt) {
+                        if ((Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2) >= 0
+                                && (Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2) <= 1200) {
+
+                            Ovalo.setLocation(Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2,
+                                    Ovalo.getLocation().y + evt.getY() - Ovalo.getHeight() / 2);
+
+                        }// para que no se salga del rango
+
+                    }
+                });
+
+                Ovalo.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                        tempovalo = Ovalo;
+                        copiar = tempovalo;
+                        if (evtr.isMetaDown()) {
+                            //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+
+                            jpp_ovalo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                            tempovalo = Ovalo;
+
+                        }
+                    }
+                });
+                listafiguras.add(Ovalo);
+                panelfiguras.repaint();
+
+                //Ovalo.setBackground(tempovalo.getBackground());
+                contovalo++;
+
+            } else if (contovalo == 1) {
+                Inicio Ovalo = (Inicio) f;
+                panelfiguras.add(Ovalo);
+                Ovalo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                    @Override
+                    public void mouseDragged(java.awt.event.MouseEvent evt) {
+                        if ((Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2) >= 0
+                                && (Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2) <= 1200) {
+
+                            Ovalo.setLocation(Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2,
+                                    Ovalo.getLocation().y + evt.getY() - Ovalo.getHeight() / 2);
+
+                        }// para que no se salga del rango
+
+                    }
+                });
+
+                Ovalo.addMouseListener(new java.awt.event.MouseAdapter() {
+
+                    public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                        tempovalo = Ovalo;
+                        copiar = tempovalo;
+                        if (evtr.isMetaDown()) {
+                            //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+
+                            jpp_ovalo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                            tempovalo = Ovalo;
+
+                        }
+                    }
+                });
+                listafiguras.add(Ovalo);
+                panelfiguras.repaint();
+                contovalo++;
+
+            } else {
+                JOptionPane.showMessageDialog(jddiagramaflujo, "Ya no puede ingresar mas de este tipo");
+            }
+        }else if(f instanceof Procesos){
+            Procesos rectangulo=(Procesos) f;
+            panelfiguras.add(rectangulo);
+            rectangulo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                if ((rectangulo.getLocation().x + evt.getX() - rectangulo.getWidth() / 2) >= 0
+                        && (rectangulo.getLocation().x + evt.getX() - rectangulo.getWidth() / 2) <= 1200) {
+
+                    rectangulo.setLocation(rectangulo.getLocation().x + evt.getX() - rectangulo.getWidth() / 2,
+                            rectangulo.getLocation().y + evt.getY() - rectangulo.getHeight() / 2);
+
+                }// para que no se salga del rango
+
+            }
+        });
+        rectangulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evtr) {
+                copiar = temprectangulo;
+                if (evtr.isMetaDown()) {
+                    //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
+
+                    jpp_rectangulo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
+                    temprectangulo = rectangulo;
+                    rectangulo.setText(temprectangulo.getText());
+                    rectangulo.setBackground(temprectangulo.getBackground());
+                    //Recorrer
+                    if (rectangulo.isAgregado()) {
+
+                        for (JLabel t : listafiguras) {
+                            if (t.getName().equals(rectangulo.getName())) {
+
+                                t.setText(temprectangulo.getText());
+                                //((Condicional)t).setTipo(temprectangulo.getTipo());
+                                t.setBackground(temprectangulo.getBackground());
+                                //((Entrada_Salida) t).setListva(temprombo.getListva());
+                            } else {
+                                //JOptionPane.showMessageDialog( "No");
+
+                            }
+                        }
+                    } else {
+                        listafiguras.add(rectangulo);
+                    }
+
+                }
+            }
+        });
+        panelfiguras.repaint();
+        listafiguras.add(rectangulo);
+            
+            
+            
+        }
+
+    }//Fin metodo
+
+
     private void NeuvodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NeuvodActionPerformed
         // TODO add your handling code here:
-      //  nombrediagramaflujo = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese nombre del diagrama");
+        nombrediagramaflujo = JOptionPane.showInputDialog(jddiagramaflujo, "Ingrese nombre del diagrama");
         nombretotal = nombrediagramaflujo;
         JOptionPane.showMessageDialog(jddiagramaflujo, "Nuevo");
-        
-        
+
         panelfiguras.removeAll();
         panelfiguras.setLayout(null);
         listafiguras = new ArrayList();
@@ -2907,7 +3216,7 @@ public class Principal extends javax.swing.JFrame {
         DefaultListModel modelo1 = (DefaultListModel) jl_gestor1.getModel();
         DefaultListModel modelo2 = (DefaultListModel) jl_gestor2.getModel();
 
-        for (Figura o : listafiguras) {
+        for (JLabel o : listafiguras) {
             modelo1.addElement(o);
             modelo2.addElement(o);
         }
@@ -3077,9 +3386,9 @@ public class Principal extends javax.swing.JFrame {
         jd_fuentes.pack();
         jd_fuentes.setLocationRelativeTo(this);
         jd_fuentes.setVisible(true);
-         sp_tamaño.setValue(0);
+        sp_tamaño.setValue(0);
         colorboton1.setBackground(Color.BLACK);
-        flagofhate=1;
+        flagofhate = 1;
     }//GEN-LAST:event_Fuente_paralelogramoActionPerformed
 
     private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
@@ -3090,7 +3399,7 @@ public class Principal extends javax.swing.JFrame {
             copiar.setFont(new java.awt.Font(fd, 1, (Integer) sp_tamaño.getValue()));
             copiar.setForeground(colorboton1.getBackground());
             this.repaint();
-        }else if(flagofhate==2){
+        } else if (flagofhate == 2) {
             String[] fu = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
             fd = (String) JOptionPane.showInputDialog(jd_fuentes, "Eleccion", "Fuentes", 3, null, fu, fu[0]);
             copiar1.setFont(new java.awt.Font(fd, 1, (Integer) sp_tamaño.getValue()));
@@ -3115,8 +3424,8 @@ public class Principal extends javax.swing.JFrame {
         jd_fuentes.pack();
         jd_fuentes.setLocationRelativeTo(this);
         jd_fuentes.setVisible(true);
-        flagofhate=1;
-         sp_tamaño.setValue(0);
+        flagofhate = 1;
+        sp_tamaño.setValue(0);
         colorboton1.setBackground(Color.BLACK);
     }//GEN-LAST:event_Fuente_ovaloActionPerformed
 
@@ -3126,8 +3435,8 @@ public class Principal extends javax.swing.JFrame {
         jd_fuentes.pack();
         jd_fuentes.setLocationRelativeTo(this);
         jd_fuentes.setVisible(true);
-        flagofhate=1;
-         sp_tamaño.setValue(0);
+        flagofhate = 1;
+        sp_tamaño.setValue(0);
         colorboton1.setBackground(Color.BLACK);
     }//GEN-LAST:event_Fuente_romboActionPerformed
 
@@ -3137,19 +3446,19 @@ public class Principal extends javax.swing.JFrame {
         jd_fuentes.pack();
         jd_fuentes.setLocationRelativeTo(this);
         jd_fuentes.setVisible(true);
-        flagofhate=1;
-         sp_tamaño.setValue(0);
+        flagofhate = 1;
+        sp_tamaño.setValue(0);
         colorboton1.setBackground(Color.BLACK);
     }//GEN-LAST:event_Fuente_rectanguloActionPerformed
 
     private void Fuente_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fuente_resultadoActionPerformed
         // TODO add your handling code here:
-        flagofhate=1;
+        flagofhate = 1;
         jd_fuentes.setModal(true);
         jd_fuentes.pack();
         jd_fuentes.setLocationRelativeTo(this);
         jd_fuentes.setVisible(true);
-         sp_tamaño.setValue(0);
+        sp_tamaño.setValue(0);
         colorboton1.setBackground(Color.BLACK);
     }//GEN-LAST:event_Fuente_resultadoActionPerformed
 
@@ -3178,20 +3487,19 @@ public class Principal extends javax.swing.JFrame {
 
     private void guActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guActionPerformed
         // TODO add your handling code here:
-        
-        
-          AdminClases af = new AdminClases(ruta);
-                
-                af.setListaf(listatrees);
+
+        AdminClases af = new AdminClases(ruta);
+
+        af.setListaf(listatrees);
         try {
             af.escribirArchivo();
             //archivo = new File(jfc.getSelectedFile().getPath() + ".myhm");
             //ruta = jfc.getSelectedFile().getPath();
         } catch (IOException ex) {
-            
+
         }
 
-                JOptionPane.showMessageDialog(this, "Diagrama guardado exitosamente");
+        JOptionPane.showMessageDialog(this, "Diagrama guardado exitosamente");
     }//GEN-LAST:event_guActionPerformed
 
     /**
@@ -3295,7 +3603,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
@@ -3337,6 +3644,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -3411,6 +3720,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jpp_tipoimpresion;
     private javax.swing.JTextField jt_nom;
     private javax.swing.JTextField jt_parametro;
+    private javax.swing.JTextField jt_textoi;
     private javax.swing.JMenuItem metodoadd;
     private javax.swing.JDialog metodosuml;
     private java.awt.Panel panel1;
@@ -3459,482 +3769,6 @@ int contovalo = 0;
     String fd = "Times New Roman";
     String fuml = "Times New Roman";
     int flagofhate;
-
-    //Mover lo cargado de los diagramas
-    public Figura mover(Figura t) {
-        if (t instanceof Entrada_Salida) {
-
-            Entrada_Salida Paralelogramo = new Entrada_Salida();
-            // name.setPreferredSize(new Dimension(50, 100));
-            panelfiguras.add(Paralelogramo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
-            Paralelogramo.setLocation(20, 210);
-            //Paralelogramo.setBackground(Color.red);
-
-            Paralelogramo.setHorizontalTextPosition(SwingConstants.CENTER);
-            Paralelogramo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/paralelogramo_p.png"));
-            Paralelogramo.setOpaque(true);
-            Paralelogramo.setMaximumSize(new java.awt.Dimension(30, 30));
-            Paralelogramo.setMinimumSize(new Dimension(60, 20));
-            Paralelogramo.setLocation(new Point(30, 30));
-            Paralelogramo.setPreferredSize(new Dimension(40, 40));
-            Paralelogramo.setName("Mayhem" + cof);
-            cof++;
-            //Paralelogramo.setListva(((Entrada_Salida) t).getListva());
-            Paralelogramo.setText(t.getText());
-            Paralelogramo.setBackground(t.getBackground());
-            Paralelogramo.setBounds(t.getBounds());
-            Paralelogramo.setToolTipText("Click derecho para propiedades");
-            Paralelogramo.setAgregado(true);
-            Paralelogramo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-
-                @Override
-                public void mouseDragged(java.awt.event.MouseEvent evt) {
-                    if ((Paralelogramo.getLocation().x + evt.getX() - Paralelogramo.getWidth() / 2) >= 0
-                            && (Paralelogramo.getLocation().x + evt.getX() - Paralelogramo.getWidth() / 2) <= 1200) {
-
-                        Paralelogramo.setLocation(Paralelogramo.getLocation().x + evt.getX() - Paralelogramo.getWidth() / 2,
-                                Paralelogramo.getLocation().y + evt.getY() - Paralelogramo.getHeight() / 2);
-
-                    }// para que no se salga del rango
-
-                }
-            });
-
-            Paralelogramo.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evtr) {
-                    if (evtr.isMetaDown()) {
-                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
-
-                        jpp_paralelogramo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
-
-                        //Paralelogramo.setText(templabelparalelogramo.getText());
-                        // Paralelogramo.setBackground(templabelparalelogramo.getBackground());
-                        //Paralelogramo.setListva(templabelparalelogramo.getListva());
-                        if (Paralelogramo.isAgregado()) {
-
-                            for (JLabel t : listafiguras) {
-                                if (t.getName().equals(Paralelogramo.getName())) {
-
-                                    t.setText(templabelparalelogramo.getText());
-                                    t.setBackground(templabelparalelogramo.getBackground());
-                                    ((Entrada_Salida) t).setListva(templabelparalelogramo.getListva());
-                                } else {
-                                    //JOptionPane.showMessageDialog( "No");
-
-                                }
-                            }
-                        } else {
-                            listafiguras.add(Paralelogramo);
-                        }
-
-                    }//Fin click dereco
-                }
-            });//Fin agreagar omouse listener
-            templabelparalelogramo = Paralelogramo;
-            listafiguras.add(Paralelogramo);
-        }//fin instance of entrada salida
-        else if (t instanceof Condicional) {
-            Condicional rombo = new Condicional();
-            // name.setPreferredSize(new Dimension(50, 100));
-            panelfiguras.add(rombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 600, 600));
-            rombo.setLocation(20, 210);
-
-            rombo.setBackground(t.getBackground());
-            rombo.setHorizontalTextPosition(SwingConstants.CENTER);
-            rombo.setName("MAyhem" + cof);
-            rombo.setOpaque(true);
-            rombo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/rombo_p.png"));
-            rombo.setMaximumSize(new java.awt.Dimension(30, 30));
-            rombo.setMinimumSize(new Dimension(60, 20));
-            rombo.setLocation(new Point(30, 30));
-            rombo.setPreferredSize(new Dimension(40, 40));
-            rombo.setSize(50, 50);
-            rombo.setAgregado(true);
-            rombo.setText(t.getText());
-            rombo.setBounds(t.getBounds());
-            // rombo.setTipo(((Condicional) t).getTipo());
-            rombo.setToolTipText("Click derecho para propiedades");
-            rombo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-                @Override
-                public void mouseDragged(java.awt.event.MouseEvent evt) {
-                    if ((rombo.getLocation().x + evt.getX() - rombo.getWidth() / 2) >= 0
-                            && (rombo.getLocation().x + evt.getX() - rombo.getWidth() / 2) <= 1200) {
-
-                        rombo.setLocation(rombo.getLocation().x + evt.getX() - rombo.getWidth() / 2,
-                                rombo.getLocation().y + evt.getY() - rombo.getHeight() / 2);
-
-                    }// para que no se salga del rango
-
-                }
-            });
-
-            rombo.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evtr) {
-                    if (evtr.isMetaDown()) {
-                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
-
-                        jpp_rombo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
-                        temprombo = rombo;
-                        rombo.setText(temprombo.getText());
-                        rombo.setBackground(temprombo.getBackground());
-                        rombo.setTipo(temprombo.getTipo());
-
-                        //Recorrer
-                        if (rombo.isAgregado()) {
-
-                            for (JLabel t : listafiguras) {
-                                if (t.getName().equals(rombo.getName())) {
-
-                                    t.setText(temprombo.getText());
-                                    ((Condicional) t).setTipo(temprombo.getTipo());
-                                    t.setBackground(temprombo.getBackground());
-                                    //((Entrada_Salida) t).setListva(temprombo.getListva());
-                                } else {
-                                    //JOptionPane.showMessageDialog( "No");
-
-                                }
-                            }
-                        } else {
-                            listafiguras.add(rombo);
-                        }
-                    }
-                }
-            });
-            listafiguras.add(rombo);
-        } else if (t instanceof Flecha) {
-
-            Flecha name = new Flecha();
-            // name.setPreferredSize(new Dimension(50, 100));
-            panelfiguras.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 300, 600));
-            name.setLocation(20, 210);
-            name.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/Flecha.jpg"));
-            name.setMaximumSize(new java.awt.Dimension(30, 30));
-            name.setMinimumSize(new Dimension(60, 20));
-            name.setLocation(new Point(30, 30));
-            name.setPreferredSize(new Dimension(40, 40));
-            name.setSize(50, 50);
-            name.setName("Mayhem" + cof);
-            cof++;
-            name.setBounds(t.getBounds());
-            name.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-                @Override
-                public void mouseDragged(java.awt.event.MouseEvent evt) {
-                    if ((name.getLocation().x + evt.getX() - name.getWidth() / 2) >= 0
-                            && (name.getLocation().x + evt.getX() - name.getWidth() / 2) <= 1200) {
-
-                        name.setLocation(name.getLocation().x + evt.getX() - name.getWidth() / 2,
-                                name.getLocation().y + evt.getY() - name.getHeight() / 2);
-
-                    }// para que no se salga del rango
-
-                }
-            });
-
-            listafiguras.add(name);
-
-        } else if (t instanceof Imprimir) {
-
-            Imprimir resultado = new Imprimir();
-            // name.setPreferredSize(new Dimension(50, 100));
-            panelfiguras.add(resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 330, 600));
-            resultado.setLocation(20, 210);
-            resultado.setIcon(new javax.swing.ImageIcon("./src/Iconitos/resultado_p.png"));
-            resultado.setMaximumSize(new java.awt.Dimension(30, 30));
-            resultado.setMinimumSize(new Dimension(60, 20));
-            resultado.setLocation(new Point(30, 30));
-            resultado.setHorizontalTextPosition(SwingConstants.CENTER);
-            resultado.setOpaque(true);
-            resultado.setText(t.getText());
-            resultado.setName("Mayhem" + cof);
-            cof++;
-
-            resultado.setAgregado(true);
-            resultado.setPreferredSize(new Dimension(40, 40));
-            resultado.setBackground(t.getBackground());
-            // resultado.setConVariable(((Imprimir) t).isConVariable());
-            resultado.setBounds(t.getBounds());
-            //resultado.setVariable(((Imprimir) t).getVariable());
-            resultado.setToolTipText("Click derecho para propiedades");
-            resultado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-                @Override
-                public void mouseDragged(java.awt.event.MouseEvent evt) {
-                    if ((resultado.getLocation().x + evt.getX() - resultado.getWidth() / 2) >= 0
-                            && (resultado.getLocation().x + evt.getX() - resultado.getWidth() / 2) <= 1200) {
-
-                        resultado.setLocation(resultado.getLocation().x + evt.getX() - resultado.getWidth() / 2,
-                                resultado.getLocation().y + evt.getY() - resultado.getHeight() / 2);
-
-                    }// para que no se salga del rango
-
-                }
-            });
-            resultado.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evtr) {
-                    if (evtr.isMetaDown()) {
-                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
-
-                        jpp_resultado.show(evtr.getComponent(), evtr.getX(), evtr.getY());
-                        tempresultado = resultado;
-                        resultado.setText(tempresultado.getText());
-                        resultado.setBackground(tempresultado.getBackground());
-                        resultado.setConVariable(tempresultado.isConVariable());
-                        resultado.setVariable(tempresultado.getVariable());
-
-                        //Recorrer
-                        if (resultado.isAgregado()) {
-
-                            for (JLabel t : listafiguras) {
-                                if (t.getName().equals(resultado.getName())) {
-
-                                    t.setText(tempresultado.getText());
-                                    ((Imprimir) t).setConVariable(tempresultado.isConVariable());
-                                    ((Imprimir) t).setVariable(tempresultado.getVariable());
-                                    t.setBackground(tempresultado.getBackground());
-                                    //((Entrada_Salida) t).setListva(temprombo.getListva());
-                                } else {
-                                    //JOptionPane.showMessageDialog( "No");
-
-                                }
-                            }
-                        } else {
-                            listafiguras.add(resultado);
-                        }
-
-                    }
-                }
-            });
-            listafiguras.add(resultado);
-
-        } else if (t instanceof Inicio) {
-            if (contovalo == 0) {
-                Inicio Ovalo = new Inicio();
-                //JLabel Ovalo = new JLabel();
-                // name.setPreferredSize(new Dimension(50, 100));
-                panelfiguras.add(Ovalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
-                Ovalo.setLocation(20, 210);
-                Ovalo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Ovalo.png"));
-                Ovalo.setName("Mayhem" + cof);
-                //Ovalo.setBackground(Color.red);
-                Ovalo.setHorizontalTextPosition(SwingConstants.CENTER);
-                Ovalo.setTipo("Inicio");
-                Ovalo.setOpaque(true);
-                cof++;
-
-                Ovalo.setMaximumSize(new java.awt.Dimension(30, 30));
-                Ovalo.setMinimumSize(new Dimension(60, 20));
-                Ovalo.setLocation(new Point(30, 30));
-                Ovalo.setPreferredSize(new Dimension(40, 40));
-                Ovalo.setSize(50, 50);
-                Ovalo.setBackground(t.getBackground());
-                Ovalo.setBounds(t.getBounds());
-                Ovalo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-                    @Override
-                    public void mouseDragged(java.awt.event.MouseEvent evt) {
-                        if ((Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2) >= 0
-                                && (Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2) <= 1200) {
-
-                            Ovalo.setLocation(Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2,
-                                    Ovalo.getLocation().y + evt.getY() - Ovalo.getHeight() / 2);
-
-                        }// para que no se salga del rango
-
-                    }
-                });
-
-                Ovalo.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evtr) {
-                        if (evtr.isMetaDown()) {
-                            //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
-
-                            jpp_ovalo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
-                            tempovalo = Ovalo;
-
-                        }
-                    }
-                });
-                listafiguras.add(Ovalo);
-                Ovalo.setText("Inicio");
-                //Ovalo.setBackground(tempovalo.getBackground());
-                contovalo++;
-
-            } else if (contovalo == 1) {
-                Inicio Ovalo = new Inicio();
-                // name.setPreferredSize(new Dimension(50, 100));
-                panelfiguras.add(Ovalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 760));
-                Ovalo.setLocation(20, 210);
-                Ovalo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Ovalo.png"));
-                Ovalo.setTipo("Fin");
-                //Ovalo.setBackground(Color.red);
-                Ovalo.setHorizontalTextPosition(SwingConstants.CENTER);
-                Ovalo.setName("Mayhem" + cof);
-                Ovalo.setOpaque(true);
-                cof++;
-                Ovalo.setMaximumSize(new java.awt.Dimension(30, 30));
-                Ovalo.setMinimumSize(new Dimension(60, 20));
-                Ovalo.setLocation(new Point(30, 30));
-                Ovalo.setPreferredSize(new Dimension(40, 40));
-                Ovalo.setSize(50, 50);
-                Ovalo.setBackground(t.getBackground());
-                Ovalo.setBounds(t.getBounds());
-                Ovalo.setToolTipText("Click derecho para propiedades");
-                Ovalo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-                    @Override
-                    public void mouseDragged(java.awt.event.MouseEvent evt) {
-                        if ((Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2) >= 0
-                                && (Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2) <= 1200) {
-
-                            Ovalo.setLocation(Ovalo.getLocation().x + evt.getX() - Ovalo.getWidth() / 2,
-                                    Ovalo.getLocation().y + evt.getY() - Ovalo.getHeight() / 2);
-
-                        }// para que no se salga del rango
-
-                    }
-                });
-
-                Ovalo.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evtr) {
-                        if (evtr.isMetaDown()) {
-                            //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
-
-                            jpp_ovalo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
-                            tempovalo = Ovalo;
-
-                        }
-                    }
-                });
-                listafiguras.add(Ovalo);
-                Ovalo.setText("Fin");
-                contovalo++;
-
-            } else {
-                JOptionPane.showMessageDialog(jddiagramaflujo, "Ya no puede ingresar mas de este tipo");
-            }
-
-        } else if (t instanceof Procesos) {
-            Procesos rectangulo = new Procesos();
-            // name.setPreferredSize(new Dimension(50, 100));
-            panelfiguras.add(rectangulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 550, 600));
-            rectangulo.setLocation(20, 210);
-            rectangulo.setBackground(t.getBackground());
-            rectangulo.setForeground(Color.BLACK);
-            rectangulo.setName("Mayhem" + cof);
-            cof++;
-            rectangulo.setOpaque(true);
-            rectangulo.setIcon(new javax.swing.ImageIcon("./src/Iconitos/Rectangulo_p.png"));
-            rectangulo.setHorizontalTextPosition(SwingConstants.CENTER);
-            rectangulo.setAgregado(true);
-            rectangulo.setMaximumSize(new java.awt.Dimension(30, 30));
-            rectangulo.setMinimumSize(new Dimension(60, 20));
-            rectangulo.setLocation(new Point(30, 30));
-            rectangulo.setText(t.getText());
-            rectangulo.setPreferredSize(new Dimension(40, 40));
-            //name.setSize(70, 50);
-            rectangulo.setBounds(t.getBounds());
-            rectangulo.setToolTipText("Click derecho para propiedades");
-            rectangulo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-                @Override
-                public void mouseDragged(java.awt.event.MouseEvent evt) {
-                    if ((rectangulo.getLocation().x + evt.getX() - rectangulo.getWidth() / 2) >= 0
-                            && (rectangulo.getLocation().x + evt.getX() - rectangulo.getWidth() / 2) <= 1200) {
-
-                        rectangulo.setLocation(rectangulo.getLocation().x + evt.getX() - rectangulo.getWidth() / 2,
-                                rectangulo.getLocation().y + evt.getY() - rectangulo.getHeight() / 2);
-
-                    }// para que no se salga del rango
-
-                }
-            });
-            rectangulo.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evtr) {
-                    if (evtr.isMetaDown()) {
-                        //javax.swing.JPopupMenu jpp_paralelogramo1 = new javax.swing.JPopupMenu();
-
-                        jpp_rectangulo.show(evtr.getComponent(), evtr.getX(), evtr.getY());
-                        temprectangulo = rectangulo;
-                        rectangulo.setText(temprectangulo.getText());
-                        rectangulo.setBackground(temprectangulo.getBackground());
-                        //Recorrer
-                        if (rectangulo.isAgregado()) {
-
-                            for (JLabel t : listafiguras) {
-                                if (t.getName().equals(rectangulo.getName())) {
-
-                                    t.setText(temprectangulo.getText());
-                                    //((Condicional)t).setTipo(temprectangulo.getTipo());
-                                    t.setBackground(temprectangulo.getBackground());
-                                    //((Entrada_Salida) t).setListva(temprombo.getListva());
-                                } else {
-                                    //JOptionPane.showMessageDialog( "No");
-
-                                }
-                            }
-                        } else {
-                            listafiguras.add(rectangulo);
-                        }
-
-                    }
-                }
-            });
-
-            listafiguras.add(rectangulo);
-            //rectangulo.setBackground(temprectangulo.getBackground());
-        } else if (t instanceof Flechad) {
-            Flechad derecha = new Flechad();
-            // name.setPreferredSize(new Dimension(50, 100));
-            panelfiguras.add(derecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 330, 600));
-            derecha.setLocation(20, 210);
-            derecha.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/flechaderecha.jpg"));
-            derecha.setMaximumSize(new java.awt.Dimension(30, 30));
-            derecha.setMinimumSize(new Dimension(60, 20));
-            derecha.setLocation(new Point(30, 30));
-            derecha.setPreferredSize(new Dimension(40, 40));
-            derecha.setSize(50, 50);
-            derecha.setBounds(t.getBounds());
-            derecha.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-                @Override
-                public void mouseDragged(java.awt.event.MouseEvent evt) {
-                    if ((derecha.getLocation().x + evt.getX() - derecha.getWidth() / 2) >= 0
-                            && (derecha.getLocation().x + evt.getX() - derecha.getWidth() / 2) <= 1200) {
-
-                        derecha.setLocation(derecha.getLocation().x + evt.getX() - derecha.getWidth() / 2,
-                                derecha.getLocation().y + evt.getY() - derecha.getHeight() / 2);
-
-                    }// para que no se salga del rango
-
-                }
-            });
-            listafiguras.add(derecha);
-        } else if (t instanceof Flechai) {
-            Flechai izquierda = new Flechai();
-            // name.setPreferredSize(new Dimension(50, 100));
-            panelfiguras.add(izquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 300, 600));
-            izquierda.setLocation(20, 210);
-            izquierda.setIcon(new javax.swing.ImageIcon("./src/FigurasDiagramaFlujo/izquierda.jpg"));
-            izquierda.setMaximumSize(new java.awt.Dimension(30, 30));
-            izquierda.setMinimumSize(new Dimension(60, 20));
-            izquierda.setLocation(new Point(30, 30));
-            izquierda.setPreferredSize(new Dimension(40, 40));
-            izquierda.setSize(50, 50);
-            izquierda.setBounds(t.getBounds());
-            izquierda.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-                @Override
-                public void mouseDragged(java.awt.event.MouseEvent evt) {
-                    if ((izquierda.getLocation().x + evt.getX() - izquierda.getWidth() / 2) >= 0
-                            && (izquierda.getLocation().x + evt.getX() - izquierda.getWidth() / 2) <= 1200) {
-
-                        izquierda.setLocation(izquierda.getLocation().x + evt.getX() - izquierda.getWidth() / 2,
-                                izquierda.getLocation().y + evt.getY() - izquierda.getHeight() / 2);
-
-                    }// para que no se salga del rango
-
-                }
-            });
-            listafiguras.add(izquierda);
-        }
-
-        return t;
-
-    }//Fin metodo mover fugurad
 
     public void moveruml(JTree t) {
 
